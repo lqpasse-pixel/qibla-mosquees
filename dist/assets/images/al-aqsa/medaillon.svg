@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img">
+<defs><radialGradient id="bg" cx="0.5" cy="0.5" r="0.75">
+<stop offset="0" stop-color="#7a5a8f"/><stop offset="1" stop-color="#3a2c4f"/></radialGradient>
+<pattern id="g2" width="100" height="100" patternUnits="userSpaceOnUse"><polygon points="93.0,50.0 66.6,56.9 80.4,80.4 56.9,66.6 50.0,93.0 43.1,66.6 19.6,80.4 33.4,56.9 7.0,50.0 33.4,43.1 19.6,19.6 43.1,33.4 50.0,7.0 56.9,33.4 80.4,19.6 66.6,43.1" fill="none" stroke="#e8d9a8" stroke-width="1.6" opacity="0.08"/><rect x="14.5" y="14.5" width="71.0" height="71.0" fill="none" stroke="#e8d9a8" stroke-width="1.6" opacity="0.055999999999999994" transform="rotate(45 50.0 50.0)"/></pattern></defs>
+<rect width="1200" height="700" fill="url(#bg)"/><rect width="1200" height="700" fill="url(#g2)"/>
+<circle cx="600" cy="350" r="300" fill="none" stroke="#d8b45a" stroke-width="3" opacity="0.8"/><circle cx="600" cy="350" r="255" fill="none" stroke="#e9c98f" stroke-width="2" opacity="0.8"/><circle cx="600" cy="350" r="210" fill="none" stroke="#d8b45a" stroke-width="2" opacity="0.8"/><polygon points="900,350 757,415 812,562 665,507 600,650 535,507 388,562 443,415 300,350 443,285 388,138 535,193 600,50 665,193 812,138 757,285" fill="#7a5a8f" stroke="#d8b45a" stroke-width="3" opacity="0.92"/>
+<circle cx="600" cy="350" r="92" fill="#3a2c4f" stroke="#d8b45a" stroke-width="3"/>
+<circle cx="709" cy="395" r="16" fill="#d8b45a" opacity="0.85"/><circle cx="645" cy="459" r="16" fill="#d8b45a" opacity="0.85"/><circle cx="555" cy="459" r="16" fill="#d8b45a" opacity="0.85"/><circle cx="491" cy="395" r="16" fill="#d8b45a" opacity="0.85"/><circle cx="491" cy="305" r="16" fill="#d8b45a" opacity="0.85"/><circle cx="555" cy="241" r="16" fill="#d8b45a" opacity="0.85"/><circle cx="645" cy="241" r="16" fill="#d8b45a" opacity="0.85"/><circle cx="709" cy="305" r="16" fill="#d8b45a" opacity="0.85"/>
+<circle cx="600" cy="350" r="34" fill="#d8b45a"/>
+</svg>

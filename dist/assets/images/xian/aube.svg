@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2b2340"/><stop offset="0.62" stop-color="#8a5a6a"/><stop offset="1" stop-color="#f2c98f"/>
+</linearGradient>
+<pattern id="g1" width="120" height="120" patternUnits="userSpaceOnUse"><polygon points="111.6,60.0 80.0,68.3 96.5,96.5 68.3,80.0 60.0,111.6 51.7,80.0 23.5,96.5 40.0,68.3 8.4,60.0 40.0,51.7 23.5,23.5 51.7,40.0 60.0,8.4 68.3,40.0 96.5,23.5 80.0,51.7" fill="none" stroke="#e8d9a8" stroke-width="1.6" opacity="0.1"/><rect x="17.4" y="17.4" width="85.2" height="85.2" fill="none" stroke="#e8d9a8" stroke-width="1.6" opacity="0.06999999999999999" transform="rotate(45 60.0 60.0)"/></pattern>
+</defs>
+<rect width="1200" height="700" fill="url(#sky)"/>
+<rect width="1200" height="700" fill="url(#g1)"/>
+<circle cx="240" cy="250" r="136.4" fill="#f6d9a0" opacity="0.18"/><circle cx="240" cy="250" r="62" fill="#f6d9a0" opacity="0.9"/>
+<rect x="300" y="440" width="600" height="120" fill="#1c1826"/><path d="M 270 440 Q 600 395 930 440 L 900 410 Q 600 368 300 410 Z" fill="#1c1826"/><rect x="540.0" y="312" width="120" height="58" fill="#1c1826"/><path d="M 506.0 312 Q 600 282 694.0 312 L 674.0 290 Q 600 266 526.0 290 Z" fill="#1c1826"/><rect x="553.0" y="217" width="94" height="58" fill="#1c1826"/><path d="M 519.0 217 Q 600 187 681.0 217 L 661.0 195 Q 600 171 539.0 195 Z" fill="#1c1826"/><rect x="566.0" y="122" width="68" height="58" fill="#1c1826"/><path d="M 532.0 122 Q 600 92 668.0 122 L 648.0 100 Q 600 76 552.0 100 Z" fill="#1c1826"/><line x1="600" y1="78" x2="600" y2="46" stroke="#d8b45a" stroke-width="4"/><circle cx="600" cy="42" r="6" fill="#d8b45a"/>
+<rect x="0" y="560" width="1200" height="140" fill="#0c0e14"/>
+
+<rect x="0" y="556" width="1200" height="4" fill="#d8b45a" opacity="0.55"/>
+</svg>

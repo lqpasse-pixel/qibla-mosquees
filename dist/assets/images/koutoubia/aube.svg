@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2b2340"/><stop offset="0.62" stop-color="#8a5a6a"/><stop offset="1" stop-color="#f2c98f"/>
+</linearGradient>
+<pattern id="g1" width="120" height="120" patternUnits="userSpaceOnUse"><polygon points="111.6,60.0 80.0,68.3 96.5,96.5 68.3,80.0 60.0,111.6 51.7,80.0 23.5,96.5 40.0,68.3 8.4,60.0 40.0,51.7 23.5,23.5 51.7,40.0 60.0,8.4 68.3,40.0 96.5,23.5 80.0,51.7" fill="none" stroke="#e8d9a8" stroke-width="1.6" opacity="0.1"/><rect x="17.4" y="17.4" width="85.2" height="85.2" fill="none" stroke="#e8d9a8" stroke-width="1.6" opacity="0.06999999999999999" transform="rotate(45 60.0 60.0)"/></pattern>
+</defs>
+<rect width="1200" height="700" fill="url(#sky)"/>
+<rect width="1200" height="700" fill="url(#g1)"/>
+<circle cx="240" cy="250" r="136.4" fill="#f6d9a0" opacity="0.18"/><circle cx="240" cy="250" r="62" fill="#f6d9a0" opacity="0.9"/>
+<rect x="300" y="430" width="620" height="130" fill="#1c1826"/><path d="M 330 560 L 330 490 Q 360 448 390 490 L 390 560 Z" fill="#0c0e14" opacity="0.9"/><path d="M 426 560 L 426 490 Q 456 448 486 490 L 486 560 Z" fill="#0c0e14" opacity="0.9"/><path d="M 522 560 L 522 490 Q 552 448 582 490 L 582 560 Z" fill="#0c0e14" opacity="0.9"/><path d="M 618 560 L 618 490 Q 648 448 678 490 L 678 560 Z" fill="#0c0e14" opacity="0.9"/><path d="M 714 560 L 714 490 Q 744 448 774 490 L 774 560 Z" fill="#0c0e14" opacity="0.9"/><path d="M 810 560 L 810 490 Q 840 448 870 490 L 870 560 Z" fill="#0c0e14" opacity="0.9"/><path d="M 300 430 L 920 430 L 920 410 L 300 410 Z" fill="#d8b45a" opacity="0.6"/><rect x="563.0" y="90" width="74" height="470" fill="#1c1826"/><rect x="576.32" y="64" width="47.36" height="26" fill="#1c1826"/><circle cx="600" cy="56" r="6" fill="#d8b45a"/><circle cx="600" cy="44" r="4.5" fill="#d8b45a"/><circle cx="600" cy="34" r="3" fill="#d8b45a"/><rect x="566" y="230" width="68" height="60" fill="#d8b45a" opacity="0.35"/>
+<rect x="0" y="560" width="1200" height="140" fill="#0c0e14"/>
+
+<rect x="0" y="556" width="1200" height="4" fill="#d8b45a" opacity="0.55"/>
+</svg>

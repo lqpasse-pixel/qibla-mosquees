@@ -1,0 +1,205 @@
+/* ============================================================
+   Qibla — Les 20 plus belles mosquées du monde
+   Palette : bleu nuit / doré / ivoire / terracotta
+   Signature : cadres en arc outrepassé + étoiles à 8 branches
+   ============================================================ */
+:root{
+  --nuit:#0d1830; --nuit-2:#142242; --nuit-3:#1b2d57;
+  --or:#c9a544; --or-clair:#e6cf8d; --ivoire:#f5efe2; --ivoire-2:#ede4cf;
+  --terre:#b05c3a; --encre:#221d14; --gris:#6f6a5c;
+  --serif:"Cormorant Garamond","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --texte:"Georgia","Times New Roman",serif;
+  --ui:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --max:1160px; --r:14px;
+  --bg:var(--ivoire); --bg-2:#fbf7ee; --fg:var(--encre); --fg-2:var(--gris);
+  --card:#fffdf7; --ligne:#ddd2b8;
+}
+html[data-theme="sombre"]{
+  --bg:#0b1428; --bg-2:var(--nuit); --fg:var(--ivoire); --fg-2:#b9b2a0;
+  --card:var(--nuit-2); --ligne:#2a3a63;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--texte);font-size:17px;line-height:1.7}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,.display{font-family:var(--serif);font-weight:600;line-height:1.15;letter-spacing:.01em}
+h1{font-size:clamp(2.2rem,5.5vw,4.2rem);margin:.2em 0}
+h2{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+h3{font-size:1.35rem}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+.eyebrow{font-family:var(--ui);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or);font-weight:600}
+.muted{color:var(--fg-2)}
+:focus-visible{outline:3px solid var(--or);outline-offset:3px;border-radius:4px}
+
+/* ---------- séparateur étoile (signature) ---------- */
+.sep{display:flex;align-items:center;gap:16px;margin:2.6rem 0 1.6rem}
+.sep::before,.sep::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--or));opacity:.65}
+.sep::after{background:linear-gradient(90deg,var(--or),transparent)}
+.sep svg{flex:none}
+
+/* ---------- header ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(13,24,48,.95);background:color-mix(in srgb,var(--nuit) 94%,transparent);
+  backdrop-filter:blur(8px);color:var(--ivoire);border-bottom:1px solid #2a3a63}
+.topbar .wrap{display:flex;align-items:center;gap:26px;min-height:66px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--serif);font-size:1.5rem;color:var(--ivoire)}
+.logo b{color:var(--or-clair);font-weight:600}
+nav.main{margin-left:auto;display:flex;gap:4px;align-items:center;font-family:var(--ui);font-size:.9rem}
+nav.main a{color:var(--ivoire);text-decoration:none;padding:9px 13px;border-radius:8px;opacity:.85}
+nav.main a:hover,nav.main a[aria-current]{opacity:1;background:#ffffff14;color:var(--or-clair)}
+.btn-theme{background:none;border:1px solid #ffffff33;color:var(--ivoire);border-radius:999px;
+  padding:7px 13px;cursor:pointer;font-family:var(--ui);font-size:.85rem}
+.burger{display:none;background:none;border:0;color:var(--ivoire);font-size:1.7rem;cursor:pointer;margin-left:auto}
+@media(max-width:880px){
+  .burger{display:block}
+  nav.main{position:fixed;inset:66px 0 auto 0;background:var(--nuit);flex-direction:column;align-items:stretch;
+    padding:14px 22px 22px;display:none;border-bottom:2px solid var(--or)}
+  nav.main.open{display:flex}
+  nav.main a{padding:13px}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;color:var(--ivoire);background:var(--nuit);overflow:hidden}
+.hero .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+.hero .slide.on{opacity:1}
+.hero .slide img{width:100%;height:100%;object-fit:cover}
+.hero .voile{position:absolute;inset:0;background:linear-gradient(180deg,#0d183055 0%,#0d1830cc 78%,var(--nuit) 100%)}
+.hero .inner{position:relative;padding:16vh 0 12vh;text-align:center}
+.hero p.lead{max-width:640px;margin:1rem auto 2rem;font-size:1.15rem;color:#e9e0ca}
+.hero-dots{position:relative;display:flex;gap:10px;justify-content:center;padding-bottom:26px}
+.hero-dots button{width:34px;height:4px;border:0;border-radius:2px;background:#ffffff44;cursor:pointer}
+.hero-dots button.on{background:var(--or)}
+
+/* ---------- boutons ---------- */
+.btn{display:inline-block;font-family:var(--ui);font-size:.92rem;font-weight:600;text-decoration:none;
+  padding:13px 26px;border-radius:999px;border:1px solid var(--or);cursor:pointer;transition:.2s}
+.btn-or{background:var(--or);color:var(--nuit)}
+.btn-or:hover{background:var(--or-clair)}
+.btn-ligne{background:transparent;color:inherit}
+.btn-ligne:hover{background:var(--or);color:var(--nuit)}
+
+/* ---------- cartes mosquées (cadre en arc) ---------- */
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:26px;margin:2rem 0 3rem}
+.carte{background:var(--card);border:1px solid var(--ligne);border-radius:var(--r);overflow:hidden;
+  text-decoration:none;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.carte:hover{transform:translateY(-5px);box-shadow:0 18px 40px -18px #0d183066}
+.arc{aspect-ratio:5/4;padding:16px 16px 0;background:linear-gradient(180deg,transparent 55%,var(--card) 55%)}
+.arc .cadre{width:100%;height:100%;overflow:hidden;border:2px solid var(--or);
+  border-radius:46% 46% 6px 6px / 34% 34% 6px 6px;background:var(--nuit)}
+.arc img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.carte:hover .arc img{transform:scale(1.06)}
+.carte .corps{padding:8px 18px 18px}
+.carte h3{margin:.3rem 0 .2rem}
+.carte .pays{font-family:var(--ui);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terre)}
+.carte p{font-size:.92rem;color:var(--fg-2);margin:.4rem 0 .6rem}
+.carte .meta{font-family:var(--ui);font-size:.78rem;color:var(--or);display:flex;gap:14px;margin-top:auto}
+
+/* ---------- filtres ---------- */
+.filtres{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:var(--card);
+  border:1px solid var(--ligne);border-radius:var(--r);padding:16px;margin-top:1.6rem;font-family:var(--ui)}
+.filtres select,.filtres input[type=search]{font:inherit;font-size:.9rem;padding:9px 12px;border-radius:8px;
+  border:1px solid var(--ligne);background:var(--bg-2);color:var(--fg);min-width:150px}
+.filtres .compte{margin-left:auto;font-size:.85rem;color:var(--fg-2)}
+
+/* ---------- page détail ---------- */
+.bandeau{position:relative;color:var(--ivoire);background:var(--nuit)}
+.bandeau img.fond{width:100%;height:min(58vh,520px);object-fit:cover;opacity:.9}
+.bandeau .voile{position:absolute;inset:0;background:linear-gradient(180deg,#0d183022,#0d1830e6 92%)}
+.bandeau .titre{position:absolute;left:0;right:0;bottom:0;padding:0 0 34px}
+.fil{font-family:var(--ui);font-size:.8rem;margin-bottom:6px}
+.fil a{color:var(--or-clair);text-decoration:none}
+.deux-col{display:grid;grid-template-columns:1fr 320px;gap:44px;margin:2.6rem 0}
+@media(max-width:920px){.deux-col{grid-template-columns:1fr}}
+.prose p{margin:0 0 1.1em}
+.encart{background:var(--card);border:1px solid var(--ligne);border-radius:var(--r);padding:22px;position:sticky;top:86px}
+.encart dl{margin:0;font-size:.92rem}
+.encart dt{font-family:var(--ui);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-top:12px}
+.encart dd{margin:2px 0 0}
+.anecdotes li{margin:.7em 0;padding-left:6px}
+.anecdotes li::marker{content:"✦  ";color:var(--or)}
+
+/* ---------- galerie ---------- */
+.galerie{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:1.4rem 0 2.4rem}
+.galerie button{padding:0;border:2px solid var(--ligne);border-radius:10px;overflow:hidden;cursor:zoom-in;background:var(--nuit)}
+.galerie button:hover{border-color:var(--or)}
+.galerie img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 65%}
+.visionneuse{position:fixed;inset:0;background:#050912f2;z-index:100;display:none;flex-direction:column}
+.visionneuse.on{display:flex}
+.visionneuse .scene{flex:1;overflow:hidden;cursor:grab;display:grid;place-items:center}
+.visionneuse img{max-width:none;transition:transform .08s linear;user-select:none}
+.visionneuse .outils{display:flex;gap:10px;justify-content:center;padding:16px;font-family:var(--ui)}
+.visionneuse .outils button{background:#ffffff18;border:1px solid #ffffff33;color:var(--ivoire);
+  border-radius:8px;padding:9px 16px;cursor:pointer;font-size:.9rem}
+.visionneuse .legende{color:#cfc7b2;text-align:center;font-family:var(--ui);font-size:.85rem;padding-top:12px}
+
+/* ---------- visite virtuelle ---------- */
+.visite{background:var(--nuit-2);color:var(--ivoire);border-radius:var(--r);overflow:hidden;
+  border:1px solid #2a3a63;margin:1rem 0 2.4rem}
+.visite .cadre360{aspect-ratio:16/8.5;position:relative}
+.visite iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.visite .alt{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:22px}
+.visite .barre{display:flex;gap:14px;align-items:center;padding:13px 18px;font-family:var(--ui);
+  font-size:.85rem;border-top:1px solid #2a3a63;color:#cfc7b2}
+
+/* ---------- commentaires ---------- */
+.commentaires{background:var(--card);border:1px solid var(--ligne);border-radius:var(--r);padding:26px;margin:1rem 0 2.6rem}
+.commentaires form{display:grid;gap:12px;margin-top:1.2rem}
+.commentaires input,.commentaires textarea{font:inherit;font-size:.95rem;padding:11px 13px;border-radius:8px;
+  border:1px solid var(--ligne);background:var(--bg-2);color:var(--fg);width:100%}
+.commentaires textarea{min-height:110px;resize:vertical}
+.com{border-top:1px solid var(--ligne);padding:16px 0}
+.com .tete{display:flex;gap:10px;align-items:baseline;font-family:var(--ui);font-size:.85rem}
+.com .tete b{font-size:.95rem}
+.com .aime{background:none;border:1px solid var(--ligne);border-radius:999px;padding:4px 12px;
+  cursor:pointer;font-family:var(--ui);font-size:.8rem;color:var(--fg-2)}
+.com .aime.on{border-color:var(--terre);color:var(--terre)}
+.note{font-family:var(--ui);font-size:.8rem;color:var(--fg-2)}
+
+/* ---------- carte / localisation ---------- */
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:1rem 0 2.6rem}
+@media(max-width:760px){.loc{grid-template-columns:1fr}}
+.loc .boite{background:var(--card);border:1px solid var(--ligne);border-radius:var(--r);padding:22px}
+
+/* ---------- monétisation ---------- */
+.pub{border:1.5px dashed var(--or);border-radius:10px;background:rgba(201,165,68,.07);background:color-mix(in srgb,var(--or) 7%,transparent);
+  display:grid;place-items:center;text-align:center;color:var(--fg-2);font-family:var(--ui);
+  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;min-height:96px;margin:2rem 0}
+.affil{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:1.2rem 0 2rem}
+.affil a{background:linear-gradient(135deg,var(--nuit-2),var(--nuit-3));color:var(--ivoire);text-decoration:none;
+  border-radius:var(--r);padding:20px;border:1px solid #2a3a63;font-family:var(--ui)}
+.affil a:hover{border-color:var(--or)}
+.affil .tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or-clair)}
+.affil b{display:block;font-family:var(--serif);font-size:1.25rem;margin-top:6px;font-weight:600}
+
+/* ---------- newsletter / bandeau final ---------- */
+.nl{background:var(--nuit);color:var(--ivoire);border-radius:var(--r);padding:44px 30px;text-align:center;margin:3rem 0}
+.nl form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
+.nl input{font:inherit;padding:13px 16px;border-radius:999px;border:1px solid #3a4a73;background:#0b1428;color:var(--ivoire);min-width:min(320px,80vw)}
+
+/* ---------- footer ---------- */
+footer{background:var(--nuit);color:#cfc7b2;margin-top:4rem;border-top:3px solid var(--or)}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px;padding:46px 22px 30px;font-family:var(--ui);font-size:.9rem}
+@media(max-width:760px){footer .wrap{grid-template-columns:1fr}}
+footer h4{font-family:var(--serif);color:var(--ivoire);font-size:1.25rem;margin:0 0 10px}
+footer a{color:#cfc7b2;text-decoration:none;display:block;padding:4px 0}
+footer a:hover{color:var(--or-clair)}
+.footer-bas{border-top:1px solid #2a3a63;text-align:center;font-size:.8rem;padding:16px;font-family:var(--ui)}
+
+/* ---------- bandeau cookies ---------- */
+.cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:90;background:var(--nuit);color:var(--ivoire);
+  border:1px solid var(--or);border-radius:var(--r);padding:18px 22px;display:none;gap:16px;align-items:center;
+  flex-wrap:wrap;font-family:var(--ui);font-size:.88rem;box-shadow:0 20px 50px -20px #000}
+.cookies.on{display:flex}
+.cookies .boutons{display:flex;gap:10px;margin-left:auto}
+
+/* ---------- divers ---------- */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vu{opacity:1;transform:none}
+.similaires h2{margin-bottom:0}
+table.simple{border-collapse:collapse;width:100%;font-size:.92rem}
+table.simple th,table.simple td{border:1px solid var(--ligne);padding:9px 12px;text-align:left}
+table.simple th{background:var(--bg-2);font-family:var(--ui);font-size:.8rem}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
