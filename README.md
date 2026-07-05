@@ -54,3 +54,5 @@ dist/
 ├── assets/images/<slug>/{hero,aube,nuit,medaillon,motif}.svg
 ├── sitemap.xml, robots.txt, credits-photos.md
 ```
+
+<!-- déploiement continu Netlify testé le 2026-07-05 23:27 -->
