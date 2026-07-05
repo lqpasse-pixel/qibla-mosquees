@@ -6,7 +6,7 @@ from svg_art import scene, medaillon, motif, _girih
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ICI, "dist")
-SITE_URL = "https://www.exemple-mosquees.fr"  # à remplacer au déploiement
+SITE_URL = "https://qibla-mosquees.netlify.app"
 NOM_SITE = "Qibla — Les 20 plus belles mosquées du monde"
 
 ETOILE = ('<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">'
@@ -471,9 +471,12 @@ cd dist && python3 -m http.server 8000
 ```
 
 ## Déployer
-- **Netlify / Vercel / Cloudflare Pages** : glissez-déposez le dossier `dist/` (aucun build requis).
-- **Hébergement classique** : envoyez le contenu de `dist/` à la racine via FTP/SFTP.
-- Remplacez ensuite `https://www.exemple-mosquees.fr` par votre domaine dans `sitemap.xml`, `robots.txt` et les balises canoniques (rechercher-remplacer global), ou relancez `python3 build.py` après avoir modifié `SITE_URL`.
+Le site est en ligne sur Netlify : https://qibla-mosquees.netlify.app, avec déploiement continu depuis
+le dépôt [lqpasse-pixel/qibla-mosquees](https://github.com/lqpasse-pixel/qibla-mosquees) (branche `master`,
+commande de build `python3 build.py`, dossier de publication `dist`). Chaque `git push` republie automatiquement.
+- Pour brancher un nom de domaine personnalisé : Netlify → Site settings → Domain management → Add a domain.
+- Si vous changez d'URL (domaine perso ou autre hébergeur), modifiez `SITE_URL` en haut de `build.py` puis
+  relancez `python3 build.py` : `sitemap.xml`, `robots.txt` et les balises canoniques se régénèrent automatiquement.
 
 ## Modifier ou ajouter du contenu
 Tout le contenu éditorial vit dans **`data_mosquees.py`** (une entrée par mosquée : histoire, anecdotes, infos pratiques, coordonnées). Relancez `python3 build.py` : les 20 pages, le sitemap et les crédits sont régénérés.

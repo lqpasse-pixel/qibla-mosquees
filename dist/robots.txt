@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.exemple-mosquees.fr/sitemap.xml
+Sitemap: https://qibla-mosquees.netlify.app/sitemap.xml
