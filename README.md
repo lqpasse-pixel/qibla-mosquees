@@ -30,10 +30,11 @@ Sur chaque page détail, le bloc `#visite-360` accepte n'importe quel lecteur pa
 Pour Google Street View intérieur : Google Maps → le lieu → Partager → « Intégrer une carte », copier l'iframe. À défaut, la galerie immersive plein écran (zoom/pan) sert d'alternative — déjà active.
 
 ## Commentaires
-Un système de démonstration (localStorage, likes, anti-spam) est actif. Pour de vraies discussions partagées :
-1. Créez un dépôt GitHub public avec Discussions activées.
-2. Configurez https://giscus.app (catégorie, langue `fr`), copiez le `<script>` généré.
-3. Collez-le à la place du bloc `#zone-commentaires` dans le template `page_detail` de `build.py`, puis régénérez.
+Giscus est actif : les commentaires s'appuient sur les Discussions du dépôt GitHub
+[lqpasse-pixel/qibla-mosquees](https://github.com/lqpasse-pixel/qibla-mosquees) (catégorie « Announcements »,
+`data-mapping="pathname"` — une discussion par page). Le script est dans le bloc `#zone-commentaires` du
+template `page_detail` de `build.py`. Pour le pointer vers un autre dépôt, remplacez `data-repo`, `data-repo-id`,
+`data-category-id` (valeurs disponibles sur https://giscus.app une fois l'app GitHub installée sur le dépôt).
 
 ## Monétisation
 - **AdSense** : remplacez les blocs `.pub` par vos balises `<ins class="adsbygoogle">` (emplacements prévus : bannière, sidebar 300×250, in-content 336×280).

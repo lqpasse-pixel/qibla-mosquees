@@ -119,7 +119,7 @@ def carte(m, rac=""):
     <span class="pays">{m['ville']} · {m['pays']}</span>
     <h3>{m['nom']}</h3>
     <p>{m['court']}</p>
-    <span class="meta"><span>{m['style']}</span><span data-compte-com="{m['slug']}">💬 0</span></span>
+    <span class="meta"><span>{m['style']}</span></span>
   </div>
 </a>"""
 
@@ -321,17 +321,22 @@ def page_detail(m):
 
   {sep("Discussion", "Commentaires")}
   <div class="commentaires reveal" id="zone-commentaires" data-slug="{m['slug']}">
-    <h3 style="margin-top:0">Vous avez visité la {m['nom']} ? <span class="note">(<span id="com-nb">0</span> commentaires)</span></h3>
-    <p class="note">Système de démonstration stocké dans votre navigateur. Pour des discussions partagées entre visiteurs, activez Giscus en deux minutes (voir README).</p>
-    <form id="form-com">
-      <input id="com-piege" type="text" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-      <label>Votre nom<input id="com-nom" type="text" maxlength="40" placeholder="Prénom ou pseudonyme"></label>
-      <label>Votre message<textarea id="com-texte" required maxlength="1200" placeholder="Conseils de visite, meilleure heure pour la lumière, souvenirs…"></textarea></label>
-      <label>Anti-spam : combien font 3 + 4 ?<input id="com-captcha" required inputmode="numeric" style="max-width:120px"></label>
-      <p id="com-erreur" class="note" style="color:var(--terre)"></p>
-      <p><button class="btn btn-or" type="submit">Publier le commentaire</button></p>
-    </form>
-    <div id="liste-com"></div>
+    <h3 style="margin-top:0">Vous avez visité la {m['nom']} ?</h3>
+    <script src="https://giscus.app/client.js"
+      data-repo="lqpasse-pixel/qibla-mosquees"
+      data-repo-id="R_kgDOTOkK5g"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOTOkK5s4DAkcH"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="fr"
+      crossorigin="anonymous"
+      async>
+    </script>
   </div>
 
   <section class="similaires">
@@ -409,7 +414,7 @@ MENTIONS = """
 
 CONFID = """
 <h2>Données collectées</h2>
-<p>Ce site ne collecte par défaut <strong>aucune donnée personnelle côté serveur</strong>. Les commentaires et préférences (thème, consentement cookies) sont stockés uniquement dans votre navigateur (localStorage) et ne sont transmis à personne.</p>
+<p>Ce site ne collecte par défaut <strong>aucune donnée personnelle côté serveur</strong>. Vos préférences (thème, consentement cookies) sont stockées uniquement dans votre navigateur (localStorage) et ne sont transmises à personne. Les commentaires sont gérés par <strong>Giscus</strong>, un service tiers qui s'appuie sur GitHub Discussions : pour commenter, vous vous connectez avec votre compte GitHub et votre message est hébergé publiquement sur le dépôt GitHub du site, selon la politique de confidentialité de GitHub.</p>
 <h2>Cookies et mesure d'audience</h2>
 <p>Un bandeau de consentement vous permet d'accepter ou de refuser la mesure d'audience. Aucune balise de mesure n'est chargée avant votre accord. Si vous activez un outil (Google Analytics 4, Plausible…), cette page devra détailler l'outil retenu, la durée de conservation et la base légale (art. 82 loi Informatique et Libertés, RGPD).</p>
 <h2>Newsletter</h2>
@@ -487,10 +492,11 @@ Sur chaque page détail, le bloc `#visite-360` accepte n'importe quel lecteur pa
 Pour Google Street View intérieur : Google Maps → le lieu → Partager → « Intégrer une carte », copier l'iframe. À défaut, la galerie immersive plein écran (zoom/pan) sert d'alternative — déjà active.
 
 ## Commentaires
-Un système de démonstration (localStorage, likes, anti-spam) est actif. Pour de vraies discussions partagées :
-1. Créez un dépôt GitHub public avec Discussions activées.
-2. Configurez https://giscus.app (catégorie, langue `fr`), copiez le `<script>` généré.
-3. Collez-le à la place du bloc `#zone-commentaires` dans le template `page_detail` de `build.py`, puis régénérez.
+Giscus est actif : les commentaires s'appuient sur les Discussions du dépôt GitHub
+[lqpasse-pixel/qibla-mosquees](https://github.com/lqpasse-pixel/qibla-mosquees) (catégorie « Announcements »,
+`data-mapping="pathname"` — une discussion par page). Le script est dans le bloc `#zone-commentaires` du
+template `page_detail` de `build.py`. Pour le pointer vers un autre dépôt, remplacez `data-repo`, `data-repo-id`,
+`data-category-id` (valeurs disponibles sur https://giscus.app une fois l'app GitHub installée sur le dépôt).
 
 ## Monétisation
 - **AdSense** : remplacez les blocs `.pub` par vos balises `<ins class="adsbygoogle">` (emplacements prévus : bannière, sidebar 300×250, in-content 336×280).

@@ -68,12 +68,6 @@
     filtre();
   }
 
-  /* ---------- nombre de commentaires sur les cartes ---------- */
-  $$("[data-compte-com]").forEach(function (el) {
-    var lus = JSON.parse(localStorage.getItem("qibla-com-" + el.dataset.compteCom) || "[]");
-    el.textContent = "💬 " + lus.length;
-  });
-
   /* ---------- visionneuse immersive (zoom / pan) ---------- */
   var vis = $("#visionneuse");
   if (vis) {
@@ -97,48 +91,6 @@
     scene.addEventListener("pointermove", function (e) { if (drag) { px = e.clientX - drag.x; py = e.clientY - drag.y; applique(); } });
     scene.addEventListener("pointerup", function () { drag = null; });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") ferme(); });
-  }
-
-  /* ---------- commentaires (démonstration locale, prêt pour Giscus) ---------- */
-  var zone = $("#zone-commentaires");
-  if (zone) {
-    var slug = zone.dataset.slug, cle = "qibla-com-" + slug;
-    var liste = $("#liste-com"), form = $("#form-com");
-    function charge() { return JSON.parse(localStorage.getItem(cle) || "[]"); }
-    function sauve(l) { localStorage.setItem(cle, JSON.stringify(l)); }
-    function echappe(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
-    function rend() {
-      var l = charge();
-      $("#com-nb").textContent = l.length;
-      liste.innerHTML = l.length ? "" : '<p class="note">Aucun commentaire pour l’instant — partagez votre expérience ou vos photos de visite.</p>';
-      l.forEach(function (c, idx) {
-        var d = document.createElement("div"); d.className = "com";
-        d.innerHTML = '<div class="tete"><b>' + echappe(c.nom) + '</b><span class="note">' + c.date + "</span>" +
-          '<button class="aime' + (c.moi ? " on" : "") + '" data-i="' + idx + '">♥ ' + c.likes + "</button></div>" +
-          "<p>" + echappe(c.texte) + "</p>";
-        liste.appendChild(d);
-      });
-      $$(".aime", liste).forEach(function (b) {
-        b.addEventListener("click", function () {
-          var l2 = charge(), c = l2[+b.dataset.i];
-          c.moi = !c.moi; c.likes += c.moi ? 1 : -1; sauve(l2); rend();
-        });
-      });
-    }
-    var MOTS_INTERDITS = ["http://", "https://", "viagra", "casino", "crypto gratuit"];
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if ($("#com-piege").value) return; // pot de miel anti-robot
-      if (String(3 + 4) !== $("#com-captcha").value.trim()) { $("#com-erreur").textContent = "Vérification anti-spam : la réponse attendue est 7."; return; }
-      var nom = $("#com-nom").value.trim() || "Visiteur", texte = $("#com-texte").value.trim();
-      if (texte.length < 3) return;
-      var bas = texte.toLowerCase();
-      for (var m = 0; m < MOTS_INTERDITS.length; m++) if (bas.indexOf(MOTS_INTERDITS[m]) !== -1) { $("#com-erreur").textContent = "Les liens et contenus promotionnels ne sont pas autorisés."; return; }
-      var l = charge();
-      l.unshift({ nom: nom, texte: texte, likes: 0, moi: false, date: new Date().toLocaleDateString("fr-FR") });
-      sauve(l); form.reset(); $("#com-erreur").textContent = ""; rend();
-    });
-    rend();
   }
 
   /* ---------- bandeau cookies (RGPD) ---------- */
