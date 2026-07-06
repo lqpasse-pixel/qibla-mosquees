@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz — Islam, prophètes et mosquées célèbres | Qibla</title>
+<meta name="description" content="Trois quiz en français pour tester ses connaissances : l'islam et son prophète, les prophètes de l'islam, et les mosquées les plus célèbres du monde.">
+<link rel="canonical" href="https://qibla-mosquees.netlify.app/quiz.html">
+<meta property="og:title" content="Quiz — Islam, prophètes et mosquées célèbres | Qibla">
+<meta property="og:description" content="Trois quiz en français pour tester ses connaissances : l'islam et son prophète, les prophètes de l'islam, et les mosquées les plus célèbres du monde.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<link rel="icon" type="image/svg+xml" href="assets/images/site/favicon.svg">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Quiz", "name": "Quiz Qibla", "about": "Islam, prophète Muhammad, prophètes de l'islam et mosquées célèbres"}</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Accueil Qibla">
+      <svg width="30" height="30" viewBox="0 0 22 22" aria-hidden="true"><polygon points="11,1 13.4,7 20,7.6 15,12 16.6,19 11,15.4 5.4,19 7,12 2,7.6 8.6,7" fill="var(--or)"/></svg>
+      Qibla <b>· 20 mosquées</b>
+    </a>
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav class="main" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="mosquees.html">Les 20 mosquées</a>
+      <a href="blog.html">Blog</a>
+      <a href="quiz.html" aria-current="page">Quiz</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <button class="btn-theme" id="btn-theme">☾ Sombre</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div style="padding-top:2.4rem">
+    <p class="eyebrow">Tester ses connaissances</p>
+    <h1>Quiz Qibla</h1>
+    <p class="muted" style="max-width:680px">Choisissez un thème pour démarrer un quiz de 10 questions sur l'islam, son prophète, les prophètes reconnus par la tradition islamique ou les mosquées présentées sur ce site.</p>
+  </div>
+  <div class="grille" id="quiz-themes"><button type="button" class="carte theme-quiz reveal" data-theme="islam-prophete">
+  <div class="corps">
+    <span class="pays" style="font-size:1.4rem">☾</span>
+    <h3>Islam et son prophète</h3>
+    <p>Les fondements de l'islam et la vie du prophète Muhammad.</p>
+    <p class="note">10 questions</p>
+  </div>
+</button><button type="button" class="carte theme-quiz reveal" data-theme="mosquees-celebres">
+  <div class="corps">
+    <span class="pays" style="font-size:1.4rem">🕌</span>
+    <h3>Mosquées célèbres</h3>
+    <p>Teste tes connaissances sur les 20 mosquées présentées sur ce site.</p>
+    <p class="note">10 questions</p>
+  </div>
+</button><button type="button" class="carte theme-quiz reveal" data-theme="prophetes-islam">
+  <div class="corps">
+    <span class="pays" style="font-size:1.4rem">✦</span>
+    <h3>Les prophètes de l'islam</h3>
+    <p>Dix questions sur les prophètes reconnus par la tradition islamique.</p>
+    <p class="note">10 questions</p>
+  </div>
+</button></div>
+
+  <div id="quiz-jeu" class="quiz-jeu" hidden>
+    <div class="quiz-entete">
+      <p class="eyebrow" id="quiz-titre-theme"></p>
+      <p class="note" id="quiz-progression"></p>
+    </div>
+    <div id="quiz-question-zone"></div>
+    <div class="quiz-actions">
+      <button type="button" class="btn btn-ligne" id="quiz-quitter">← Changer de thème</button>
+      <button type="button" class="btn btn-or" id="quiz-suivant" hidden>Question suivante →</button>
+    </div>
+  </div>
+
+  <div id="quiz-resultat" class="quiz-resultat" hidden>
+    <p class="eyebrow">Résultat</p>
+    <h2 id="quiz-score"></h2>
+    <p id="quiz-message" class="muted"></p>
+    <p><button type="button" class="btn btn-or" id="quiz-rejouer">Rejouer</button>
+       <button type="button" class="btn btn-ligne" id="quiz-autre-theme">Choisir un autre thème</button></p>
+  </div>
+
+  <div class="pub" role="complementary" aria-label="Emplacement publicitaire réservé"></div>
+  <script type="application/json" id="quiz-data">{"islam-prophete": {"titre": "Islam et son prophète", "emoji": "☾", "description": "Les fondements de l'islam et la vie du prophète Muhammad.", "questions": [{"q": "Dans quelle ville le prophète Muhammad est-il né ?", "options": ["La Mecque", "Médine", "Jérusalem", "Damas"], "reponse": 0, "explication": "Muhammad naît à La Mecque vers 570, dans la tribu des Quraych."}, {"q": "Comment appelle-t-on la migration du Prophète de La Mecque à Médine ?", "options": ["Le Mi'raj", "L'Hégire (Hijra)", "Le Hajj", "La Sunna"], "reponse": 1, "explication": "L'Hégire, en 622, marque aussi le point de départ du calendrier musulman."}, {"q": "Combien l'islam compte-t-il de piliers (obligations fondamentales) ?", "options": ["3", "4", "5", "7"], "reponse": 2, "explication": "Attestation de foi, prière, aumône, jeûne du Ramadan et pèlerinage."}, {"q": "Quel est le nom du livre sacré de l'islam ?", "options": ["La Torah", "Le Coran", "Les Évangiles", "Les Psaumes"], "reponse": 1, "explication": "Le Coran est considéré par les musulmans comme la parole de Dieu révélée à Muhammad."}, {"q": "Dans quelle grotte le Prophète aurait-il reçu sa première révélation ?", "options": ["La grotte de Thawr", "La grotte de Hira", "La grotte des Sept Dormants", "La grotte de Qumrân"], "reponse": 1, "explication": "La grotte de Hira se trouve sur le mont Jabal al-Nour, près de La Mecque."}, {"q": "Quel ange est traditionnellement associé à la transmission de la révélation au Prophète ?", "options": ["Mika'il", "Isrāfīl", "Jibril (Gabriel)", "Malik"], "reponse": 2}, {"q": "Comment se nomme le pèlerinage annuel à La Mecque, cinquième pilier de l'islam ?", "options": ["La Omra", "Le Hajj", "Le Ramadan", "La Zakat"], "reponse": 1, "explication": "Le Hajj a lieu une fois par an ; l'Omra, un pèlerinage non obligatoire, peut se faire toute l'année."}, {"q": "Quel est le nom de la première épouse du Prophète, la première à avoir cru en son message ?", "options": ["Aïcha", "Fatima", "Khadija", "Zaynab"], "reponse": 2}, {"q": "Pendant quel mois du calendrier musulman les musulmans jeûnent-ils ?", "options": ["Muharram", "Chaabane", "Ramadan", "Dhou al-Hijja"], "reponse": 2}, {"q": "Vers quelle ville les musulmans se tournent-ils pendant la prière ?", "options": ["Médine", "Jérusalem", "Damas", "La Mecque"], "reponse": 3, "explication": "Cette direction s'appelle la qibla, qui a donné son nom à ce site."}]}, "mosquees-celebres": {"titre": "Mosquées célèbres", "emoji": "🕌", "description": "Teste tes connaissances sur les 20 mosquées présentées sur ce site.", "questions": [{"q": "Quelle mosquée entoure la Kaaba ?", "options": ["Masjid an-Nabawi", "Masjid al-Haram", "Al-Azhar", "Badshahi"], "reponse": 1}, {"q": "Dans quelle ville se trouve la Mosquée bleue (Sultan Ahmed) ?", "options": ["Le Caire", "Marrakech", "Istanbul", "Lahore"], "reponse": 2}, {"q": "Qui est l'architecte de la mosquée Hassan II à Casablanca ?", "options": ["Michel Pinseau", "Sinan", "Zaha Hadid", "Fazlur Rahman Khan"], "reponse": 0, "explication": "Michel Pinseau, architecte français, a dirigé sa construction achevée en 1993."}, {"q": "En quel matériau principal est construite la Grande Mosquée de Djenné, au Mali ?", "options": ["Marbre blanc", "Grès rose", "Banco (terre crue)", "Brique cuite"], "reponse": 2, "explication": "C'est le plus grand édifice en terre crue au monde ; il est ré-enduit chaque année."}, {"q": "Quelle mosquée d'Iran est surnommée « mosquée rose » pour ses vitraux colorés ?", "options": ["Cheikh Lotfollah", "Nasir al-Mulk", "Jama Masjid", "Faisal"], "reponse": 1}, {"q": "Quelle mosquée abrite le tombeau du prophète Muhammad ?", "options": ["Masjid al-Haram", "Al-Aqsa", "Masjid an-Nabawi", "Ibn Touloun"], "reponse": 2, "explication": "Elle se trouve à Médine, en Arabie Saoudite."}, {"q": "Quel est le nom du minaret emblématique de Marrakech, qui a inspiré la Giralda de Séville ?", "options": ["La Koutoubia", "Le minaret d'Al-Azhar", "La tour de Hassan", "Le minaret de Kairouan"], "reponse": 0}, {"q": "Dans quel pays se trouve la mosquée Cheikh Zayed ?", "options": ["Qatar", "Arabie Saoudite", "Émirats arabes unis", "Bahreïn"], "reponse": 2, "explication": "Elle se trouve à Abou Dabi et compte parmi les plus grandes mosquées du monde."}, {"q": "Quelle mosquée espagnole a été transformée en cathédrale après la Reconquista ?", "options": ["La mosquée de l'Alhambra", "La mosquée-cathédrale de Cordoue", "La Giralda de Séville", "La Koutoubia"], "reponse": 1}, {"q": "Quelle est la particularité de la Grande Mosquée de Xi'an, en Chine ?", "options": ["Elle est entièrement souterraine", "Son architecture s'inspire des temples chinois traditionnels", "Elle n'a aucun minaret visible", "Elle est construite sur pilotis"], "reponse": 1, "explication": "Toitures incurvées, cours successives et pavillons de bois : son plan suit les codes de l'architecture chinoise classique."}]}, "prophetes-islam": {"titre": "Les prophètes de l'islam", "emoji": "✦", "description": "Dix questions sur les prophètes reconnus par la tradition islamique.", "questions": [{"q": "Quel est, selon la tradition islamique, le premier homme et premier prophète ?", "options": ["Idris", "Adam", "Noé", "Seth"], "reponse": 1}, {"q": "Quel prophète aurait survécu à un grand déluge grâce à une arche ?", "options": ["Houd", "Salih", "Nuh (Noé)", "Loth"], "reponse": 2}, {"q": "Quel prophète est associé à la (re)construction de la Kaaba avec son fils Ismaël ?", "options": ["Ibrahim (Abraham)", "Ishaq (Isaac)", "Yaqub (Jacob)", "Dawud (David)"], "reponse": 0, "explication": "Selon le Coran, Abraham et son fils Ismaël élèvent les fondations de la Kaaba à La Mecque."}, {"q": "Quel prophète reçut les Tables de la Loi sur le mont Sinaï ?", "options": ["Haroun (Aaron)", "Musa (Moïse)", "Yusha (Josué)", "Dawud (David)"], "reponse": 1}, {"q": "Quel prophète est englouti par un grand poisson avant d'être sauvé, dans le récit associé à Ninive ?", "options": ["Yunus (Jonas)", "Ayyub (Job)", "Zakariya (Zacharie)", "Al-Yasa (Élisée)"], "reponse": 0}, {"q": "Quel prophète est réputé pour sa patience exemplaire face à la maladie et l'épreuve ?", "options": ["Chou'aib", "Ayyub (Job)", "Ilyas (Élie)", "Yahya (Jean)"], "reponse": 1}, {"q": "Quel prophète, selon la tradition islamique, est né miraculeusement de Marie (Maryam) ?", "options": ["Yahya (Jean)", "Souleiman (Salomon)", "Issa (Jésus)", "Idris (Hénoch)"], "reponse": 2, "explication": "Issa (Jésus) est considéré en islam comme un prophète et messager de Dieu, non comme une divinité."}, {"q": "Quel prophète est au cœur du récit où il est vendu par ses frères avant de devenir vizir en Égypte ?", "options": ["Yusuf (Joseph)", "Ismail (Ismaël)", "Haroun (Aaron)", "Dawud (David)"], "reponse": 0}, {"q": "Qui est considéré comme le dernier prophète, le « sceau des prophètes », en islam ?", "options": ["Issa (Jésus)", "Ibrahim (Abraham)", "Muhammad", "Musa (Moïse)"], "reponse": 2}, {"q": "Quel prophète est traditionnellement associé à une grande sagesse et au contrôle des vents et des animaux ?", "options": ["Souleiman (Salomon)", "Dawud (David)", "Zakariya (Zacharie)", "Houd"], "reponse": 0, "explication": "Le règne de Salomon (Souleiman) est décrit dans le Coran comme un âge de sagesse et de prodiges."}]}}</script>
+</main>
+<section class="wrap nl reveal" aria-label="Newsletter">
+  <p class="eyebrow">Newsletter</p>
+  <h2>Une mosquée, une histoire, chaque mois</h2>
+  <p class="muted" style="color:#cfc7b2">Recevez nos récits d'architecture, d'histoire et de voyage. Zéro spam, désinscription en un clic.</p>
+  <form id="form-nl">
+    <label for="nl-email" class="visually-hidden" style="position:absolute;left:-9999px">Votre adresse e-mail</label>
+    <input id="nl-email" type="email" required placeholder="votre@email.fr" autocomplete="email">
+    <button class="btn btn-or" type="submit">S'inscrire</button>
+  </form>
+  <p id="nl-ok" class="note" style="margin-top:10px"></p>
+</section>
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Qibla</h4>
+      <p>Un voyage éditorial et visuel à travers les vingt plus belles mosquées du monde : histoire, anecdotes, visites immersives et discussions.</p>
+      <p class="note">Toutes les illustrations sont des œuvres originales hébergées localement — aucune dépendance externe.</p>
+    </div>
+    <div>
+      <h4>Explorer</h4>
+      <a href="mosquees.html">Les 20 mosquées</a>
+      <a href="blog.html">Blog</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="credits-photos.html">Crédits images</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Informations légales</h4>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Politique de confidentialité</a>
+      <a href="cgu.html">Conditions générales d'utilisation</a>
+    </div>
+  </div>
+  <div class="footer-bas">© 2026 Qibla — Textes et illustrations originaux. Reproduction sur autorisation.</div>
+</footer>
+<div class="cookies" id="cookies" role="dialog" aria-label="Gestion des cookies">
+  <span>🍪 Nous n'utilisons que des cookies de mesure d'audience anonymisée. Vous pouvez les refuser sans limiter votre visite.</span>
+  <span class="boutons">
+    <button class="btn btn-ligne" id="cookies-refuser" style="color:inherit">Refuser</button>
+    <button class="btn btn-or" id="cookies-accepter">Accepter</button>
+  </span>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

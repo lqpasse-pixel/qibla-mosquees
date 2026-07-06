@@ -160,6 +160,23 @@ nav.main a:hover,nav.main a[aria-current]{opacity:1;background:#ffffff14;color:v
 @media(max-width:760px){.loc{grid-template-columns:1fr}}
 .loc .boite{background:var(--card);border:1px solid var(--ligne);border-radius:var(--r);padding:22px}
 
+/* ---------- quiz ---------- */
+.theme-quiz{width:100%;text-align:left;font:inherit;border:1px solid var(--ligne);cursor:pointer}
+.theme-quiz:hover{border-color:var(--or)}
+.quiz-jeu,.quiz-resultat{max-width:640px;margin:2rem auto;background:var(--card);border:1px solid var(--ligne);
+  border-radius:var(--r);padding:28px}
+.quiz-resultat{text-align:center}
+.quiz-entete{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:.6rem}
+.quiz-options{display:grid;gap:10px;margin:1rem 0}
+.quiz-opt{text-align:left;font:inherit;font-size:.96rem;padding:12px 16px;border-radius:10px;
+  border:1px solid var(--ligne);background:transparent;color:inherit;cursor:pointer;transition:.15s}
+.quiz-opt:hover:not(:disabled){border-color:var(--or)}
+.quiz-opt:disabled{cursor:default}
+.quiz-opt.bonne{border-color:#4a9a6a;background:color-mix(in srgb,#4a9a6a 14%,transparent)}
+.quiz-opt.mauvaise{border-color:var(--terre);background:color-mix(in srgb,var(--terre) 14%,transparent)}
+.quiz-explication{font-size:.9rem;color:var(--fg-2);margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--ligne)}
+.quiz-actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:1.4rem}
+
 /* ---------- monétisation ---------- */
 .pub{margin:2rem 0}
 .pub:empty{display:none}

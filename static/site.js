@@ -111,4 +111,77 @@
     $("#nl-ok").textContent = "Merci ! Adresse enregistrée localement (brancher Mailchimp ou Brevo — voir README).";
     nl.reset();
   });
+
+  /* ---------- quiz ---------- */
+  var qData = $("#quiz-data");
+  if (qData) {
+    var QUIZ = JSON.parse(qData.textContent);
+    var zoneThemes = $("#quiz-themes"), zoneJeu = $("#quiz-jeu"), zoneResultat = $("#quiz-resultat");
+    var titreTheme = $("#quiz-titre-theme"), progression = $("#quiz-progression"), zoneQuestion = $("#quiz-question-zone");
+    var btnSuivant = $("#quiz-suivant"), btnQuitter = $("#quiz-quitter"), btnRejouer = $("#quiz-rejouer"), btnAutreTheme = $("#quiz-autre-theme");
+    var themeCourant = null, iQuestion = 0, score = 0, aRepondu = false;
+
+    function demarre(cle) {
+      themeCourant = cle; iQuestion = 0; score = 0;
+      zoneThemes.hidden = true; zoneResultat.hidden = true; zoneJeu.hidden = false;
+      titreTheme.textContent = QUIZ[cle].titre;
+      afficheQuestion();
+    }
+
+    function afficheQuestion() {
+      aRepondu = false;
+      var t = QUIZ[themeCourant], q = t.questions[iQuestion];
+      progression.textContent = "Question " + (iQuestion + 1) + " / " + t.questions.length + " · Score : " + score;
+      var html = '<h3>' + q.q + '</h3><div class="quiz-options">';
+      q.options.forEach(function (opt, i) {
+        html += '<button type="button" class="quiz-opt" data-i="' + i + '">' + opt + '</button>';
+      });
+      html += '</div><p class="quiz-explication" id="quiz-explication" hidden></p>';
+      zoneQuestion.innerHTML = html;
+      btnSuivant.hidden = true;
+      $$(".quiz-opt", zoneQuestion).forEach(function (b) {
+        b.addEventListener("click", function () { repond(+b.dataset.i, q); });
+      });
+    }
+
+    function repond(i, q) {
+      if (aRepondu) return;
+      aRepondu = true;
+      if (i === q.reponse) score++;
+      $$(".quiz-opt", zoneQuestion).forEach(function (b, idx) {
+        b.disabled = true;
+        if (idx === q.reponse) b.classList.add("bonne");
+        else if (idx === i) b.classList.add("mauvaise");
+      });
+      if (q.explication) { var ex = $("#quiz-explication"); ex.textContent = q.explication; ex.hidden = false; }
+      btnSuivant.hidden = false;
+    }
+
+    btnSuivant.addEventListener("click", function () {
+      var t = QUIZ[themeCourant];
+      iQuestion++;
+      if (iQuestion < t.questions.length) afficheQuestion();
+      else termine();
+    });
+
+    function termine() {
+      var t = QUIZ[themeCourant];
+      zoneJeu.hidden = true; zoneResultat.hidden = false;
+      $("#quiz-score").textContent = score + " / " + t.questions.length;
+      var pct = score / t.questions.length;
+      var msg = pct === 1 ? "Score parfait, bravo !" : pct >= 0.7 ? "Très bon score !" : pct >= 0.4 ? "Pas mal, tu peux retenter ta chance." : "Rejoue pour améliorer ton score !";
+      $("#quiz-message").textContent = msg;
+    }
+
+    btnQuitter.addEventListener("click", function () {
+      zoneJeu.hidden = true; zoneThemes.hidden = false;
+    });
+    btnRejouer.addEventListener("click", function () { demarre(themeCourant); });
+    btnAutreTheme.addEventListener("click", function () {
+      zoneResultat.hidden = true; zoneThemes.hidden = false;
+    });
+    $$(".theme-quiz", zoneThemes).forEach(function (b) {
+      b.addEventListener("click", function () { demarre(b.dataset.theme); });
+    });
+  }
 })();

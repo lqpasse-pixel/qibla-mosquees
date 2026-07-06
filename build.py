@@ -3,6 +3,7 @@
 import json, os, shutil, math
 from data_mosquees import MOSQUEES
 from blog_articles import ARTICLES
+from quiz_data import QUIZ
 from svg_art import scene, medaillon, motif, _girih
 
 ICI = os.path.dirname(os.path.abspath(__file__))
@@ -53,6 +54,7 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
       {nav_a("index.html","Accueil","accueil")}
       {nav_a("mosquees.html","Les 20 mosquées","liste")}
       {nav_a("blog.html","Blog","blog")}
+      {nav_a("quiz.html","Quiz","quiz")}
       {nav_a("a-propos.html","À propos","apropos")}
       {nav_a("contact.html","Contact","contact")}
       <button class="btn-theme" id="btn-theme">☾ Sombre</button>
@@ -82,6 +84,7 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
       <h4>Explorer</h4>
       <a href="{rac}mosquees.html">Les 20 mosquées</a>
       <a href="{rac}blog.html">Blog</a>
+      <a href="{rac}quiz.html">Quiz</a>
       <a href="{rac}a-propos.html">À propos</a>
       <a href="{rac}credits-photos.html">Crédits images</a>
       <a href="{rac}contact.html">Contact</a>
@@ -260,6 +263,56 @@ def page_article(a):
               "url": f"{SITE_URL}/blog/{a['slug']}/"}
     return page(f"{a['titre']} | Blog Qibla", a["description"], corps, rac=rac,
                 canonique=f"blog/{a['slug']}/", jsonld=jsonld, actif="blog")
+
+# ---------------------------------------------------------------- quiz
+def carte_theme_quiz(cle, t):
+    return f"""<button type="button" class="carte theme-quiz reveal" data-theme="{cle}">
+  <div class="corps">
+    <span class="pays" style="font-size:1.4rem">{t['emoji']}</span>
+    <h3>{t['titre']}</h3>
+    <p>{t['description']}</p>
+    <p class="note">{len(t['questions'])} questions</p>
+  </div>
+</button>"""
+
+def page_quiz():
+    corps = f"""
+<main class="wrap">
+  <div style="padding-top:2.4rem">
+    <p class="eyebrow">Tester ses connaissances</p>
+    <h1>Quiz Qibla</h1>
+    <p class="muted" style="max-width:680px">Choisissez un thème pour démarrer un quiz de 10 questions sur l'islam, son prophète, les prophètes reconnus par la tradition islamique ou les mosquées présentées sur ce site.</p>
+  </div>
+  <div class="grille" id="quiz-themes">{''.join(carte_theme_quiz(c, t) for c, t in QUIZ.items())}</div>
+
+  <div id="quiz-jeu" class="quiz-jeu" hidden>
+    <div class="quiz-entete">
+      <p class="eyebrow" id="quiz-titre-theme"></p>
+      <p class="note" id="quiz-progression"></p>
+    </div>
+    <div id="quiz-question-zone"></div>
+    <div class="quiz-actions">
+      <button type="button" class="btn btn-ligne" id="quiz-quitter">← Changer de thème</button>
+      <button type="button" class="btn btn-or" id="quiz-suivant" hidden>Question suivante →</button>
+    </div>
+  </div>
+
+  <div id="quiz-resultat" class="quiz-resultat" hidden>
+    <p class="eyebrow">Résultat</p>
+    <h2 id="quiz-score"></h2>
+    <p id="quiz-message" class="muted"></p>
+    <p><button type="button" class="btn btn-or" id="quiz-rejouer">Rejouer</button>
+       <button type="button" class="btn btn-ligne" id="quiz-autre-theme">Choisir un autre thème</button></p>
+  </div>
+
+  {slot_pub()}
+  <script type="application/json" id="quiz-data">{json.dumps(QUIZ, ensure_ascii=False)}</script>
+</main>"""
+    jsonld = {"@context": "https://schema.org", "@type": "Quiz", "name": "Quiz Qibla",
+              "about": "Islam, prophète Muhammad, prophètes de l'islam et mosquées célèbres"}
+    return page("Quiz — Islam, prophètes et mosquées célèbres | Qibla",
+                "Trois quiz en français pour tester ses connaissances : l'islam et son prophète, les prophètes de l'islam, et les mosquées les plus célèbres du monde.",
+                corps, canonique="quiz.html", jsonld=jsonld, actif="quiz")
 
 # ---------------------------------------------------------------- détail
 def similaires(m):
@@ -627,6 +680,7 @@ def main():
     ecrit("blog.html", page_blog_liste())
     for a in ARTICLES:
         ecrit(f"blog/{a['slug']}/index.html", page_article(a))
+    ecrit("quiz.html", page_quiz())
     ecrit("a-propos.html", page_simple("À propos de Qibla — démarche éditoriale et sources",
         "La démarche éditoriale de Qibla : un guide indépendant, sourcé et autonome, consacré aux 20 plus belles mosquées du monde.",
         "À propos", "Le projet", APROPOS, "a-propos.html", "apropos"))
@@ -644,7 +698,7 @@ def main():
         "Conditions générales d'utilisation", "Règles du site", CGU, "cgu.html"))
 
     # sitemap + robots + crédits + README
-    urls = ["", "mosquees.html", "blog.html", "a-propos.html", "contact.html", "credits-photos.html",
+    urls = ["", "mosquees.html", "blog.html", "quiz.html", "a-propos.html", "contact.html", "credits-photos.html",
             "mentions-legales.html", "confidentialite.html", "cgu.html"] + \
            [f"mosquees/{m['slug']}/" for m in MOSQUEES] + \
            [f"blog/{a['slug']}/" for a in ARTICLES]
