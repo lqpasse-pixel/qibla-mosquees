@@ -822,6 +822,7 @@ def main():
         "".join(f"  <url><loc>{SITE_URL}/{u}</loc><changefreq>monthly</changefreq></url>\n" for u in urls) + "</urlset>\n"
     ecrit("sitemap.xml", sitemap)
     ecrit("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+    ecrit("google87cf0872bc94f92e.html", "google-site-verification: google87cf0872bc94f92e.html\n")
     ecrit("credits-photos.md", credits_md())
     ecrit("README.md", README)
     print("Site généré :", DIST)
