@@ -2,6 +2,7 @@
 """Génère le site statique complet dans dist/."""
 import json, os, shutil, math
 from data_mosquees import MOSQUEES
+from blog_articles import ARTICLES
 from svg_art import scene, medaillon, motif, _girih
 
 ICI = os.path.dirname(os.path.abspath(__file__))
@@ -51,6 +52,7 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
     <nav class="main" aria-label="Navigation principale">
       {nav_a("index.html","Accueil","accueil")}
       {nav_a("mosquees.html","Les 20 mosquées","liste")}
+      {nav_a("blog.html","Blog","blog")}
       {nav_a("a-propos.html","À propos","apropos")}
       {nav_a("contact.html","Contact","contact")}
       <button class="btn-theme" id="btn-theme">☾ Sombre</button>
@@ -79,6 +81,7 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
     <div>
       <h4>Explorer</h4>
       <a href="{rac}mosquees.html">Les 20 mosquées</a>
+      <a href="{rac}blog.html">Blog</a>
       <a href="{rac}a-propos.html">À propos</a>
       <a href="{rac}credits-photos.html">Crédits images</a>
       <a href="{rac}contact.html">Contact</a>
@@ -103,8 +106,11 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
 </body>
 </html>"""
 
-def slot_pub(label="Emplacement publicitaire · 728 × 90 · Google AdSense"):
-    return f'<div class="pub" role="complementary" aria-label="Publicité">{label}</div>'
+def slot_pub():
+    """Emplacement réservé pour une future publicité (AdSense) : vide et invisible tant qu'aucune
+    balise <ins class="adsbygoogle"> n'y est ajoutée, pour ne pas afficher de bloc vide/mercantile
+    avant d'avoir du trafic. Voir credits/README, section Monétisation."""
+    return '<div class="pub" role="complementary" aria-label="Emplacement publicitaire réservé"></div>'
 
 def hero_ext(m):
     """'webp' si une photo réelle a été intégrée pour cette mosquée (voir m['photo']), sinon 'svg'."""
@@ -201,6 +207,60 @@ def page_liste():
                 "Liste des 20 plus belles mosquées du monde avec filtres par pays, style architectural et époque : Istanbul, Casablanca, Abou Dabi, Djenné, Ispahan…",
                 corps, canonique="mosquees.html", jsonld=jsonld, actif="liste")
 
+# ---------------------------------------------------------------- blog
+def carte_article(a, rac=""):
+    return f"""<a class="carte reveal" href="{rac}blog/{a['slug']}/index.html">
+  <div class="corps">
+    <span class="pays">{a['eyebrow']} · {a['temps_lecture']} de lecture</span>
+    <h3>{a['titre']}</h3>
+    <p>{a['description']}</p>
+  </div>
+</a>"""
+
+def page_blog_liste():
+    corps = f"""
+<main class="wrap">
+  <div style="padding-top:2.4rem">
+    <p class="eyebrow">Le blog</p>
+    <h1>Histoire et architecture islamique</h1>
+    <p class="muted" style="max-width:680px">Des articles de fond pour comprendre ce qui se cache derrière les coupoles, les minarets et les motifs géométriques des mosquées présentées sur ce site.</p>
+  </div>
+  <div class="grille">{''.join(carte_article(a) for a in ARTICLES)}</div>
+  {slot_pub()}
+</main>"""
+    jsonld = {"@context": "https://schema.org", "@type": "Blog", "name": "Blog Qibla — Architecture islamique",
+              "blogPost": [{"@type": "BlogPosting", "headline": a["titre"], "datePublished": a["date"],
+                            "url": f"{SITE_URL}/blog/{a['slug']}/"} for a in ARTICLES]}
+    return page("Blog — Histoire et architecture islamique | Qibla",
+                "Articles de fond sur l'histoire et l'architecture islamique : origines de la mosquée, coupoles et minarets, muqarnas et motifs géométriques.",
+                corps, canonique="blog.html", jsonld=jsonld, actif="blog")
+
+def page_article(a):
+    rac = "../../"
+    def rlien(html): return html.replace("{RAC}", rac)
+    corps_html = "".join(f"<h2>{titre}</h2><p>{rlien(texte)}</p>" for titre, texte in a["corps"])
+    liees = [m for m in MOSQUEES if m["slug"] in a["mosquees_liees"]]
+    corps = f"""
+<main class="wrap">
+  <div style="padding-top:2.4rem;max-width:760px">
+    <p class="fil"><a href="{rac}index.html">Accueil</a> › <a href="{rac}blog.html">Blog</a> › {a['titre']}</p>
+    <p class="eyebrow">{a['eyebrow']} · {a['temps_lecture']} de lecture · {a['date']}</p>
+    <h1>{a['titre']}</h1>
+  </div>
+  <div class="prose" style="max-width:760px">
+    <p class="lead">{rlien(a['intro'])}</p>
+    {corps_html}
+  </div>
+  {slot_pub()}
+  {sep("À découvrir", "Mosquées citées dans cet article")}
+  <div class="grille">{''.join(carte(m, rac) for m in liees)}</div>
+</main>"""
+    jsonld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["titre"],
+              "description": a["description"], "datePublished": a["date"], "inLanguage": "fr",
+              "url": f"{SITE_URL}/blog/{a['slug']}/"}
+    return page(f"{a['titre']} | Blog Qibla", a["description"], corps, rac=rac,
+                canonique=f"blog/{a['slug']}/", jsonld=jsonld, actif="blog")
+
 # ---------------------------------------------------------------- détail
 def similaires(m):
     memes = [x for x in MOSQUEES if x["slug"] != m["slug"] and (x["style"] == m["style"] or x["pays"] == m["pays"])]
@@ -265,7 +325,7 @@ def page_detail(m):
       {sep("Histoire", "")}
       <h2 style="margin-top:0">L'histoire</h2>
       {hist}
-      {slot_pub("Emplacement publicitaire · in-content · 336 × 280")}
+      {slot_pub()}
       <h2>Anecdotes &amp; faits marquants</h2>
       <ul class="anecdotes">{anec}</ul>
     </article>
@@ -281,7 +341,7 @@ def page_detail(m):
           <dt>Architecte / bâtisseurs</dt><dd>{m['architecte']}</dd>
           <dt>Coordonnées</dt><dd>{m['lat']}, {m['lon']}</dd>
         </dl>
-        <div class="pub" style="min-height:250px;margin:18px 0 0">Publicité · 300 × 250 · sidebar</div>
+        <div class="pub" style="margin:18px 0 0" role="complementary" aria-label="Emplacement publicitaire réservé"></div>
       </div>
     </aside>
   </div>
@@ -564,6 +624,9 @@ def main():
     ecrit("mosquees.html", page_liste())
     for m in MOSQUEES:
         ecrit(f"mosquees/{m['slug']}/index.html", page_detail(m))
+    ecrit("blog.html", page_blog_liste())
+    for a in ARTICLES:
+        ecrit(f"blog/{a['slug']}/index.html", page_article(a))
     ecrit("a-propos.html", page_simple("À propos de Qibla — démarche éditoriale et sources",
         "La démarche éditoriale de Qibla : un guide indépendant, sourcé et autonome, consacré aux 20 plus belles mosquées du monde.",
         "À propos", "Le projet", APROPOS, "a-propos.html", "apropos"))
@@ -581,9 +644,10 @@ def main():
         "Conditions générales d'utilisation", "Règles du site", CGU, "cgu.html"))
 
     # sitemap + robots + crédits + README
-    urls = ["", "mosquees.html", "a-propos.html", "contact.html", "credits-photos.html",
+    urls = ["", "mosquees.html", "blog.html", "a-propos.html", "contact.html", "credits-photos.html",
             "mentions-legales.html", "confidentialite.html", "cgu.html"] + \
-           [f"mosquees/{m['slug']}/" for m in MOSQUEES]
+           [f"mosquees/{m['slug']}/" for m in MOSQUEES] + \
+           [f"blog/{a['slug']}/" for a in ARTICLES]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
         "".join(f"  <url><loc>{SITE_URL}/{u}</loc><changefreq>monthly</changefreq></url>\n" for u in urls) + "</urlset>\n"
     ecrit("sitemap.xml", sitemap)

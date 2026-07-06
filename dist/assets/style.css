@@ -161,9 +161,8 @@ nav.main a:hover,nav.main a[aria-current]{opacity:1;background:#ffffff14;color:v
 .loc .boite{background:var(--card);border:1px solid var(--ligne);border-radius:var(--r);padding:22px}
 
 /* ---------- monétisation ---------- */
-.pub{border:1.5px dashed var(--or);border-radius:10px;background:rgba(201,165,68,.07);background:color-mix(in srgb,var(--or) 7%,transparent);
-  display:grid;place-items:center;text-align:center;color:var(--fg-2);font-family:var(--ui);
-  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;min-height:96px;margin:2rem 0}
+.pub{margin:2rem 0}
+.pub:empty{display:none}
 .affil{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:1.2rem 0 2rem}
 .affil a{background:linear-gradient(135deg,var(--nuit-2),var(--nuit-3));color:var(--ivoire);text-decoration:none;
   border-radius:var(--r);padding:20px;border:1px solid #2a3a63;font-family:var(--ui)}
