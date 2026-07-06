@@ -253,4 +253,96 @@
       zoneResultat.hidden = true; zoneThemes.hidden = false;
     });
   }
+
+  /* ---------- boussole qibla (direction de La Mecque + mosquées proches) ---------- */
+  var btnLocaliser = $("#boussole-localiser");
+  if (btnLocaliser) {
+    var MECQUE = { lat: 21.4225, lon: 39.8262 };
+    var avant = $("#boussole-avant"), resultat = $("#boussole-resultat"), erreurEl = $("#boussole-erreur");
+    var aiguille = $("#boussole-aiguille"), degresEl = $("#boussole-degres"), instructionEl = $("#boussole-instruction"), distanceEl = $("#boussole-distance");
+    var procheStatut = $("#proches-statut"), procheListe = $("#proches-liste");
+
+    function versRad(deg) { return deg * Math.PI / 180; }
+    function versDeg(rad) { return rad * 180 / Math.PI; }
+
+    function calculeCap(lat1, lon1, lat2, lon2) {
+      var y = Math.sin(versRad(lon2 - lon1)) * Math.cos(versRad(lat2));
+      var x = Math.cos(versRad(lat1)) * Math.sin(versRad(lat2)) -
+              Math.sin(versRad(lat1)) * Math.cos(versRad(lat2)) * Math.cos(versRad(lon2 - lon1));
+      return (versDeg(Math.atan2(y, x)) + 360) % 360;
+    }
+
+    function calculeDistanceKm(lat1, lon1, lat2, lon2) {
+      var R = 6371;
+      var dLat = versRad(lat2 - lat1), dLon = versRad(lon2 - lon1);
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(versRad(lat1)) * Math.cos(versRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function pointCardinal(deg) {
+      var dirs = ["Nord", "Nord-Est", "Est", "Sud-Est", "Sud", "Sud-Ouest", "Ouest", "Nord-Ouest"];
+      return dirs[Math.round(deg / 45) % 8];
+    }
+
+    function chercheMosqueesProches(lat, lon) {
+      procheStatut.textContent = "Recherche des mosquées à proximité (OpenStreetMap)…";
+      procheListe.innerHTML = "";
+      var rayons = [5000, 20000, 50000];
+
+      function essaie(i) {
+        if (i >= rayons.length) {
+          procheStatut.textContent = "Aucune mosquée référencée sur OpenStreetMap dans un rayon de 50 km. Essayez une carte comme OpenStreetMap ou Google Maps directement.";
+          return;
+        }
+        var r = rayons[i];
+        var requete = "[out:json][timeout:20];(node[\"amenity\"=\"place_of_worship\"][\"religion\"=\"muslim\"](around:" + r + "," + lat + "," + lon + ");way[\"amenity\"=\"place_of_worship\"][\"religion\"=\"muslim\"](around:" + r + "," + lat + "," + lon + "););out center 15;";
+        fetch("https://overpass-api.de/api/interpreter", { method: "POST", body: "data=" + encodeURIComponent(requete) })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            var elts = (d.elements || []).map(function (e) {
+              var elat = e.lat || (e.center && e.center.lat), elon = e.lon || (e.center && e.center.lon);
+              if (elat == null) return null;
+              return { nom: (e.tags && e.tags.name) || "Mosquée (nom non renseigné)", lat: elat, lon: elon, dist: calculeDistanceKm(lat, lon, elat, elon) };
+            }).filter(Boolean).sort(function (a, b) { return a.dist - b.dist; });
+            if (!elts.length) { essaie(i + 1); return; }
+            procheStatut.textContent = "Mosquées les plus proches (rayon de recherche : " + (r / 1000) + " km, données OpenStreetMap) :";
+            procheListe.innerHTML = elts.slice(0, 8).map(function (m) {
+              var url = "https://www.openstreetmap.org/?mlat=" + m.lat + "&mlon=" + m.lon + "#map=17/" + m.lat + "/" + m.lon;
+              return '<a class="proche-item" href="' + url + '" target="_blank" rel="noopener"><span>' + m.nom + '</span><span class="note">' + m.dist.toFixed(1) + ' km ↗</span></a>';
+            }).join("");
+          })
+          .catch(function () {
+            procheStatut.textContent = "La recherche OpenStreetMap n'a pas pu aboutir (hors ligne ou service indisponible). Réessayez plus tard.";
+          });
+      }
+      essaie(0);
+    }
+
+    btnLocaliser.addEventListener("click", function () {
+      erreurEl.textContent = "";
+      if (!navigator.geolocation) {
+        erreurEl.textContent = "La géolocalisation n'est pas disponible sur ce navigateur.";
+        return;
+      }
+      btnLocaliser.disabled = true; btnLocaliser.textContent = "Localisation en cours…";
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        btnLocaliser.disabled = false; btnLocaliser.textContent = "📍 Me géolocaliser";
+        var lat = pos.coords.latitude, lon = pos.coords.longitude;
+        var cap = calculeCap(lat, lon, MECQUE.lat, MECQUE.lon);
+        var dist = calculeDistanceKm(lat, lon, MECQUE.lat, MECQUE.lon);
+        avant.hidden = true; resultat.hidden = false;
+        aiguille.style.transform = "rotate(" + cap + "deg)";
+        degresEl.textContent = Math.round(cap) + "° depuis le Nord";
+        instructionEl.textContent = "Orientez-vous face au Nord (boussole de votre téléphone), puis tournez-vous vers le " + pointCardinal(cap) + " jusqu'à atteindre " + Math.round(cap) + "°.";
+        distanceEl.textContent = "Vous êtes à environ " + Math.round(dist).toLocaleString("fr-FR") + " km de La Mecque.";
+        chercheMosqueesProches(lat, lon);
+      }, function (err) {
+        btnLocaliser.disabled = false; btnLocaliser.textContent = "📍 Me géolocaliser";
+        erreurEl.textContent = err.code === 1
+          ? "Localisation refusée. Autorisez l'accès à votre position dans les réglages de votre navigateur pour utiliser cet outil."
+          : "Impossible d'obtenir votre position pour le moment. Réessayez.";
+      }, { enableHighAccuracy: true, timeout: 10000 });
+    });
+  }
 })();

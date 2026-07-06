@@ -55,6 +55,7 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
       {nav_a("mosquees.html","Les 20 mosquées","liste")}
       {nav_a("blog.html","Blog","blog")}
       {nav_a("quiz.html","Quiz","quiz")}
+      {nav_a("boussole.html","Boussole","boussole")}
       {nav_a("a-propos.html","À propos","apropos")}
       {nav_a("contact.html","Contact","contact")}
       <button class="btn-theme" id="btn-theme">☾ Sombre</button>
@@ -85,6 +86,7 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
       <a href="{rac}mosquees.html">Les 20 mosquées</a>
       <a href="{rac}blog.html">Blog</a>
       <a href="{rac}quiz.html">Quiz</a>
+      <a href="{rac}boussole.html">Boussole</a>
       <a href="{rac}a-propos.html">À propos</a>
       <a href="{rac}credits-photos.html">Crédits images</a>
       <a href="{rac}contact.html">Contact</a>
@@ -364,6 +366,45 @@ def page_quiz():
                 "Trois quiz de 100 questions en français, seul ou à plusieurs : l'islam et son prophète, les prophètes de l'islam, et les mosquées les plus célèbres du monde.",
                 corps, canonique="quiz.html", jsonld=jsonld, actif="quiz")
 
+# ---------------------------------------------------------------- boussole (qibla)
+def page_qibla():
+    corps = f"""
+<main class="wrap">
+  <div style="padding-top:2.4rem;max-width:720px">
+    <p class="eyebrow">Trouver la Qibla</p>
+    <h1>Boussole Qibla</h1>
+    <p class="muted">Calculez la direction de La Mecque depuis l'endroit où vous vous trouvez, et repérez les mosquées les plus proches de vous (données OpenStreetMap).</p>
+  </div>
+
+  <div class="boussole-bloc" id="boussole-avant">
+    <p class="note">Votre position n'est utilisée que dans votre navigateur, le temps du calcul : elle n'est jamais envoyée à nos serveurs (nous n'en avons pas) ni conservée.</p>
+    <button type="button" class="btn btn-or" id="boussole-localiser">📍 Me géolocaliser</button>
+    <p class="note" id="boussole-erreur" style="color:var(--terre)"></p>
+  </div>
+
+  <div class="boussole-bloc" id="boussole-resultat" hidden>
+    <div class="boussole-cadran">
+      <div class="boussole-rose"></div>
+      <div class="boussole-aiguille" id="boussole-aiguille">➤</div>
+    </div>
+    <p class="boussole-degres" id="boussole-degres"></p>
+    <p class="muted" id="boussole-instruction"></p>
+    <p class="note" id="boussole-distance"></p>
+  </div>
+
+  {sep("À proximité", "Mosquées les plus proches")}
+  <div id="mosquees-proches">
+    <p class="note" id="proches-statut">Géolocalisez-vous pour afficher les mosquées les plus proches (recherche via OpenStreetMap).</p>
+    <div id="proches-liste"></div>
+  </div>
+
+  {slot_pub()}
+  <div style="max-width:760px;margin:2rem auto 0">{disclaimer_religieux()}</div>
+</main>"""
+    return page("Boussole Qibla — direction de La Mecque et mosquées à proximité | Qibla",
+                "Calculez la direction de La Mecque (qibla) depuis votre position, et trouvez les mosquées les plus proches de vous grâce à OpenStreetMap.",
+                corps, canonique="boussole.html", actif="boussole")
+
 # ---------------------------------------------------------------- détail
 def similaires(m):
     memes = [x for x in MOSQUEES if x["slug"] != m["slug"] and (x["style"] == m["style"] or x["pays"] == m["pays"])]
@@ -579,6 +620,8 @@ MENTIONS = """
 CONFID = """
 <h2>Données collectées</h2>
 <p>Ce site ne collecte par défaut <strong>aucune donnée personnelle côté serveur</strong>. Vos préférences (thème, consentement cookies) sont stockées uniquement dans votre navigateur (localStorage) et ne sont transmises à personne. Les commentaires sont gérés par <strong>Giscus</strong>, un service tiers qui s'appuie sur GitHub Discussions : pour commenter, vous vous connectez avec votre compte GitHub et votre message est hébergé publiquement sur le dépôt GitHub du site, selon la politique de confidentialité de GitHub.</p>
+<h2>Géolocalisation (page Boussole)</h2>
+<p>La page « Boussole » propose de calculer la direction de La Mecque et les mosquées à proximité à partir de votre position. Cette position est demandée via une autorisation explicite de votre navigateur, n'est utilisée que localement dans votre appareil pour le calcul, et n'est <strong>jamais envoyée à nos serveurs</strong> (nous n'en avons pas) ni conservée. La recherche des mosquées à proximité interroge en revanche <strong>OpenStreetMap</strong> (service tiers, API Overpass) avec vos coordonnées, uniquement au moment de la recherche.</p>
 <h2>Cookies et mesure d'audience</h2>
 <p>Un bandeau de consentement vous permet d'accepter ou de refuser la mesure d'audience. Aucune balise de mesure n'est chargée avant votre accord. Si vous activez un outil (Google Analytics 4, Plausible…), cette page devra détailler l'outil retenu, la durée de conservation et la base légale (art. 82 loi Informatique et Libertés, RGPD).</p>
 <h2>Newsletter</h2>
@@ -749,6 +792,7 @@ def main():
     for a in ARTICLES:
         ecrit(f"blog/{a['slug']}/index.html", page_article(a))
     ecrit("quiz.html", page_quiz())
+    ecrit("boussole.html", page_qibla())
     ecrit("a-propos.html", page_simple("À propos de Qibla — démarche éditoriale et sources",
         "La démarche éditoriale de Qibla : un guide indépendant, sourcé et autonome, consacré aux 20 plus belles mosquées du monde.",
         "À propos", "Le projet", APROPOS, "a-propos.html", "apropos"))
@@ -766,7 +810,7 @@ def main():
         "Conditions générales d'utilisation", "Règles du site", CGU, "cgu.html"))
 
     # sitemap + robots + crédits + README
-    urls = ["", "mosquees.html", "blog.html", "quiz.html", "a-propos.html", "contact.html", "credits-photos.html",
+    urls = ["", "mosquees.html", "blog.html", "quiz.html", "boussole.html", "a-propos.html", "contact.html", "credits-photos.html",
             "mentions-legales.html", "confidentialite.html", "cgu.html"] + \
            [f"mosquees/{m['slug']}/" for m in MOSQUEES] + \
            [f"blog/{a['slug']}/" for a in ARTICLES]
