@@ -588,14 +588,17 @@ APROPOS = """
 <p>Ces édifices sont avant tout des lieux de culte vivants. Nos pages « infos pratiques » rappellent les coordonnées et le contexte, mais renseignez-vous toujours sur les conditions de visite (horaires de prière, tenue, accès des non-musulmans) avant de vous déplacer.</p>"""
 
 CONTACT = """
-<p>Une correction historique, une photo à proposer, un partenariat ? Écrivez-nous.</p>
+<p>Une correction historique, une erreur repérée, une photo à proposer, un partenariat ? Écrivez-nous via ce formulaire, ou directement à <a href="mailto:qibla.mosk@gmail.com">qibla.mosk@gmail.com</a>.</p>
 <div class="commentaires" style="max-width:640px">
-<form onsubmit="event.preventDefault();this.outerHTML='<p><strong>Merci !</strong> Votre message a été préparé. Branchez ce formulaire à Formspree, Netlify Forms ou votre backend (voir README).</p>'">
-<label>Votre nom<input required type="text" maxlength="60"></label>
-<label>Votre e-mail<input required type="email"></label>
-<label>Votre message<textarea required maxlength="3000"></textarea></label>
+<form id="form-contact" name="contact" method="POST" data-netlify="true">
+<input type="hidden" name="form-name" value="contact">
+<label>Votre nom<input name="nom" required type="text" maxlength="60"></label>
+<label>Votre e-mail<input name="email" required type="email"></label>
+<label>Votre message<textarea name="message" required maxlength="3000"></textarea></label>
 <p><button class="btn btn-or" type="submit">Envoyer</button></p>
-</form></div>
+</form>
+<p id="contact-ok" class="note"></p>
+</div>
 <p class="note">Adresse éditoriale : qibla.mosk@gmail.com</p>"""
 
 CREDITS_HTML = """

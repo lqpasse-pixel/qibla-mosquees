@@ -104,19 +104,31 @@
   if (ca) ca.addEventListener("click", function () { choixCookies("accepte"); });
   if (cr) cr.addEventListener("click", function () { choixCookies("refuse"); });
 
+  /* ---------- envoi générique vers Netlify Forms ---------- */
+  function encodeFormData(fd) {
+    var params = [];
+    fd.forEach(function (v, k) { params.push(encodeURIComponent(k) + "=" + encodeURIComponent(v)); });
+    return params.join("&");
+  }
+  function envoieVersNetlify(form, msgOk, msgErreur, cibleMsg) {
+    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: encodeFormData(new FormData(form)) })
+      .then(function () { cibleMsg.textContent = msgOk; form.reset(); })
+      .catch(function () { cibleMsg.textContent = msgErreur; });
+  }
+
   /* ---------- newsletter (Netlify Forms — section masquée tant qu'elle n'est pas activée, voir README) ---------- */
   var nl = $("#form-nl");
   if (nl) nl.addEventListener("submit", function (e) {
     e.preventDefault();
-    var data = new FormData(nl);
-    var encode = function (fd) {
-      var params = [];
-      fd.forEach(function (v, k) { params.push(encodeURIComponent(k) + "=" + encodeURIComponent(v)); });
-      return params.join("&");
-    };
-    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: encode(data) })
-      .then(function () { $("#nl-ok").textContent = "Merci ! Votre inscription a bien été enregistrée."; nl.reset(); })
-      .catch(function () { $("#nl-ok").textContent = "L'inscription n'a pas pu être envoyée, réessayez plus tard."; });
+    envoieVersNetlify(nl, "Merci ! Votre inscription a bien été enregistrée.", "L'inscription n'a pas pu être envoyée, réessayez plus tard.", $("#nl-ok"));
+  });
+
+  /* ---------- contact (Netlify Forms) ---------- */
+  var formContact = $("#form-contact");
+  if (formContact) formContact.addEventListener("submit", function (e) {
+    e.preventDefault();
+    envoieVersNetlify(formContact, "Merci ! Votre message a bien été envoyé, nous reviendrons vers vous si nécessaire.",
+      "Le message n'a pas pu être envoyé — écrivez-nous directement à qibla.mosk@gmail.com.", $("#contact-ok"));
   });
 
   /* ---------- quiz (mode local, à tour de rôle) ---------- */
