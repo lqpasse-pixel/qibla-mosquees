@@ -112,26 +112,83 @@
     nl.reset();
   });
 
-  /* ---------- quiz ---------- */
+  /* ---------- quiz (mode local, à tour de rôle) ---------- */
   var qData = $("#quiz-data");
   if (qData) {
     var QUIZ = JSON.parse(qData.textContent);
-    var zoneThemes = $("#quiz-themes"), zoneJeu = $("#quiz-jeu"), zoneResultat = $("#quiz-resultat");
-    var titreTheme = $("#quiz-titre-theme"), progression = $("#quiz-progression"), zoneQuestion = $("#quiz-question-zone");
+    var zoneThemes = $("#quiz-themes"), zoneConfig = $("#quiz-config"), zoneJeu = $("#quiz-jeu"), zoneResultat = $("#quiz-resultat");
+    var configTitre = $("#quiz-config-titre"), choixNb = $("#quiz-choix-nb"), joueursCompteEl = $("#quiz-joueurs-compte"), joueursNomsEl = $("#quiz-joueurs-noms");
+    var titreTheme = $("#quiz-titre-theme"), progression = $("#quiz-progression"), auTour = $("#quiz-au-tour"), zoneQuestion = $("#quiz-question-zone");
     var btnSuivant = $("#quiz-suivant"), btnQuitter = $("#quiz-quitter"), btnRejouer = $("#quiz-rejouer"), btnAutreTheme = $("#quiz-autre-theme");
-    var themeCourant = null, iQuestion = 0, score = 0, aRepondu = false;
 
-    function demarre(cle) {
-      themeCourant = cle; iQuestion = 0; score = 0;
-      zoneThemes.hidden = true; zoneResultat.hidden = true; zoneJeu.hidden = false;
-      titreTheme.textContent = QUIZ[cle].titre;
-      afficheQuestion();
+    var themeCourant = null, nbQuestions = 10, nbJoueurs = 1;
+    var questions = [], joueurs = [], iQuestion = 0, iJoueur = 0, aRepondu = false;
+
+    function melange(tableau) {
+      var t = tableau.slice();
+      for (var i = t.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = t[i]; t[i] = t[j]; t[j] = tmp;
+      }
+      return t;
     }
+
+    /* étape 1 : choix du thème -> écran de configuration */
+    $$(".theme-quiz", zoneThemes).forEach(function (b) {
+      b.addEventListener("click", function () {
+        themeCourant = b.dataset.theme;
+        configTitre.textContent = QUIZ[themeCourant].titre + " — configuration de la partie";
+        zoneThemes.hidden = true; zoneConfig.hidden = false;
+        majJoueursNoms();
+      });
+    });
+
+    $$("button", choixNb).forEach(function (b) {
+      b.addEventListener("click", function () {
+        nbQuestions = +b.dataset.nb;
+        $$("button", choixNb).forEach(function (x) { x.classList.remove("on"); });
+        b.classList.add("on");
+      });
+    });
+    $$("button", choixNb)[0].classList.add("on");
+
+    function majJoueursNoms() {
+      joueursCompteEl.textContent = nbJoueurs;
+      var html = "";
+      for (var i = 1; i <= nbJoueurs; i++) {
+        html += '<input type="text" maxlength="24" placeholder="Joueur ' + i + '" data-joueur="' + i + '">';
+      }
+      joueursNomsEl.innerHTML = html;
+    }
+    $("#quiz-joueurs-moins").addEventListener("click", function () { if (nbJoueurs > 1) { nbJoueurs--; majJoueursNoms(); } });
+    $("#quiz-joueurs-plus").addEventListener("click", function () { if (nbJoueurs < 8) { nbJoueurs++; majJoueursNoms(); } });
+
+    $("#quiz-config-retour").addEventListener("click", function () {
+      zoneConfig.hidden = true; zoneThemes.hidden = false;
+    });
+
+    /* étape 2 : démarrage de la partie */
+    $("#quiz-config-demarrer").addEventListener("click", function () {
+      var noms = $$("input", joueursNomsEl).map(function (inp, i) { return inp.value.trim() || ("Joueur " + (i + 1)); });
+      joueurs = noms.map(function (n) { return { nom: n, score: 0 }; });
+      var t = QUIZ[themeCourant];
+      questions = melange(t.questions).slice(0, Math.min(nbQuestions, t.questions.length));
+      iQuestion = 0; iJoueur = 0;
+      zoneConfig.hidden = true; zoneResultat.hidden = true; zoneJeu.hidden = false;
+      titreTheme.textContent = t.titre;
+      afficheQuestion();
+    });
 
     function afficheQuestion() {
       aRepondu = false;
-      var t = QUIZ[themeCourant], q = t.questions[iQuestion];
-      progression.textContent = "Question " + (iQuestion + 1) + " / " + t.questions.length + " · Score : " + score;
+      var q = questions[iQuestion];
+      progression.textContent = "Question " + (iQuestion + 1) + " / " + questions.length;
+      if (joueurs.length > 1) {
+        auTour.hidden = false;
+        auTour.textContent = "Au tour de : " + joueurs[iJoueur].nom + " (score : " + joueurs[iJoueur].score + ")";
+      } else {
+        auTour.hidden = true;
+      }
       var html = '<h3>' + q.q + '</h3><div class="quiz-options">';
       q.options.forEach(function (opt, i) {
         html += '<button type="button" class="quiz-opt" data-i="' + i + '">' + opt + '</button>';
@@ -147,7 +204,7 @@
     function repond(i, q) {
       if (aRepondu) return;
       aRepondu = true;
-      if (i === q.reponse) score++;
+      if (i === q.reponse) joueurs[iJoueur].score++;
       $$(".quiz-opt", zoneQuestion).forEach(function (b, idx) {
         b.disabled = true;
         if (idx === q.reponse) b.classList.add("bonne");
@@ -158,30 +215,42 @@
     }
 
     btnSuivant.addEventListener("click", function () {
-      var t = QUIZ[themeCourant];
+      iJoueur = (iJoueur + 1) % joueurs.length;
       iQuestion++;
-      if (iQuestion < t.questions.length) afficheQuestion();
+      if (iQuestion < questions.length) afficheQuestion();
       else termine();
     });
 
     function termine() {
-      var t = QUIZ[themeCourant];
       zoneJeu.hidden = true; zoneResultat.hidden = false;
-      $("#quiz-score").textContent = score + " / " + t.questions.length;
-      var pct = score / t.questions.length;
-      var msg = pct === 1 ? "Score parfait, bravo !" : pct >= 0.7 ? "Très bon score !" : pct >= 0.4 ? "Pas mal, tu peux retenter ta chance." : "Rejoue pour améliorer ton score !";
+      var classes = joueurs.slice().sort(function (a, b) { return b.score - a.score; });
+      var max = classes[0].score;
+      var html = '<table class="simple" style="margin:0 auto;max-width:420px;text-align:left">';
+      classes.forEach(function (j, i) {
+        html += '<tr><td>' + (i + 1) + (j.score === max ? ' 🏆' : '') + '</td><td>' + j.nom + '</td><td>' + j.score + ' / ' + questions.length + '</td></tr>';
+      });
+      html += '</table>';
+      $("#quiz-classement").innerHTML = html;
+      var pct = max / questions.length;
+      var msg = joueurs.length > 1
+        ? (classes.filter(function (j) { return j.score === max; }).length > 1 ? "Égalité en tête !" : classes[0].nom + " remporte la partie !")
+        : (pct === 1 ? "Score parfait, bravo !" : pct >= 0.7 ? "Très bon score !" : pct >= 0.4 ? "Pas mal, tu peux retenter ta chance." : "Rejoue pour améliorer ton score !");
       $("#quiz-message").textContent = msg;
     }
 
     btnQuitter.addEventListener("click", function () {
       zoneJeu.hidden = true; zoneThemes.hidden = false;
     });
-    btnRejouer.addEventListener("click", function () { demarre(themeCourant); });
+    btnRejouer.addEventListener("click", function () {
+      joueurs.forEach(function (j) { j.score = 0; });
+      var t = QUIZ[themeCourant];
+      questions = melange(t.questions).slice(0, Math.min(nbQuestions, t.questions.length));
+      iQuestion = 0; iJoueur = 0;
+      zoneResultat.hidden = true; zoneJeu.hidden = false;
+      afficheQuestion();
+    });
     btnAutreTheme.addEventListener("click", function () {
       zoneResultat.hidden = true; zoneThemes.hidden = false;
-    });
-    $$(".theme-quiz", zoneThemes).forEach(function (b) {
-      b.addEventListener("click", function () { demarre(b.dataset.theme); });
     });
   }
 })();

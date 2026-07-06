@@ -176,6 +176,20 @@ nav.main a:hover,nav.main a[aria-current]{opacity:1;background:#ffffff14;color:v
 .quiz-opt.mauvaise{border-color:var(--terre);background:color-mix(in srgb,var(--terre) 14%,transparent)}
 .quiz-explication{font-size:.9rem;color:var(--fg-2);margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--ligne)}
 .quiz-actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:1.4rem}
+.quiz-au-tour{font-family:var(--ui);font-size:.85rem;letter-spacing:.04em;color:var(--or);margin:0 0 1rem}
+.quiz-config-bloc{margin:1.2rem 0}
+.quiz-choix{display:flex;gap:10px;flex-wrap:wrap}
+.quiz-choix button{font:inherit;font-size:.95rem;font-weight:600;padding:10px 18px;border-radius:999px;
+  border:1px solid var(--ligne);background:transparent;color:inherit;cursor:pointer}
+.quiz-choix button.on,.quiz-choix button:hover{border-color:var(--or);color:var(--or)}
+.quiz-joueurs-nb{display:flex;align-items:center;gap:14px}
+.quiz-joueurs-nb button{width:36px;height:36px;border-radius:999px;border:1px solid var(--ligne);
+  background:transparent;color:inherit;font-size:1.1rem;cursor:pointer}
+.quiz-joueurs-nb button:hover{border-color:var(--or);color:var(--or)}
+.quiz-joueurs-nb span{font-family:var(--ui);font-weight:700;font-size:1.1rem;min-width:1.5em;text-align:center}
+.quiz-joueurs-noms{display:grid;gap:8px;margin-top:.8rem;max-width:320px}
+.quiz-joueurs-noms input{font:inherit;padding:9px 12px;border-radius:8px;border:1px solid var(--ligne);
+  background:transparent;color:inherit}
 
 /* ---------- monétisation ---------- */
 .pub{margin:2rem 0}

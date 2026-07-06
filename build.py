@@ -281,27 +281,54 @@ def page_quiz():
   <div style="padding-top:2.4rem">
     <p class="eyebrow">Tester ses connaissances</p>
     <h1>Quiz Qibla</h1>
-    <p class="muted" style="max-width:680px">Choisissez un thème pour démarrer un quiz de 10 questions sur l'islam, son prophète, les prophètes reconnus par la tradition islamique ou les mosquées présentées sur ce site.</p>
+    <p class="muted" style="max-width:680px">Choisissez un thème (100 questions chacun), le nombre de questions et le nombre de joueurs — seul ou à plusieurs, à tour de rôle sur le même écran.</p>
   </div>
   <div class="grille" id="quiz-themes">{''.join(carte_theme_quiz(c, t) for c, t in QUIZ.items())}</div>
+
+  <div id="quiz-config" class="quiz-jeu" hidden>
+    <p class="eyebrow" id="quiz-config-titre"></p>
+    <div class="quiz-config-bloc">
+      <p class="note">Nombre de questions</p>
+      <div class="quiz-choix" id="quiz-choix-nb">
+        <button type="button" data-nb="10">10</button>
+        <button type="button" data-nb="20">20</button>
+        <button type="button" data-nb="30">30</button>
+        <button type="button" data-nb="50">50</button>
+      </div>
+    </div>
+    <div class="quiz-config-bloc">
+      <p class="note">Nombre de joueurs</p>
+      <div class="quiz-joueurs-nb">
+        <button type="button" id="quiz-joueurs-moins" aria-label="Moins de joueurs">−</button>
+        <span id="quiz-joueurs-compte">1</span>
+        <button type="button" id="quiz-joueurs-plus" aria-label="Plus de joueurs">+</button>
+      </div>
+      <div id="quiz-joueurs-noms" class="quiz-joueurs-noms"></div>
+    </div>
+    <div class="quiz-actions">
+      <button type="button" class="btn btn-ligne" id="quiz-config-retour">← Changer de thème</button>
+      <button type="button" class="btn btn-or" id="quiz-config-demarrer">Démarrer la partie →</button>
+    </div>
+  </div>
 
   <div id="quiz-jeu" class="quiz-jeu" hidden>
     <div class="quiz-entete">
       <p class="eyebrow" id="quiz-titre-theme"></p>
       <p class="note" id="quiz-progression"></p>
     </div>
+    <p class="quiz-au-tour" id="quiz-au-tour" hidden></p>
     <div id="quiz-question-zone"></div>
     <div class="quiz-actions">
       <button type="button" class="btn btn-ligne" id="quiz-quitter">← Changer de thème</button>
-      <button type="button" class="btn btn-or" id="quiz-suivant" hidden>Question suivante →</button>
+      <button type="button" class="btn btn-or" id="quiz-suivant" hidden>Suivant →</button>
     </div>
   </div>
 
   <div id="quiz-resultat" class="quiz-resultat" hidden>
     <p class="eyebrow">Résultat</p>
-    <h2 id="quiz-score"></h2>
+    <div id="quiz-classement"></div>
     <p id="quiz-message" class="muted"></p>
-    <p><button type="button" class="btn btn-or" id="quiz-rejouer">Rejouer</button>
+    <p><button type="button" class="btn btn-or" id="quiz-rejouer">Rejouer (même réglages)</button>
        <button type="button" class="btn btn-ligne" id="quiz-autre-theme">Choisir un autre thème</button></p>
   </div>
 
@@ -311,7 +338,7 @@ def page_quiz():
     jsonld = {"@context": "https://schema.org", "@type": "Quiz", "name": "Quiz Qibla",
               "about": "Islam, prophète Muhammad, prophètes de l'islam et mosquées célèbres"}
     return page("Quiz — Islam, prophètes et mosquées célèbres | Qibla",
-                "Trois quiz en français pour tester ses connaissances : l'islam et son prophète, les prophètes de l'islam, et les mosquées les plus célèbres du monde.",
+                "Trois quiz de 100 questions en français, seul ou à plusieurs : l'islam et son prophète, les prophètes de l'islam, et les mosquées les plus célèbres du monde.",
                 corps, canonique="quiz.html", jsonld=jsonld, actif="quiz")
 
 # ---------------------------------------------------------------- détail
