@@ -10,6 +10,7 @@ ICI = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ICI, "dist")
 SITE_URL = "https://qibla-mosquees.netlify.app"
 NOM_SITE = "Qibla — Les 20 plus belles mosquées du monde"
+GA4_ID = "G-BM1KY1CX7H"
 
 ETOILE = ('<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">'
           '<polygon points="11,1 13.4,7 20,7.6 15,12 16.6,19 11,15.4 5.4,19 7,12 2,7.6 8.6,7" '
@@ -41,6 +42,17 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
 <link rel="icon" type="image/svg+xml" href="{rac}assets/images/site/favicon.svg">
 <link rel="stylesheet" href="{rac}assets/style.css">
 {ld}
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('consent', 'default', {{
+  'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied',
+  'analytics_storage': localStorage.getItem('qibla-cookies') === 'accepte' ? 'granted' : 'denied'
+}});
+gtag('js', new Date());
+gtag('config', '{GA4_ID}', {{ anonymize_ip: true }});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
 </head>
 <body>
 <header class="topbar">
@@ -627,7 +639,7 @@ CONFID = """
 <h2>Géolocalisation (page Boussole)</h2>
 <p>La page « Boussole » propose de calculer la direction de La Mecque et les mosquées à proximité à partir de votre position. Cette position est demandée via une autorisation explicite de votre navigateur, n'est utilisée que localement dans votre appareil pour le calcul, et n'est <strong>jamais envoyée à nos serveurs</strong> (nous n'en avons pas) ni conservée. La recherche des mosquées à proximité interroge en revanche <strong>OpenStreetMap</strong> (service tiers, API Overpass) avec vos coordonnées, uniquement au moment de la recherche.</p>
 <h2>Cookies et mesure d'audience</h2>
-<p>Un bandeau de consentement vous permet d'accepter ou de refuser la mesure d'audience. Aucune balise de mesure n'est chargée avant votre accord. Si vous activez un outil (Google Analytics 4, Plausible…), cette page devra détailler l'outil retenu, la durée de conservation et la base légale (art. 82 loi Informatique et Libertés, RGPD).</p>
+<p>Ce site utilise <strong>Google Analytics 4</strong> pour mesurer la fréquentation (pages vues, provenance, appareil), avec IP anonymisée. Le bandeau de consentement affiché à votre première visite vous permet d'accepter ou de refuser cette mesure : en cas de refus, aucune donnée d'audience n'est envoyée à Google (mode de consentement Google, « Consent Mode »). Base légale : consentement (art. 6.1.a RGPD). Vous pouvez modifier votre choix à tout moment en effaçant les données de ce site dans votre navigateur.</p>
 <h2>Newsletter</h2>
 <p>L'adresse e-mail saisie dans le formulaire d'inscription n'est utilisée que pour l'envoi de la lettre d'information. Base légale : consentement (art. 6.1.a RGPD). Désinscription possible à tout moment via le lien présent dans chaque envoi.</p>
 <h2>Vos droits</h2>

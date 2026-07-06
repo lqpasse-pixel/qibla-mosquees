@@ -98,7 +98,7 @@
   if (bandeau && !localStorage.getItem("qibla-cookies")) bandeau.classList.add("on");
   function choixCookies(v) {
     localStorage.setItem("qibla-cookies", v); bandeau.classList.remove("on");
-    if (v === "accepte") { /* Point d'entrée analytics : charger ici GA4 ou Plausible. */ }
+    if (window.gtag) gtag("consent", "update", { analytics_storage: v === "accepte" ? "granted" : "denied" });
   }
   var ca = $("#cookies-accepter"), cr = $("#cookies-refuser");
   if (ca) ca.addEventListener("click", function () { choixCookies("accepte"); });
