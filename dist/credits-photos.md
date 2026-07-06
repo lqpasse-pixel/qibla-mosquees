@@ -285,6 +285,9 @@ Toutes les images sont hébergées localement dans `/assets/images/`. Aucune URL
 | assets/images/xian/medaillon.svg | Grande Mosquée de Xi'an — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
 | assets/images/xian/motif.svg | Grande Mosquée de Xi'an — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
 | assets/images/site/favicon.svg | Favicon étoile à 8 branches | Création originale | Studio Qibla | Libre au sein du projet |
+| assets/images/blog/mosquees-malaisie-architecture-moderne/photo-1.webp | Article « Les mosquées de Malaisie : entre tradition malaise et modernisme spectaculaire » — La Mosquée Nationale de Malaisie (Masjid Negara), Kuala Lumpur | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2016_Kuala_Lumpur,_Meczet_Narodowy_Malezji_(02).jpg) | Marcin Konsek | CC BY-SA 4.0 |
+| assets/images/blog/mosquees-algerie-heritage-ottoman-contemporain/photo-1.webp | Article « Les mosquées d'Algérie : de l'héritage ottoman au plus haut minaret d'Afrique » — Djamaâ El Djazaïr (Grande Mosquée d'Alger) et son minaret de 265 mètres | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Djama%C3%A2_El_Djaza%C3%AFr_%E2%80%93_The_Great_Mosque_of_Algiers_1.jpg) | Rachid Hamatou | CC BY-SA 4.0 |
+| assets/images/blog/mosquees-algerie-heritage-ottoman-contemporain/photo-2.webp | Article « Les mosquées d'Algérie : de l'héritage ottoman au plus haut minaret d'Afrique » — Les minarets ottomans de la mosquée Ketchaoua, Alger | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:20141113-_DSC0096-3_(15887428745).jpg) | Dan Sloan | CC BY-SA 2.0 |
 
 ## Ajouter une photographie
 1. Télécharger le fichier (jamais de hotlink) dans `assets/images/<slug-mosquee>/` avec un nom SEO-friendly, ex. `mosquee-hassan-ii-casablanca-facade.webp`.

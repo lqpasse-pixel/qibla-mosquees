@@ -210,6 +210,16 @@ def page_liste():
                 "Liste des 20 plus belles mosquées du monde avec filtres par pays, style architectural et époque : Istanbul, Casablanca, Abou Dabi, Djenné, Ispahan…",
                 corps, canonique="mosquees.html", jsonld=jsonld, actif="liste")
 
+def disclaimer_religieux(rac=""):
+    return f"""<div class="disclaimer">
+  <p><strong>À propos du contenu de cette page</strong> — Ce site propose un contenu éditorial et culturel
+  rédigé avec soin et le souci du respect des traditions religieuses concernées ; il ne constitue pas un
+  avis théologique ou une source d'autorité religieuse. Malgré nos vérifications, des erreurs, imprécisions
+  ou approximations peuvent subsister. Si vous en repérez une, merci de nous la signaler via la page
+  <a href="{rac}contact.html">Contact</a> ou par e-mail à <a href="mailto:qibla.mosk@gmail.com">qibla.mosk@gmail.com</a> —
+  nous la corrigerons avec gratitude.</p>
+</div>"""
+
 # ---------------------------------------------------------------- blog
 def carte_article(a, rac=""):
     return f"""<a class="carte reveal" href="{rac}blog/{a['slug']}/index.html">
@@ -238,6 +248,16 @@ def page_blog_liste():
                 "Articles de fond sur l'histoire et l'architecture islamique : origines de la mosquée, coupoles et minarets, muqarnas et motifs géométriques.",
                 corps, canonique="blog.html", jsonld=jsonld, actif="blog")
 
+def galerie_article(a, rac):
+    photos = a.get("photos", [])
+    if not photos:
+        return ""
+    imgs = "".join(
+        f'<figure><img src="{rac}assets/images/{p["chemin"]}" loading="lazy" alt="{p["description"]}" '
+        f'width="700" height="467" style="width:100%;height:auto;border-radius:10px"></figure>'
+        for p in photos)
+    return f'<div class="quiz-choix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:1.6rem 0">{imgs}</div>'
+
 def page_article(a):
     rac = "../../"
     def rlien(html): return html.replace("{RAC}", rac)
@@ -252,11 +272,13 @@ def page_article(a):
   </div>
   <div class="prose" style="max-width:760px">
     <p class="lead">{rlien(a['intro'])}</p>
+    {galerie_article(a, rac)}
     {corps_html}
   </div>
   {slot_pub()}
   {sep("À découvrir", "Mosquées citées dans cet article")}
   <div class="grille">{''.join(carte(m, rac) for m in liees)}</div>
+  <div style="max-width:760px;margin:2rem auto 0">{disclaimer_religieux(rac)}</div>
 </main>"""
     jsonld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["titre"],
               "description": a["description"], "datePublished": a["date"], "inLanguage": "fr",
@@ -333,6 +355,7 @@ def page_quiz():
   </div>
 
   {slot_pub()}
+  <div style="max-width:760px;margin:2rem auto 0">{disclaimer_religieux()}</div>
   <script type="application/json" id="quiz-data">{json.dumps(QUIZ, ensure_ascii=False)}</script>
 </main>"""
     jsonld = {"@context": "https://schema.org", "@type": "Quiz", "name": "Quiz Qibla",
@@ -483,6 +506,7 @@ def page_detail(m):
     {sep("Continuer", "Mosquées similaires")}
     <div class="grille">{sim}</div>
   </section>
+  <div style="max-width:760px;margin:2rem auto 0">{disclaimer_religieux(rac)}</div>
 </main>
 <div class="visionneuse" id="visionneuse" role="dialog" aria-label="Visionneuse d'images plein écran">
   <div class="scene"><img src="" alt=""></div>
@@ -530,7 +554,7 @@ CONTACT = """
 <label>Votre message<textarea required maxlength="3000"></textarea></label>
 <p><button class="btn btn-or" type="submit">Envoyer</button></p>
 </form></div>
-<p class="note">Adresse éditoriale : contact@exemple-mosquees.fr (à personnaliser).</p>"""
+<p class="note">Adresse éditoriale : qibla.mosk@gmail.com</p>"""
 
 CREDITS_HTML = """
 <p>Toutes les images actuellement publiées sur ce site sont des <strong>illustrations vectorielles originales</strong> créées pour Qibla. Elles sont hébergées localement dans <code>/assets/images/</code> et ne dépendent d'aucun service tiers.</p>
@@ -591,7 +615,14 @@ def credits_md():
         for f, d in [("aube.svg", "Vue à l'aube"), ("nuit.svg", "Vue de nuit"),
                      ("medaillon.svg", "Médaillon géométrique"), ("motif.svg", "Motif étoilé")]:
             lignes.append(f"| assets/images/{m['slug']}/{f} | {m['nom']} — {d} | Création originale pour ce site | Studio Qibla | Libre au sein du projet |")
-    lignes += ["| assets/images/site/favicon.svg | Favicon étoile à 8 branches | Création originale | Studio Qibla | Libre au sein du projet |", "",
+    lignes.append("| assets/images/site/favicon.svg | Favicon étoile à 8 branches | Création originale | Studio Qibla | Libre au sein du projet |")
+    for a in ARTICLES:
+        for p in a.get("photos", []):
+            if not p["chemin"].startswith("blog/"):
+                continue
+            lignes.append(f"| assets/images/{p['chemin']} | Article « {a['titre']} » — {p['description']} | "
+                          f"[{p['source']}]({p['url']}) | {p['auteur']} | {p['licence']} |")
+    lignes += ["",
                "## Ajouter une photographie",
                "1. Télécharger le fichier (jamais de hotlink) dans `assets/images/<slug-mosquee>/` avec un nom SEO-friendly, ex. `mosquee-hassan-ii-casablanca-facade.webp`.",
                "2. Convertir en WebP (`cwebp -q 82 photo.jpg -o photo.webp`) et garder un fallback JPEG si besoin.",
@@ -692,6 +723,16 @@ def main():
         for i, p in enumerate(m.get("photos_extra", []), start=2):
             src = os.path.join(PHOTOS_SRC, m["slug"], f"photo-{i}.webp")
             shutil.copy(src, os.path.join(d, f"photo-{i}.webp"))
+
+    # images propres aux articles de blog (assets/images/blog/<slug>/photo-N.webp)
+    for a in ARTICLES:
+        for p in a.get("photos", []):
+            if not p["chemin"].startswith("blog/"):
+                continue
+            src = os.path.join(PHOTOS_SRC, p["chemin"])
+            dst = os.path.join(DIST, "assets", "images", p["chemin"])
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy(src, dst)
 
     # pages
     def ecrit(chemin, contenu):

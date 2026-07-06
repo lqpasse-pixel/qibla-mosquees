@@ -160,6 +160,11 @@ nav.main a:hover,nav.main a[aria-current]{opacity:1;background:#ffffff14;color:v
 @media(max-width:760px){.loc{grid-template-columns:1fr}}
 .loc .boite{background:var(--card);border:1px solid var(--ligne);border-radius:var(--r);padding:22px}
 
+/* ---------- disclaimer ---------- */
+.disclaimer{background:var(--card);border:1px solid var(--ligne);border-left:3px solid var(--or);
+  border-radius:var(--r);padding:16px 20px;font-size:.86rem;color:var(--fg-2)}
+.disclaimer strong{color:inherit}
+
 /* ---------- quiz ---------- */
 .theme-quiz{width:100%;text-align:left;font:inherit;border:1px solid var(--ligne);cursor:pointer}
 .theme-quiz:hover{border-color:var(--or)}
