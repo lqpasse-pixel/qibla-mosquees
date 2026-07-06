@@ -63,13 +63,14 @@ def page(titre, description, corps, rac="", canonique="", jsonld=None, actif="")
   </div>
 </header>
 {corps}
-<section class="wrap nl reveal" aria-label="Newsletter">
+<section class="wrap nl reveal" aria-label="Newsletter" hidden>
   <p class="eyebrow">Newsletter</p>
   <h2>Une mosquée, une histoire, chaque mois</h2>
   <p class="muted" style="color:#cfc7b2">Recevez nos récits d'architecture, d'histoire et de voyage. Zéro spam, désinscription en un clic.</p>
-  <form id="form-nl">
+  <form id="form-nl" name="newsletter" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="newsletter">
     <label for="nl-email" class="visually-hidden" style="position:absolute;left:-9999px">Votre adresse e-mail</label>
-    <input id="nl-email" type="email" required placeholder="votre@email.fr" autocomplete="email">
+    <input id="nl-email" name="email" type="email" required placeholder="votre@email.fr" autocomplete="email">
     <button class="btn btn-or" type="submit">S'inscrire</button>
   </form>
   <p id="nl-ok" class="note" style="margin-top:10px"></p>
@@ -718,7 +719,7 @@ template `page_detail` de `build.py`. Pour le pointer vers un autre dépôt, rem
 ## Monétisation
 - **AdSense** : remplacez les blocs `.pub` par vos balises `<ins class="adsbygoogle">` (emplacements prévus : bannière, sidebar 300×250, in-content 336×280).
 - **Affiliation** : blocs « Voyager vers … » sur chaque page détail — ajoutez vos identifiants Booking.com / Expedia dans les liens.
-- **Newsletter** : branchez le formulaire `#form-nl` sur Mailchimp ou Brevo (action POST du formulaire).
+- **Newsletter** : le formulaire `#form-nl` est déjà relié à Netlify Forms (détection statique + soumission AJAX dans `site.js`) et les inscriptions arrivent dans Site settings → Forms sur app.netlify.com. La section est actuellement masquée (`hidden` sur la `<section class="wrap nl">` dans `build.py`) tant qu'aucune newsletter n'est réellement envoyée aux abonnés — retirez l'attribut `hidden` pour la republier.
 - **Analytics** : le point d'entrée post-consentement se trouve dans `site.js`, fonction `choixCookies` — n'y chargez GA4/Plausible qu'après accord (RGPD).
 
 ## Cartes interactives (option)

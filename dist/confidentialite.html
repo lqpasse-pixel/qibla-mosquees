@@ -47,13 +47,14 @@
 <p>L'adresse e-mail saisie dans le formulaire d'inscription n'est utilisée que pour l'envoi de la lettre d'information. Base légale : consentement (art. 6.1.a RGPD). Désinscription possible à tout moment via le lien présent dans chaque envoi.</p>
 <h2>Vos droits</h2>
 <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition. Contact : [e-mail du délégué ou de l'éditeur]. Vous pouvez introduire une réclamation auprès de la CNIL (cnil.fr).</p></div></main>
-<section class="wrap nl reveal" aria-label="Newsletter">
+<section class="wrap nl reveal" aria-label="Newsletter" hidden>
   <p class="eyebrow">Newsletter</p>
   <h2>Une mosquée, une histoire, chaque mois</h2>
   <p class="muted" style="color:#cfc7b2">Recevez nos récits d'architecture, d'histoire et de voyage. Zéro spam, désinscription en un clic.</p>
-  <form id="form-nl">
+  <form id="form-nl" name="newsletter" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="newsletter">
     <label for="nl-email" class="visually-hidden" style="position:absolute;left:-9999px">Votre adresse e-mail</label>
-    <input id="nl-email" type="email" required placeholder="votre@email.fr" autocomplete="email">
+    <input id="nl-email" name="email" type="email" required placeholder="votre@email.fr" autocomplete="email">
     <button class="btn btn-or" type="submit">S'inscrire</button>
   </form>
   <p id="nl-ok" class="note" style="margin-top:10px"></p>

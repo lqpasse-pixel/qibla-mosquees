@@ -104,12 +104,19 @@
   if (ca) ca.addEventListener("click", function () { choixCookies("accepte"); });
   if (cr) cr.addEventListener("click", function () { choixCookies("refuse"); });
 
-  /* ---------- newsletter (démonstration) ---------- */
+  /* ---------- newsletter (Netlify Forms — section masquée tant qu'elle n'est pas activée, voir README) ---------- */
   var nl = $("#form-nl");
   if (nl) nl.addEventListener("submit", function (e) {
     e.preventDefault();
-    $("#nl-ok").textContent = "Merci ! Adresse enregistrée localement (brancher Mailchimp ou Brevo — voir README).";
-    nl.reset();
+    var data = new FormData(nl);
+    var encode = function (fd) {
+      var params = [];
+      fd.forEach(function (v, k) { params.push(encodeURIComponent(k) + "=" + encodeURIComponent(v)); });
+      return params.join("&");
+    };
+    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: encode(data) })
+      .then(function () { $("#nl-ok").textContent = "Merci ! Votre inscription a bien été enregistrée."; nl.reset(); })
+      .catch(function () { $("#nl-ok").textContent = "L'inscription n'a pas pu être envoyée, réessayez plus tard."; });
   });
 
   /* ---------- quiz (mode local, à tour de rôle) ---------- */

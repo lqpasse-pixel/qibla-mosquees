@@ -251,13 +251,14 @@
 </a></div>
   <div class="pub" role="complementary" aria-label="Emplacement publicitaire réservé"></div>
 </main>
-<section class="wrap nl reveal" aria-label="Newsletter">
+<section class="wrap nl reveal" aria-label="Newsletter" hidden>
   <p class="eyebrow">Newsletter</p>
   <h2>Une mosquée, une histoire, chaque mois</h2>
   <p class="muted" style="color:#cfc7b2">Recevez nos récits d'architecture, d'histoire et de voyage. Zéro spam, désinscription en un clic.</p>
-  <form id="form-nl">
+  <form id="form-nl" name="newsletter" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="newsletter">
     <label for="nl-email" class="visually-hidden" style="position:absolute;left:-9999px">Votre adresse e-mail</label>
-    <input id="nl-email" type="email" required placeholder="votre@email.fr" autocomplete="email">
+    <input id="nl-email" name="email" type="email" required placeholder="votre@email.fr" autocomplete="email">
     <button class="btn btn-or" type="submit">S'inscrire</button>
   </form>
   <p id="nl-ok" class="note" style="margin-top:10px"></p>
