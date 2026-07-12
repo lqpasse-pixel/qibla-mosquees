@@ -267,11 +267,15 @@ def galerie_article(a, rac):
     photos = a.get("photos", [])
     if not photos:
         return ""
+    noms_mosquees = {m["slug"]: m["nom"] for m in MOSQUEES}
+    def nom_pour(p):
+        return p.get("nom") or noms_mosquees.get(p["chemin"].split("/")[0], "")
     imgs = "".join(
-        f'<figure><img src="{rac}assets/images/{p["chemin"]}" loading="lazy" alt="{p["description"]}" '
-        f'width="700" height="467" style="width:100%;height:auto;border-radius:10px"></figure>'
+        f'<figure style="margin:0"><img src="{rac}assets/images/{p["chemin"]}" loading="lazy" alt="{p["description"]}" '
+        f'width="700" height="467" style="width:100%;height:auto;border-radius:10px 10px 0 0;display:block">'
+        f'<figcaption class="note" style="text-align:center;padding:6px 2px">{nom_pour(p)}</figcaption></figure>'
         for p in photos)
-    return f'<div class="quiz-choix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:1.6rem 0">{imgs}</div>'
+    return f'<div class="quiz-choix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:1.6rem 0">{imgs}</div>'
 
 def page_article(a):
     rac = "../../"
