@@ -200,4 +200,32 @@ dict(
          url="https://commons.wikimedia.org/wiki/File:Grande_mosqu%C3%A9e_Anas_Ibn_Malak_de_Carthage.jpg"),
   ]
 ),
+dict(
+  slug="top-3-plus-belles-mosquees-malaisie",
+  titre="Top 3 des plus belles mosquées de Malaisie",
+  description="Masjid Kristal, mosquée Putra et Masjid Negara : notre sélection des trois mosquées les plus spectaculaires de Malaisie, entre verre, granit rose et modernisme des années 1960.",
+  date="2026-03-02",
+  temps_lecture="5 min",
+  eyebrow="Classement",
+  intro="Difficile de choisir tant la Malaisie a multiplié, depuis son indépendance, les mosquées-manifestes. Voici néanmoins notre sélection des trois plus spectaculaires, du verre flottant de Terengganu au granit rose de Putrajaya.",
+  corps=[
+    ("#1 — Masjid Kristal, la mosquée de verre flottante",
+     "À Kuala Terengganu, la Masjid Kristal (« mosquée de cristal ») occupe la première place pour une raison simple : c'est la seule mosquée au monde bâtie presque entièrement en verre et en acier, posée sur une plateforme qui semble flotter à la confluence de la rivière Terengganu et de la mer de Chine méridionale. Inaugurée en 2008, elle change littéralement de couleur selon la lumière du jour — dorée au lever et au coucher du soleil, argentée en pleine journée — et se reflète intégralement dans l'eau qui l'entoure, un effet miroir qu'aucune autre mosquée de ce classement n'offre."),
+    ("#2 — La mosquée Putra, le granit rose sur le lac",
+     "À <a href=\"{RAC}mosquees/putra/index.html\">Putrajaya</a>, la mosquée Putra doit sa place sur ce podium à son dôme et ses murs en granit rose, une teinte rare qui la distingue immédiatement de toutes les autres grandes mosquées d'Asie du Sud-Est, et à son implantation spectaculaire, aux trois quarts posée sur le lac artificiel de la ville. Son minaret à cinq étages, symbolisant les cinq piliers de l'islam, et son mélange assumé d'influences persanes et malaises en font un cas d'école d'architecture contemporaine religieuse."),
+    ("#3 — Masjid Negara, le manifeste de l'indépendance",
+     "La Mosquée Nationale de Kuala Lumpur ferme ce podium, non pas pour son ancienneté (elle date de 1965) mais pour sa radicalité : sa toiture principale en étoile plissée à 18 pointes rompt délibérément avec la coupole traditionnelle, et son minaret en forme de fusée à ailerons reste, soixante ans après son inauguration, l'une des silhouettes les plus reconnaissables de toute l'architecture mosquée du XXe siècle. Un choix qui témoigne, comme souvent en Malaisie, d'une volonté d'affirmer une identité architecturale propre plutôt que de reproduire les modèles ottoman ou moghol."),
+    ("Des critères forcément subjectifs",
+     "Ce classement reste évidemment une question de goût — la « Mosquée bleue » de Shah Alam, avec l'un des plus grands dômes du monde, ou la doyenne Masjid Kampung Kling à Malacca, de style pagode chinoise, auraient tout aussi bien mérité leur place. Mais Masjid Kristal, Putra et Negara ont ceci de commun qu'elles illustrent, chacune à sa manière et à une décennie d'écart, la même ambition : faire de la mosquée malaisienne un manifeste architectural plutôt qu'une simple copie du Moyen-Orient.")
+  ],
+  mosquees_liees=["putra"],
+  photos=[
+    dict(chemin="blog/top-3-plus-belles-mosquees-malaisie/photo-1.webp", description="La Masjid Kristal (mosquée de cristal) flottant sur l'eau, Kuala Terengganu",
+         source="Wikimedia Commons", auteur="DestinationFearFan", licence="CC BY-SA 4.0",
+         url="https://commons.wikimedia.org/wiki/File:Crystal_Mosque_in_Kuala_Terengganu_Malaysia.jpg"),
+    dict(chemin="putra/photo-2.webp", description="La mosquée Putra et son dôme de granit rose, Putrajaya",
+         source="Wikimedia Commons", auteur="Ariff Shah Sopian", licence="CC BY-SA 4.0",
+         url="https://commons.wikimedia.org/wiki/File:Putra_Mosque,_Putrajaya.jpg"),
+  ]
+),
 ]
