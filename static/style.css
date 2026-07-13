@@ -122,7 +122,7 @@ nav.main a:hover,nav.main a[aria-current]{opacity:1;background:#ffffff14;color:v
 .galerie{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:1.4rem 0 2.4rem}
 .galerie button{padding:0;border:2px solid var(--ligne);border-radius:10px;overflow:hidden;cursor:zoom-in;background:var(--nuit)}
 .galerie button:hover{border-color:var(--or)}
-.galerie img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 65%}
+.galerie img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center 65%}
 .visionneuse{position:fixed;inset:0;background:#050912f2;z-index:100;display:none;flex-direction:column}
 .visionneuse.on{display:flex}
 .visionneuse .scene{flex:1;overflow:hidden;cursor:grab;display:grid;place-items:center}
