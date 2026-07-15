@@ -1,5 +1,5 @@
 /* ============================================================
-   Qibla — Les 20 plus belles mosquées du monde
+   Qibla — Les plus belles mosquées du monde
    Palette : bleu nuit / doré / ivoire / terracotta
    Signature : cadres en arc outrepassé + étoiles à 8 branches
    ============================================================ */
@@ -228,7 +228,7 @@ nav.main a:hover,nav.main a[aria-current]{opacity:1;background:#ffffff14;color:v
 
 /* ---------- footer ---------- */
 footer{background:var(--nuit);color:#cfc7b2;margin-top:4rem;border-top:3px solid var(--or)}
-footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:34px;padding:46px 22px 30px;font-family:var(--ui);font-size:.9rem}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:34px;padding:46px 22px 30px;font-family:var(--ui);font-size:.9rem}
 @media(max-width:760px){footer .wrap{grid-template-columns:1fr}}
 footer h4{font-family:var(--serif);color:var(--ivoire);font-size:1.25rem;margin:0 0 10px}
 footer a{color:#cfc7b2;text-decoration:none;display:block;padding:4px 0}

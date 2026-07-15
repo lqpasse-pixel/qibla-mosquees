@@ -91,7 +91,7 @@ gtag('config', '{GA4_ID}', {{ anonymize_ip: true }});
   <div class="wrap">
     <div>
       <h4>Qibla</h4>
-      <p>Un voyage éditorial et visuel à travers les vingt plus belles mosquées du monde : histoire, anecdotes, visites immersives et discussions.</p>
+      <p>Un voyage éditorial et visuel à travers les {len(MOSQUEES)} plus belles mosquées du monde : histoire, anecdotes, visites immersives et discussions.</p>
       <p class="note">Toutes les illustrations sont des œuvres originales hébergées localement — aucune dépendance externe.</p>
     </div>
     <div>
@@ -103,6 +103,13 @@ gtag('config', '{GA4_ID}', {{ anonymize_ip: true }});
       <a href="{rac}a-propos.html">À propos</a>
       <a href="{rac}credits-photos.html">Crédits images</a>
       <a href="{rac}contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Suivez-nous</h4>
+      <a href="https://www.instagram.com/qiblamosk/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@qiblamosk" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.tiktok.com/@qiblamosk16" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://x.com/qiblamosk" target="_blank" rel="noopener">X</a>
     </div>
     <div>
       <h4>Informations légales</h4>
@@ -179,7 +186,7 @@ def page_accueil():
       <p>Quand une visite virtuelle 360° officielle existe, elle est intégrée directement sur la page ; sinon, notre visionneuse plein écran (zoom, déplacement) prend le relais.</p>
     </div>
     <div class="prose">
-      <p><strong>Filtrez par pays, style ou époque</strong> : art omeyyade d'al-Andalus, classicisme ottoman de Sinan, grès rouge moghol, banco soudano-sahélien, audaces contemporaines… Les vingt notices se répondent grâce aux suggestions « mosquées similaires » en bas de chaque page.</p>
+      <p><strong>Filtrez par pays, style ou époque</strong> : art omeyyade d'al-Andalus, classicisme ottoman de Sinan, grès rouge moghol, banco soudano-sahélien, audaces contemporaines… Les {len(MOSQUEES)} notices se répondent grâce aux suggestions « mosquées similaires » en bas de chaque page.</p>
       <p><a class="btn btn-ligne" href="a-propos.html">Notre démarche éditoriale →</a></p>
     </div>
   </div>
@@ -595,7 +602,7 @@ def page_simple(titre_meta, desc, h1, eyebrow, html, canonique, actif=""):
     return page(titre_meta, desc, corps, canonique=canonique, actif=actif)
 
 APROPOS = """
-<p><strong>Qibla</strong> est un guide indépendant consacré aux vingt mosquées les plus remarquables du monde. Notre parti pris : raconter chaque édifice comme un récit — son commanditaire, ses bâtisseurs, ses légendes — plutôt qu'aligner des fiches techniques.</p>
+<p><strong>Qibla</strong> est un guide indépendant consacré aux __NB_MOSQUEES__ mosquées les plus remarquables du monde. Notre parti pris : raconter chaque édifice comme un récit — son commanditaire, ses bâtisseurs, ses légendes — plutôt qu'aligner des fiches techniques.</p>
 <h2>Notre démarche</h2>
 <p>Les textes sont rédigés à partir des connaissances historiques et architecturales publiées ; les anecdotes signalées comme légendes sont présentées comme telles. Le site est conçu pour être rapide, sobre et accessible : aucune ressource visuelle n'est chargée depuis un site tiers, tout est hébergé localement.</p>
 <h2>Les illustrations</h2>
@@ -815,7 +822,7 @@ def main():
     ecrit("boussole.html", page_qibla())
     ecrit("a-propos.html", page_simple("À propos de Qibla — démarche éditoriale et sources",
         "La démarche éditoriale de Qibla : un guide indépendant, sourcé et autonome, consacré aux " + str(len(MOSQUEES)) + " plus belles mosquées du monde.",
-        "À propos", "Le projet", APROPOS, "a-propos.html", "apropos"))
+        "À propos", "Le projet", APROPOS.replace("__NB_MOSQUEES__", str(len(MOSQUEES))), "a-propos.html", "apropos"))
     ecrit("contact.html", page_simple("Contact — Qibla", "Contactez l'équipe éditoriale de Qibla : corrections, photos, partenariats.",
         "Contact", "Écrivez-nous", CONTACT, "contact.html", "contact"))
     ecrit("credits-photos.html", page_simple("Crédits images — sources et licences | Qibla",
@@ -840,7 +847,7 @@ def main():
     ecrit("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
     ecrit("google87cf0872bc94f92e.html", "google-site-verification: google87cf0872bc94f92e.html\n")
     ecrit("credits-photos.md", credits_md())
-    ecrit("README.md", README)
+    ecrit("README.md", README.replace("Les 20 plus belles", f"Les {len(MOSQUEES)} plus belles"))
     print("Site généré :", DIST)
 
 if __name__ == "__main__":
