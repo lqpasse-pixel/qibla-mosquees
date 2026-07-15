@@ -259,7 +259,7 @@ dict(
   date="2026-03-09",
   temps_lecture="7 min",
   eyebrow="Insolite",
-  intro="Pas de dôme, pas de minaret, une couleur qui détonne ou un matériau improbable : ces six mosquées ont en commun de rompre, chacune à sa façon, avec l'image la plus attendue de l'architecture mosquée. Deux figurent déjà parmi nos mosquées incontournables ; les quatre autres méritaient elles aussi le détour.",
+  intro="Pas de dôme, pas de minaret, une couleur qui détonne ou un matériau improbable : ces six mosquées ont en commun de rompre, chacune à sa façon, avec l'image la plus attendue de l'architecture mosquée. Deux figurent déjà parmi nos 20 mosquées incontournables ; les quatre autres méritaient elles aussi le détour.",
   corps=[
     ("La Grande Mosquée de Djenné, une ville entière en terre crue",
      "Impossible de parler d'insolite sans commencer par <a href=\"{RAC}mosquees/djenne/index.html\">Djenné</a>, au Mali : c'est tout simplement le plus grand édifice en terre crue (banco) du monde. Chaque année, avant la saison des pluies, toute la ville participe au « crépissage », une fête collective où l'on ré-enduit les murs de terre fraîche à mains nues. Les torons de palmier qui hérissent la façade ne sont pas décoratifs : ce sont des échafaudages permanents, plantés dans le mur, qui permettent cet entretien annuel indispensable à la survie du bâtiment."),

@@ -1,4 +1,4 @@
-# Qibla — Les 28 plus belles mosquées du monde
+# Qibla — Les 20 plus belles mosquées du monde
 
 Site statique complet, en français, sans aucune dépendance externe au runtime (100 % autonome, fonctionne hors ligne).
 

@@ -879,7 +879,7 @@ QUIZ = {
   "mosquees-celebres": dict(
     titre="Mosquées célèbres",
     emoji="🕌",
-    description="Teste tes connaissances sur les mosquées présentées sur ce site.",
+    description="Teste tes connaissances sur les 20 mosquées présentées sur ce site.",
     questions=_MOSQUEES_CELEBRES),
   "prophetes-islam": dict(
     titre="Les prophètes de l'islam",

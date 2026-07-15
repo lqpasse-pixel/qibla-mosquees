@@ -9,7 +9,7 @@ from svg_art import scene, medaillon, motif, _girih
 ICI = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ICI, "dist")
 SITE_URL = "https://qibla-mosquees.netlify.app"
-NOM_SITE = f"Qibla — Les {len(MOSQUEES)} plus belles mosquées du monde"
+NOM_SITE = f"Qibla — Les 20 plus belles mosquées du monde"
 GA4_ID = "G-BM1KY1CX7H"
 
 ETOILE = ('<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">'
@@ -59,12 +59,12 @@ gtag('config', '{GA4_ID}', {{ anonymize_ip: true }});
   <div class="wrap">
     <a class="logo" href="{rac}index.html" aria-label="Accueil Qibla">
       <svg width="30" height="30" viewBox="0 0 22 22" aria-hidden="true"><polygon points="11,1 13.4,7 20,7.6 15,12 16.6,19 11,15.4 5.4,19 7,12 2,7.6 8.6,7" fill="var(--or)"/></svg>
-      Qibla <b>· {len(MOSQUEES)} mosquées</b>
+      Qibla <b>· 20 mosquées</b>
     </a>
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     <nav class="main" aria-label="Navigation principale">
       {nav_a("index.html","Accueil","accueil")}
-      {nav_a("mosquees.html",f"Les {len(MOSQUEES)} mosquées","liste")}
+      {nav_a("mosquees.html","Les 20 mosquées","liste")}
       {nav_a("blog.html","Blog","blog")}
       {nav_a("quiz.html","Quiz","quiz")}
       {nav_a("boussole.html","Boussole","boussole")}
@@ -91,12 +91,12 @@ gtag('config', '{GA4_ID}', {{ anonymize_ip: true }});
   <div class="wrap">
     <div>
       <h4>Qibla</h4>
-      <p>Un voyage éditorial et visuel à travers les {len(MOSQUEES)} plus belles mosquées du monde : histoire, anecdotes, visites immersives et discussions.</p>
+      <p>Un voyage éditorial et visuel à travers les vingt plus belles mosquées du monde : histoire, anecdotes, visites immersives et discussions.</p>
       <p class="note">Toutes les illustrations sont des œuvres originales hébergées localement — aucune dépendance externe.</p>
     </div>
     <div>
       <h4>Explorer</h4>
-      <a href="{rac}mosquees.html">Les {len(MOSQUEES)} mosquées</a>
+      <a href="{rac}mosquees.html">Les 20 mosquées</a>
       <a href="{rac}blog.html">Blog</a>
       <a href="{rac}quiz.html">Quiz</a>
       <a href="{rac}boussole.html">Boussole</a>
@@ -167,9 +167,9 @@ def page_accueil():
   <div class="voile"></div>
   <div class="inner wrap">
     <p class="eyebrow">Histoire · Architecture · Voyage</p>
-    <h1>Les {len(MOSQUEES)} plus belles<br>mosquées du monde</h1>
+    <h1>Les 20 plus belles<br>mosquées du monde</h1>
     <p class="lead">De la terre crue de Djenné aux faïences d'Iznik d'Istanbul, un voyage éditorial et immersif à travers quatorze siècles d'architecture sacrée.</p>
-    <p><a class="btn btn-or" href="mosquees.html">Explorer les {len(MOSQUEES)} mosquées</a>&nbsp;&nbsp;
+    <p><a class="btn btn-or" href="mosquees.html">Explorer les 20 mosquées</a>&nbsp;&nbsp;
        <a class="btn btn-ligne" href="#phares" style="color:var(--ivoire)">Les incontournables</a></p>
   </div>
   <div class="hero-dots">{''.join(dots)}</div>
@@ -186,19 +186,19 @@ def page_accueil():
       <p>Quand une visite virtuelle 360° officielle existe, elle est intégrée directement sur la page ; sinon, notre visionneuse plein écran (zoom, déplacement) prend le relais.</p>
     </div>
     <div class="prose">
-      <p><strong>Filtrez par pays, style ou époque</strong> : art omeyyade d'al-Andalus, classicisme ottoman de Sinan, grès rouge moghol, banco soudano-sahélien, audaces contemporaines… Les {len(MOSQUEES)} notices se répondent grâce aux suggestions « mosquées similaires » en bas de chaque page.</p>
+      <p><strong>Filtrez par pays, style ou époque</strong> : art omeyyade d'al-Andalus, classicisme ottoman de Sinan, grès rouge moghol, banco soudano-sahélien, audaces contemporaines… Les vingt notices se répondent grâce aux suggestions « mosquées similaires » en bas de chaque page.</p>
       <p><a class="btn btn-ligne" href="a-propos.html">Notre démarche éditoriale →</a></p>
     </div>
   </div>
   {sep("Aperçu", "La collection complète")}
   <div class="grille">{''.join(carte(m) for m in MOSQUEES[:8])}</div>
-  <p style="text-align:center;margin:0 0 2rem"><a class="btn btn-or" href="mosquees.html">Voir les {len(MOSQUEES)} mosquées</a></p>
+  <p style="text-align:center;margin:0 0 2rem"><a class="btn btn-or" href="mosquees.html">Voir les 20 mosquées</a></p>
 </main>"""
     jsonld = {"@context": "https://schema.org", "@type": "WebSite", "name": NOM_SITE,
               "url": SITE_URL, "inLanguage": "fr",
-              "description": f"Guide illustré des {len(MOSQUEES)} plus belles mosquées du monde : histoire, anecdotes, galeries immersives et visites virtuelles."}
+              "description": "Guide illustré des 20 plus belles mosquées du monde : histoire, anecdotes, galeries immersives et visites virtuelles."}
     return page(f"{NOM_SITE} : histoire, photos et visites",
-                f"Découvrez les {len(MOSQUEES)} plus belles mosquées du monde : histoire, anecdotes, galeries immersives, visites virtuelles et cartes. Un guide illustré, gratuit et complet.",
+                "Découvrez les 20 plus belles mosquées du monde : histoire, anecdotes, galeries immersives, visites virtuelles et cartes. Un guide illustré, gratuit et complet.",
                 corps, canonique="", jsonld=jsonld, actif="accueil")
 
 # ---------------------------------------------------------------- liste
@@ -211,7 +211,7 @@ def page_liste():
 <main class="wrap">
   <div style="padding-top:2.4rem">
     <p class="eyebrow">La collection</p>
-    <h1>Les {len(MOSQUEES)} mosquées</h1>
+    <h1>Les 20 mosquées</h1>
     <p class="muted" style="max-width:680px">Du VIIe siècle à nos jours, de Xi'an à Casablanca. Filtrez par pays, style architectural ou époque, ou recherchez librement.</p>
   </div>
   <div class="filtres" role="search">
@@ -219,17 +219,17 @@ def page_liste():
     <label>Style <select id="f-style"><option value="">Tous</option>{opt(styles)}</select></label>
     <label>Époque <select id="f-epoque"><option value="">Toutes</option>{opt(epoques)}</select></label>
     <label>Recherche <input type="search" id="f-texte" placeholder="Nom, ville…"></label>
-    <span class="compte" id="f-compte">{len(MOSQUEES)} mosquées</span>
+    <span class="compte" id="f-compte">20 mosquées</span>
   </div>
   <div class="grille" id="grille-mosquees">{''.join(carte(m) for m in MOSQUEES)}</div>
   {slot_pub()}
 </main>"""
     jsonld = {"@context": "https://schema.org", "@type": "ItemList",
-              "name": f"Les {len(MOSQUEES)} plus belles mosquées du monde",
+              "name": "Les 20 plus belles mosquées du monde",
               "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": m["nom"],
                                    "url": f"{SITE_URL}/mosquees/{m['slug']}/"} for i, m in enumerate(MOSQUEES)]}
-    return page(f"Les {len(MOSQUEES)} plus belles mosquées du monde — liste complète et filtres | Qibla",
-                f"Liste des {len(MOSQUEES)} plus belles mosquées du monde avec filtres par pays, style architectural et époque : Istanbul, Casablanca, Abou Dabi, Djenné, Ispahan…",
+    return page("Les 20 plus belles mosquées du monde — liste complète et filtres | Qibla",
+                "Liste des 20 plus belles mosquées du monde avec filtres par pays, style architectural et époque : Istanbul, Casablanca, Abou Dabi, Djenné, Ispahan…",
                 corps, canonique="mosquees.html", jsonld=jsonld, actif="liste")
 
 def disclaimer_religieux(rac=""):
@@ -482,7 +482,7 @@ def page_detail(m):
   <img class="fond" src="{rac}assets/images/{m['slug']}/hero.{hero_ext(m)}" alt="" aria-hidden="true">
   <div class="voile"></div>
   <div class="titre wrap">
-    <p class="fil"><a href="{rac}index.html">Accueil</a> › <a href="{rac}mosquees.html">Les {len(MOSQUEES)} mosquées</a> › {m['nom']}</p>
+    <p class="fil"><a href="{rac}index.html">Accueil</a> › <a href="{rac}mosquees.html">Les 20 mosquées</a> › {m['nom']}</p>
     <p class="eyebrow">{m['ville']} · {m['pays']} · {m['style']}</p>
     <h1>{m['nom']}</h1>
   </div>
@@ -821,8 +821,8 @@ def main():
     ecrit("quiz.html", page_quiz())
     ecrit("boussole.html", page_qibla())
     ecrit("a-propos.html", page_simple("À propos de Qibla — démarche éditoriale et sources",
-        "La démarche éditoriale de Qibla : un guide indépendant, sourcé et autonome, consacré aux " + str(len(MOSQUEES)) + " plus belles mosquées du monde.",
-        "À propos", "Le projet", APROPOS.replace("__NB_MOSQUEES__", str(len(MOSQUEES))), "a-propos.html", "apropos"))
+        "La démarche éditoriale de Qibla : un guide indépendant, sourcé et autonome, consacré aux 20 plus belles mosquées du monde.",
+        "À propos", "Le projet", APROPOS.replace("__NB_MOSQUEES__", "vingt"), "a-propos.html", "apropos"))
     ecrit("contact.html", page_simple("Contact — Qibla", "Contactez l'équipe éditoriale de Qibla : corrections, photos, partenariats.",
         "Contact", "Écrivez-nous", CONTACT, "contact.html", "contact"))
     ecrit("credits-photos.html", page_simple("Crédits images — sources et licences | Qibla",
@@ -847,7 +847,7 @@ def main():
     ecrit("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n")
     ecrit("google87cf0872bc94f92e.html", "google-site-verification: google87cf0872bc94f92e.html\n")
     ecrit("credits-photos.md", credits_md())
-    ecrit("README.md", README.replace("Les 20 plus belles", f"Les {len(MOSQUEES)} plus belles"))
+    ecrit("README.md", README)
     print("Site généré :", DIST)
 
 if __name__ == "__main__":
