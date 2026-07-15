@@ -104,30 +104,31 @@
   if (ca) ca.addEventListener("click", function () { choixCookies("accepte"); });
   if (cr) cr.addEventListener("click", function () { choixCookies("refuse"); });
 
-  /* ---------- envoi générique vers Netlify Forms ---------- */
+  /* ---------- envoi générique vers un script PHP (contact.php / newsletter.php) ---------- */
   function encodeFormData(fd) {
     var params = [];
     fd.forEach(function (v, k) { params.push(encodeURIComponent(k) + "=" + encodeURIComponent(v)); });
     return params.join("&");
   }
-  function envoieVersNetlify(form, msgOk, msgErreur, cibleMsg) {
-    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: encodeFormData(new FormData(form)) })
-      .then(function () { cibleMsg.textContent = msgOk; form.reset(); })
+  function envoieFormulaire(form, msgOk, msgErreur, cibleMsg) {
+    fetch(form.getAttribute("action"), { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: encodeFormData(new FormData(form)) })
+      .then(function (r) { if (!r.ok) throw new Error("erreur serveur"); return r.json(); })
+      .then(function (r) { if (!r.ok) throw new Error(r.erreur || "erreur"); cibleMsg.textContent = msgOk; form.reset(); })
       .catch(function () { cibleMsg.textContent = msgErreur; });
   }
 
-  /* ---------- newsletter (Netlify Forms — section masquée tant qu'elle n'est pas activée, voir README) ---------- */
+  /* ---------- newsletter (section masquée tant qu'elle n'est pas activée, voir README) ---------- */
   var nl = $("#form-nl");
   if (nl) nl.addEventListener("submit", function (e) {
     e.preventDefault();
-    envoieVersNetlify(nl, "Merci ! Votre inscription a bien été enregistrée.", "L'inscription n'a pas pu être envoyée, réessayez plus tard.", $("#nl-ok"));
+    envoieFormulaire(nl, "Merci ! Votre inscription a bien été enregistrée.", "L'inscription n'a pas pu être envoyée, réessayez plus tard.", $("#nl-ok"));
   });
 
-  /* ---------- contact (Netlify Forms) ---------- */
+  /* ---------- contact ---------- */
   var formContact = $("#form-contact");
   if (formContact) formContact.addEventListener("submit", function (e) {
     e.preventDefault();
-    envoieVersNetlify(formContact, "Merci ! Votre message a bien été envoyé, nous reviendrons vers vous si nécessaire.",
+    envoieFormulaire(formContact, "Merci ! Votre message a bien été envoyé, nous reviendrons vers vous si nécessaire.",
       "Le message n'a pas pu être envoyé — écrivez-nous directement à qibla.mosk@gmail.com.", $("#contact-ok"));
   });
 

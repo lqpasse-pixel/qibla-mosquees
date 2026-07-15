@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Politique de confidentialité — Qibla</title>
 <meta name="description" content="Politique de confidentialité et RGPD : données, cookies, newsletter, vos droits.">
-<link rel="canonical" href="https://qibla-mosquees.netlify.app/confidentialite.html">
+<link rel="canonical" href="https://qiblamosk.com/confidentialite.html">
 <meta property="og:title" content="Politique de confidentialité — Qibla">
 <meta property="og:description" content="Politique de confidentialité et RGPD : données, cookies, newsletter, vos droits.">
 <meta property="og:type" content="website">
@@ -62,10 +62,10 @@ gtag('config', 'G-BM1KY1CX7H', { anonymize_ip: true });
   <p class="eyebrow">Newsletter</p>
   <h2>Une mosquée, une histoire, chaque mois</h2>
   <p class="muted" style="color:#cfc7b2">Recevez nos récits d'architecture, d'histoire et de voyage. Zéro spam, désinscription en un clic.</p>
-  <form id="form-nl" name="newsletter" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="newsletter">
+  <form id="form-nl" name="newsletter" method="POST" action="newsletter.php">
     <label for="nl-email" class="visually-hidden" style="position:absolute;left:-9999px">Votre adresse e-mail</label>
     <input id="nl-email" name="email" type="email" required placeholder="votre@email.fr" autocomplete="email">
+    <input type="text" name="site-web" class="visually-hidden" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
     <button class="btn btn-or" type="submit">S'inscrire</button>
   </form>
   <p id="nl-ok" class="note" style="margin-top:10px"></p>

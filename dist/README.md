@@ -9,10 +9,11 @@ cd dist && python3 -m http.server 8000
 ```
 
 ## Déployer
-Le site est en ligne sur Netlify : https://qibla-mosquees.netlify.app, avec déploiement continu depuis
-le dépôt [lqpasse-pixel/qibla-mosquees](https://github.com/lqpasse-pixel/qibla-mosquees) (branche `master`,
-commande de build `python3 build.py`, dossier de publication `dist`). Chaque `git push` republie automatiquement.
-- Pour brancher un nom de domaine personnalisé : Netlify → Site settings → Domain management → Add a domain.
+Le site est hébergé chez o2switch, sur le domaine https://qiblamosk.com, en dépôt statique (upload du dossier
+`dist/` via FTP/SFTP ou le gestionnaire de fichiers du panel o2switch). Le dépôt source reste sur GitHub
+[lqpasse-pixel/qibla-mosquees](https://github.com/lqpasse-pixel/qibla-mosquees) (branche `master`), mais il n'y
+a pas de déploiement continu automatique : après `python3 build.py`, uploadez le contenu de `dist/` vers
+`public_html/` sur o2switch.
 - Si vous changez d'URL (domaine perso ou autre hébergeur), modifiez `SITE_URL` en haut de `build.py` puis
   relancez `python3 build.py` : `sitemap.xml`, `robots.txt` et les balises canoniques se régénèrent automatiquement.
 
@@ -42,7 +43,7 @@ template `page_detail` de `build.py`. Pour le pointer vers un autre dépôt, rem
 ## Monétisation
 - **AdSense** : remplacez les blocs `.pub` par vos balises `<ins class="adsbygoogle">` (emplacements prévus : bannière, sidebar 300×250, in-content 336×280).
 - **Affiliation** : blocs « Voyager vers … » sur chaque page détail — ajoutez vos identifiants Booking.com / Expedia dans les liens.
-- **Newsletter** : le formulaire `#form-nl` est déjà relié à Netlify Forms (détection statique + soumission AJAX dans `site.js`) et les inscriptions arrivent dans Site settings → Forms sur app.netlify.com. La section est actuellement masquée (`hidden` sur la `<section class="wrap nl">` dans `build.py`) tant qu'aucune newsletter n'est réellement envoyée aux abonnés — retirez l'attribut `hidden` pour la republier.
+- **Newsletter** : le formulaire `#form-nl` envoie en AJAX vers `newsletter.php` (script PHP `mail()`, compatible o2switch) ; les inscriptions arrivent par e-mail à l'adresse définie dans `newsletter.php`. La section est actuellement masquée (`hidden` sur la `<section class="wrap nl">` dans `build.py`) tant qu'aucune newsletter n'est réellement envoyée aux abonnés — retirez l'attribut `hidden` pour la republier.
 - **Analytics** : le point d'entrée post-consentement se trouve dans `site.js`, fonction `choixCookies` — n'y chargez GA4/Plausible qu'après accord (RGPD).
 
 ## Cartes interactives (option)

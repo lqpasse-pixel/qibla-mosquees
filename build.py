@@ -8,7 +8,7 @@ from svg_art import scene, medaillon, motif, _girih
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ICI, "dist")
-SITE_URL = "https://qibla-mosquees.netlify.app"
+SITE_URL = "https://qiblamosk.com"
 NOM_SITE = f"Qibla — Les 20 plus belles mosquées du monde"
 GA4_ID = "G-BM1KY1CX7H"
 
@@ -79,10 +79,10 @@ gtag('config', '{GA4_ID}', {{ anonymize_ip: true }});
   <p class="eyebrow">Newsletter</p>
   <h2>Une mosquée, une histoire, chaque mois</h2>
   <p class="muted" style="color:#cfc7b2">Recevez nos récits d'architecture, d'histoire et de voyage. Zéro spam, désinscription en un clic.</p>
-  <form id="form-nl" name="newsletter" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="newsletter">
+  <form id="form-nl" name="newsletter" method="POST" action="newsletter.php">
     <label for="nl-email" class="visually-hidden" style="position:absolute;left:-9999px">Votre adresse e-mail</label>
     <input id="nl-email" name="email" type="email" required placeholder="votre@email.fr" autocomplete="email">
+    <input type="text" name="site-web" class="visually-hidden" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
     <button class="btn btn-or" type="submit">S'inscrire</button>
   </form>
   <p id="nl-ok" class="note" style="margin-top:10px"></p>
@@ -613,11 +613,11 @@ APROPOS = """
 CONTACT = """
 <p>Une correction historique, une erreur repérée, une photo à proposer, un partenariat ? Écrivez-nous via ce formulaire, ou directement à <a href="mailto:qibla.mosk@gmail.com">qibla.mosk@gmail.com</a>.</p>
 <div class="commentaires" style="max-width:640px">
-<form id="form-contact" name="contact" method="POST" data-netlify="true">
-<input type="hidden" name="form-name" value="contact">
+<form id="form-contact" name="contact" method="POST" action="contact.php">
 <label>Votre nom<input name="nom" required type="text" maxlength="60"></label>
 <label>Votre e-mail<input name="email" required type="email"></label>
 <label>Votre message<textarea name="message" required maxlength="3000"></textarea></label>
+<input type="text" name="site-web" class="visually-hidden" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
 <p><button class="btn btn-or" type="submit">Envoyer</button></p>
 </form>
 <p id="contact-ok" class="note"></p>
@@ -712,10 +712,11 @@ cd dist && python3 -m http.server 8000
 ```
 
 ## Déployer
-Le site est en ligne sur Netlify : https://qibla-mosquees.netlify.app, avec déploiement continu depuis
-le dépôt [lqpasse-pixel/qibla-mosquees](https://github.com/lqpasse-pixel/qibla-mosquees) (branche `master`,
-commande de build `python3 build.py`, dossier de publication `dist`). Chaque `git push` republie automatiquement.
-- Pour brancher un nom de domaine personnalisé : Netlify → Site settings → Domain management → Add a domain.
+Le site est hébergé chez o2switch, sur le domaine https://qiblamosk.com, en dépôt statique (upload du dossier
+`dist/` via FTP/SFTP ou le gestionnaire de fichiers du panel o2switch). Le dépôt source reste sur GitHub
+[lqpasse-pixel/qibla-mosquees](https://github.com/lqpasse-pixel/qibla-mosquees) (branche `master`), mais il n'y
+a pas de déploiement continu automatique : après `python3 build.py`, uploadez le contenu de `dist/` vers
+`public_html/` sur o2switch.
 - Si vous changez d'URL (domaine perso ou autre hébergeur), modifiez `SITE_URL` en haut de `build.py` puis
   relancez `python3 build.py` : `sitemap.xml`, `robots.txt` et les balises canoniques se régénèrent automatiquement.
 
@@ -745,7 +746,7 @@ template `page_detail` de `build.py`. Pour le pointer vers un autre dépôt, rem
 ## Monétisation
 - **AdSense** : remplacez les blocs `.pub` par vos balises `<ins class="adsbygoogle">` (emplacements prévus : bannière, sidebar 300×250, in-content 336×280).
 - **Affiliation** : blocs « Voyager vers … » sur chaque page détail — ajoutez vos identifiants Booking.com / Expedia dans les liens.
-- **Newsletter** : le formulaire `#form-nl` est déjà relié à Netlify Forms (détection statique + soumission AJAX dans `site.js`) et les inscriptions arrivent dans Site settings → Forms sur app.netlify.com. La section est actuellement masquée (`hidden` sur la `<section class="wrap nl">` dans `build.py`) tant qu'aucune newsletter n'est réellement envoyée aux abonnés — retirez l'attribut `hidden` pour la republier.
+- **Newsletter** : le formulaire `#form-nl` envoie en AJAX vers `newsletter.php` (script PHP `mail()`, compatible o2switch) ; les inscriptions arrivent par e-mail à l'adresse définie dans `newsletter.php`. La section est actuellement masquée (`hidden` sur la `<section class="wrap nl">` dans `build.py`) tant qu'aucune newsletter n'est réellement envoyée aux abonnés — retirez l'attribut `hidden` pour la republier.
 - **Analytics** : le point d'entrée post-consentement se trouve dans `site.js`, fonction `choixCookies` — n'y chargez GA4/Plausible qu'après accord (RGPD).
 
 ## Cartes interactives (option)
@@ -770,6 +771,8 @@ def main():
     os.makedirs(os.path.join(DIST, "assets", "images", "site"))
     shutil.copy(os.path.join(ICI, "static", "style.css"), os.path.join(DIST, "assets", "style.css"))
     shutil.copy(os.path.join(ICI, "static", "site.js"), os.path.join(DIST, "assets", "site.js"))
+    shutil.copy(os.path.join(ICI, "php", "contact.php"), os.path.join(DIST, "contact.php"))
+    shutil.copy(os.path.join(ICI, "php", "newsletter.php"), os.path.join(DIST, "newsletter.php"))
 
     favicon = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">'
                '<rect width="22" height="22" rx="5" fill="#0d1830"/>'
