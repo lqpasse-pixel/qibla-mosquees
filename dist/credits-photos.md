@@ -284,6 +284,46 @@ Toutes les images sont hébergées localement dans `/assets/images/`. Aucune URL
 | assets/images/xian/nuit.svg | Grande Mosquée de Xi'an — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
 | assets/images/xian/medaillon.svg | Grande Mosquée de Xi'an — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
 | assets/images/xian/motif.svg | Grande Mosquée de Xi'an — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/bibi-khanym/hero.webp | Mosquée Bibi-Khanym — Vue nord de la mosquée Bibi-Khanym, Samarcande | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bibi_Khanym_Mosque_in_Samarkand_from_north.jpg) | Ilya Varlamov | CC BY-SA 4.0 |
+| assets/images/bibi-khanym/aube.svg | Mosquée Bibi-Khanym — Vue à l'aube | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/bibi-khanym/nuit.svg | Mosquée Bibi-Khanym — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/bibi-khanym/medaillon.svg | Mosquée Bibi-Khanym — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/bibi-khanym/motif.svg | Mosquée Bibi-Khanym — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/gazi-husrev-beg/hero.webp | Mosquée Gazi Husrev-beg — Vue extérieure de la mosquée Gazi Husrev-beg, Sarajevo | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Gazi_Husrev-beg_Mosque_in_Sarajevo.jpg) | Adam Harangozó | CC BY-SA 4.0 |
+| assets/images/gazi-husrev-beg/aube.svg | Mosquée Gazi Husrev-beg — Vue à l'aube | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/gazi-husrev-beg/nuit.svg | Mosquée Gazi Husrev-beg — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/gazi-husrev-beg/medaillon.svg | Mosquée Gazi Husrev-beg — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/gazi-husrev-beg/motif.svg | Mosquée Gazi Husrev-beg — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/ethem-bey/hero.webp | Mosquée Et'hem Bey — Vue extérieure de la mosquée Et'hem Bey, Tirana | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ethem_Bey_mosque,_Tirana_(by_Pudelek).jpg) | Pudelek | CC BY-SA 4.0 |
+| assets/images/ethem-bey/aube.svg | Mosquée Et'hem Bey — Vue à l'aube | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/ethem-bey/nuit.svg | Mosquée Et'hem Bey — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/ethem-bey/medaillon.svg | Mosquée Et'hem Bey — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/ethem-bey/motif.svg | Mosquée Et'hem Bey — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/larabanga/hero.webp | Mosquée de Larabanga — Vue extérieure de la mosquée de Larabanga, Ghana | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Larabanga_Mosque_Ghana.jpg) | Sathyan Velumani | CC BY-SA 3.0 |
+| assets/images/larabanga/aube.svg | Mosquée de Larabanga — Vue à l'aube | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/larabanga/nuit.svg | Mosquée de Larabanga — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/larabanga/medaillon.svg | Mosquée de Larabanga — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/larabanga/motif.svg | Mosquée de Larabanga — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/bobo-dioulasso/hero.webp | Grande Mosquée de Bobo-Dioulasso — Vue de la façade est de la Grande Mosquée de Bobo-Dioulasso | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:BoboDioulasso-GrandMosqueE.JPG) | Semiliki | CC BY-SA 3.0 |
+| assets/images/bobo-dioulasso/aube.svg | Grande Mosquée de Bobo-Dioulasso — Vue à l'aube | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/bobo-dioulasso/nuit.svg | Grande Mosquée de Bobo-Dioulasso — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/bobo-dioulasso/medaillon.svg | Grande Mosquée de Bobo-Dioulasso — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/bobo-dioulasso/motif.svg | Grande Mosquée de Bobo-Dioulasso — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/omar-ali-saifuddien/hero.webp | Mosquée Omar Ali Saifuddien — Vue extérieure de la mosquée Omar Ali Saifuddien et de son lagon, Bandar Seri Begawan | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Omar_Ali_Saifuddien_Mosque,_Bandar_Seri_Begawan,_Brunei.jpg) | Uhooep | CC BY-SA 4.0 |
+| assets/images/omar-ali-saifuddien/aube.svg | Mosquée Omar Ali Saifuddien — Vue à l'aube | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/omar-ali-saifuddien/nuit.svg | Mosquée Omar Ali Saifuddien — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/omar-ali-saifuddien/medaillon.svg | Mosquée Omar Ali Saifuddien — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/omar-ali-saifuddien/motif.svg | Mosquée Omar Ali Saifuddien — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/masjid-jamek/hero.webp | Masjid Jamek — Vue extérieure de la Masjid Jamek, Kuala Lumpur | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Masjid_Jamek.jpg) | Stefan Fussan | CC BY-SA 3.0 |
+| assets/images/masjid-jamek/aube.svg | Masjid Jamek — Vue à l'aube | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/masjid-jamek/nuit.svg | Masjid Jamek — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/masjid-jamek/medaillon.svg | Masjid Jamek — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/masjid-jamek/motif.svg | Masjid Jamek — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/dar-al-islam/hero.webp | Mosquée de Dar al-Islam — Vue extérieure de la mosquée de Dar al-Islam, Abiquiu, Nouveau-Mexique | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Hassan_Fathy_Dar-Ul-Islam_Mosque,_New_Mexico_(12371058).jpg) | Omar Bárcena | CC BY 2.0 |
+| assets/images/dar-al-islam/aube.svg | Mosquée de Dar al-Islam — Vue à l'aube | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/dar-al-islam/nuit.svg | Mosquée de Dar al-Islam — Vue de nuit | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/dar-al-islam/medaillon.svg | Mosquée de Dar al-Islam — Médaillon géométrique | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
+| assets/images/dar-al-islam/motif.svg | Mosquée de Dar al-Islam — Motif étoilé | Création originale pour ce site | Studio Qibla | Libre au sein du projet |
 | assets/images/site/favicon.svg | Favicon étoile à 8 branches | Création originale | Studio Qibla | Libre au sein du projet |
 | assets/images/blog/mosquees-malaisie-architecture-moderne/photo-1.webp | Article « Les mosquées de Malaisie : entre tradition malaise et modernisme spectaculaire » — La Mosquée Nationale de Malaisie (Masjid Negara), Kuala Lumpur | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2016_Kuala_Lumpur,_Meczet_Narodowy_Malezji_(02).jpg) | Marcin Konsek | CC BY-SA 4.0 |
 | assets/images/blog/mosquees-algerie-heritage-ottoman-contemporain/photo-1.webp | Article « Les mosquées d'Algérie : de l'héritage ottoman au plus haut minaret d'Afrique » — Djamaâ El Djazaïr (Grande Mosquée d'Alger) et son minaret de 265 mètres | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Djama%C3%A2_El_Djaza%C3%AFr_%E2%80%93_The_Great_Mosque_of_Algiers_1.jpg) | Rachid Hamatou | CC BY-SA 4.0 |

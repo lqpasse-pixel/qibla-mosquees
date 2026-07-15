@@ -491,6 +491,128 @@ _MOSQUEES_CELEBRES = [
        options=["Nord-sud", "Est-ouest, vers La Mecque", "Aucune orientation particulière", "Vers le centre-ville"], reponse=1),
   dict(q="Sur certaines stèles de la Grande Mosquée de Xi'an, en quelles langues un même texte est-il parfois gravé ?",
        options=["Arabe et chinois classique", "Persan et turc", "Sanskrit et arabe", "Mongol et arabe"], reponse=0),
+
+  # --- Deuxième série de questions par mosquée ---
+
+  # Masjid al-Haram
+  dict(q="Quelle tour, voisine de la Masjid al-Haram, porte l'un des plus grands cadrans d'horloge du monde ?",
+       options=["La tour Al-Faisaliah", "L'Abraj Al Bait", "La tour du Zamzam", "Le minaret royal"], reponse=1),
+  dict(q="Quelle capacité peut atteindre la Masjid al-Haram lors du pèlerinage ?",
+       options=["Environ 200 000 fidèles", "Environ 500 000 fidèles", "Plus de 2 000 000 de fidèles", "Environ 1 000 fidèles"], reponse=2),
+
+  # Masjid an-Nabawi
+  dict(q="Que désigne la « Rawda », espace vénéré au sein de la Masjid an-Nabawi ?",
+       options=["Le jardin du Paradis, entre le mihrab et la tombe du Prophète", "Le minaret principal", "La bibliothèque de la mosquée", "L'entrée réservée aux pèlerins étrangers"], reponse=0),
+  dict(q="Qui a fondé la Masjid an-Nabawi, en 622 ?",
+       options=["Le calife Omar", "Le prophète Muhammad", "Le calife Othman", "Le calife Abou Bakr"], reponse=1),
+
+  # Al-Aqsa
+  dict(q="En quel siècle la mosquée Al-Aqsa actuelle est-elle édifiée sous le calife al-Walid Ier ?",
+       options=["VIIe siècle", "VIIIe siècle", "Xe siècle", "XIIe siècle"], reponse=1),
+  dict(q="D'où proviennent certaines colonnes de marbre de la salle de prière d'Al-Aqsa ?",
+       options=["D'édifices byzantins et romains réemployés", "Elles ont toutes été taillées sur place au VIIIe siècle", "D'un temple perse démonté", "D'une carrière locale unique"], reponse=0),
+
+  # Hassan II
+  dict(q="Sur quelle distance environ le laser du minaret de la mosquée Hassan II balaie-t-il le ciel la nuit, en direction de La Mecque ?",
+       options=["Une dizaine de kilomètres", "Une trentaine de kilomètres", "Une centaine de kilomètres", "Un kilomètre"], reponse=1),
+  dict(q="Quelle capacité totale (intérieur et esplanade) peut accueillir la mosquée Hassan II ?",
+       options=["Environ 10 000 fidèles", "Environ 25 000 fidèles à l'intérieur, 80 000 sur l'esplanade", "Environ 5 000 fidèles au total", "Environ 200 000 fidèles à l'intérieur"], reponse=1),
+
+  # Mosquée bleue
+  dict(q="Quelle légende circule sur l'origine du nombre de minarets de la Mosquée bleue ?",
+       options=["L'architecte aurait confondu « or » et « six » dans les ordres du sultan", "Le sultan en voulait dix mais le budget a été réduit", "Chaque minaret représente un continent", "Aucune légende n'existe à ce sujet"], reponse=0),
+  dict(q="En quelle période la Mosquée bleue est-elle construite ?",
+       options=["1450-1453", "1609-1616", "1700-1710", "1850-1860"], reponse=1),
+
+  # Süleymaniye
+  dict(q="À quoi servait la suie collectée dans une pièce spéciale de la mosquée Süleymaniye ?",
+       options=["À fabriquer l'encre des calligraphes", "À teindre les tapis", "À l'éclairage nocturne", "À aucun usage particulier"], reponse=0),
+  dict(q="Quel âge avait approximativement l'architecte Sinan lorsqu'il acheva la Süleymaniye ?",
+       options=["Une vingtaine d'années", "Une quarantaine d'années", "Une soixantaine d'années", "Une soixante-dizaine d'années"], reponse=3),
+
+  # Cheikh Zayed
+  dict(q="Combien d'artisanes ont noué à la main le tapis de la salle de prière de la mosquée Cheikh Zayed ?",
+       options=["Environ 200", "Environ 1 200", "Environ 5 000", "Environ 50"], reponse=1),
+  dict(q="Que suit le système d'éclairage projetant des nuages sur le marbre blanc de la mosquée Cheikh Zayed ?",
+       options=["Les phases de la lune", "Les heures de prière", "La météo en temps réel", "Le rythme des saisons"], reponse=0),
+
+  # Cordoue
+  dict(q="Quelle phrase Charles Quint aurait-il prononcée après avoir vu la cathédrale construite dans la mosquée de Cordoue ?",
+       options=["« Vous avez détruit ce qui était unique au monde »", "« C'est un chef d'œuvre absolu »", "« Il fallait la démolir entièrement »", "Aucune phrase ne lui est attribuée"], reponse=0),
+  dict(q="Pourquoi de nombreuses colonnes de la mosquée de Cordoue ont-elles des hauteurs inégales ?",
+       options=["Ce sont des réemplois romains et wisigothiques, compensés par des arcs superposés", "Elles ont été endommagées par un séisme", "C'est un choix esthétique voulu dès l'origine", "Elles ont été remplacées à des époques différentes sans souci d'harmonie"], reponse=0),
+
+  # Jama Masjid
+  dict(q="Que signifie le nom officiel de la Jama Masjid, Masjid-i Jahan-Numa ?",
+       options=["« La mosquée qui reflète le monde »", "« La mosquée du roi »", "« La grande mosquée de pierre »", "« La mosquée aux mille colonnes »"], reponse=0),
+  dict(q="Qui a commandé la construction de la Jama Masjid de Delhi ?",
+       options=["Akbar", "Shah Jahan", "Aurangzeb", "Babur"], reponse=1),
+
+  # Badshahi
+  dict(q="À quel usage la mosquée Badshahi a-t-elle été détournée à l'époque sikhe puis britannique ?",
+       options=["Caserne et poudrière", "Marché couvert", "Hôpital militaire", "Prison"], reponse=0),
+  dict(q="Qui a commandé la construction de la mosquée Badshahi de Lahore ?",
+       options=["Shah Jahan", "Aurangzeb", "Akbar", "Jahangir"], reponse=1),
+
+  # Djenné
+  dict(q="Que symbolisent traditionnellement les œufs d'autruche placés au sommet des pinacles de la mosquée de Djenné ?",
+       options=["Fertilité et pureté", "Richesse et pouvoir", "Protection contre la foudre", "Aucun symbole particulier"], reponse=0),
+  dict(q="En quelle année la mosquée de Djenné actuelle, reconstruite, est-elle achevée ?",
+       options=["1850", "1907", "1950", "1980"], reponse=1),
+
+  # Faisal
+  dict(q="Parmi combien de propositions internationales le projet de Vedat Dalokay pour la mosquée Faisal a-t-il été choisi ?",
+       options=["Une dizaine", "43 propositions de 17 pays", "Une centaine de pays", "Aucune autre proposition n'a été soumise"], reponse=1),
+  dict(q="Quel élément se trouve dans l'enceinte de l'esplanade de la mosquée Faisal, à Islamabad ?",
+       options=["Le mausolée du général Zia ul-Haq", "Un musée national", "Une ancienne forteresse moghole", "Un jardin botanique"], reponse=0),
+
+  # Al-Azhar
+  dict(q="D'où viendrait le nom « Al-Azhar » (« la resplendissante ») ?",
+       options=["Une référence à Fatima al-Zahra, fille du Prophète", "Le nom de l'architecte fondateur", "La couleur dorée de sa façade", "Le nom de la dynastie ottomane"], reponse=0),
+  dict(q="Combien de minarets, construits à des époques différentes, compte la mosquée Al-Azhar ?",
+       options=["Un seul", "Deux", "Cinq", "Dix"], reponse=2),
+
+  # Ibn Touloun
+  dict(q="Sur quelle colline la mosquée Ibn Touloun aurait-elle été bâtie, selon la tradition locale ?",
+       options=["La colline de Yashkur, où l'arche de Noé se serait posée", "La colline de Moqattam", "La colline des Pyramides", "Aucune tradition ne s'y attache"], reponse=0),
+  dict(q="La mosquée Ibn Touloun a servi de décor à quel type de production, par le passé ?",
+       options=["Un film de la saga James Bond", "Une série documentaire uniquement", "Aucune production audiovisuelle", "Un jeu vidéo uniquement"], reponse=0),
+
+  # Kairouan
+  dict(q="Qui est le fondateur de la Grande Mosquée de Kairouan, vers 670 ?",
+       options=["Uqba ibn Nafi", "Ahmad ibn Touloun", "Abd al-Rahman Ier", "Jawhar al-Siqilli"], reponse=0),
+  dict(q="D'où proviennent certaines colonnes de marbre et de porphyre de la mosquée de Kairouan ?",
+       options=["De sites romains et byzantins comme Carthage", "Elles ont toutes été taillées sur place", "D'un temple perse démonté", "D'Andalousie"], reponse=0),
+
+  # Koutoubia
+  dict(q="Que représenteraient, selon la légende, les trois boules dorées au sommet du minaret de la Koutoubia ?",
+       options=["L'or fondu des bijoux d'une épouse de sultan, en pénitence", "Les trois piliers de la dynastie almohade", "Un cadeau d'un émir andalou", "Aucune légende ne s'y attache"], reponse=0),
+  dict(q="Comment le muezzin accédait-il traditionnellement au sommet du minaret de la Koutoubia ?",
+       options=["Par un escalier étroit à pied", "Par une rampe intérieure, à cheval", "Par un ascenseur mécanique", "Il n'y montait jamais"], reponse=1),
+
+  # Nasir al-Mulk
+  dict(q="À quel moment de la journée le spectacle des vitraux de la mosquée Nasir al-Mulk est-il le plus visible ?",
+       options=["Tôt le matin", "En milieu d'après-midi", "Au coucher du soleil", "Uniquement la nuit"], reponse=0),
+  dict(q="Qui continue de gérer la fondation qui entretient la mosquée Nasir al-Mulk ?",
+       options=["Les descendants de son commanditaire", "L'État iranien uniquement", "Une organisation internationale", "Personne, elle est à l'abandon"], reponse=0),
+
+  # Cheikh Lotfollah
+  dict(q="Quelle forme évoque le reflet de lumière qui se déploie sous le dôme de la mosquée Cheikh Lotfollah ?",
+       options=["La queue déployée d'un paon", "Une rose des sables", "Un tapis volant", "Une étoile à huit branches"], reponse=0),
+  dict(q="Pourquoi le couloir d'accès à la mosquée Cheikh Lotfollah est-il volontairement coudé et sombre ?",
+       options=["Pour renforcer l'éblouissement en découvrant la coupole", "Pour des raisons défensives", "Pour économiser des matériaux", "Aucune raison particulière"], reponse=0),
+
+  # Putra
+  dict(q="Sur quelle proportion de sa surface la mosquée Putra repose-t-elle au-dessus du lac ?",
+       options=["Un quart", "La moitié", "Les trois quarts", "Elle ne touche pas le lac"], reponse=2),
+  dict(q="Que symbolise le minaret à cinq étages de la mosquée Putra ?",
+       options=["Les cinq piliers de l'islam", "Les cinq prières quotidiennes uniquement", "Les cinq États fondateurs de la Malaisie", "Aucun symbole particulier"], reponse=0),
+
+  # Xi'an
+  dict(q="Dans quel quartier de Xi'an la Grande Mosquée se trouve-t-elle, toujours en activité ?",
+       options=["Le quartier musulman hui", "Le quartier impérial", "Le quartier chrétien", "Le quartier bouddhiste"], reponse=0),
+  dict(q="En quelle langue certaines stèles de la Grande Mosquée de Xi'an portent-elles un texte gravé, en plus de l'arabe ?",
+       options=["Le chinois classique", "Le persan", "Le mongol", "Le tibétain"], reponse=0),
 ]
 
 # ============================================================== THÈME 3 : LES PROPHÈTES DE L'ISLAM
