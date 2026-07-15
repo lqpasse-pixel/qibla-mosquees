@@ -545,7 +545,9 @@ dict(slug="bibi-khanym", nom="Mosquée Bibi-Khanym", ville="Samarcande", pays="O
    "L'arc du portail principal s'est effondré lors d'un séisme en 1897 ; l'édifice n'a été restauré qu'à l'époque soviétique."],
   art=dict(profil="persan", ciel=("#1c2c4a","#3d5a8e","#e8c97a"), minarets=2, domes=1),
   photo=dict(source="Wikimedia Commons", auteur="Ilya Varlamov", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:Bibi_Khanym_Mosque_in_Samarkand_from_north.jpg", description="Vue nord de la mosquée Bibi-Khanym, Samarcande"),
-  photos_extra=[],
+  photos_extra=[
+   dict(index=2, source="Wikimedia Commons", auteur="Игорь Улитин (Igor Ulitin)", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:Dome_of_the_Bibi-Khonim_Mosque.jpg", description="Vue rapprochée du dôme principal de la mosquée Bibi-Khanym"),
+   dict(index=3, source="Wikimedia Commons", auteur="Petar Milošević", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:Bibi-Khanym_Mosque_interior,_Samarkand_(%D0%BC%D0%B5%D1%87%D0%B5%D1%82%D1%8C_%D0%91%D0%B8%D0%B1%D0%B8-%D0%A5%D0%B0%D0%BD%D1%83%D0%BC,_%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BB_%D0%BC%D0%B5%D1%87%D0%B5%D1%82%D0%B8).jpg", description="Intérieur, salle nord de la mosquée Bibi-Khanym")],
 ),
 
 dict(slug="gazi-husrev-beg", nom="Mosquée Gazi Husrev-beg", ville="Sarajevo", pays="Bosnie-Herzégovine",
@@ -562,7 +564,9 @@ dict(slug="gazi-husrev-beg", nom="Mosquée Gazi Husrev-beg", ville="Sarajevo", p
    "Gravement endommagée pendant le siège de Sarajevo (1992–1996), elle a été reconstruite dès 1996 avec une aide notamment saoudienne."],
   art=dict(profil="ottoman", ciel=("#1a2a4a","#3d5a8e","#e8c97a"), minarets=1, domes=1),
   photo=dict(source="Wikimedia Commons", auteur="Adam Harangozó", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:Gazi_Husrev-beg_Mosque_in_Sarajevo.jpg", description="Vue extérieure de la mosquée Gazi Husrev-beg, Sarajevo"),
-  photos_extra=[],
+  photos_extra=[
+   dict(index=2, source="Wikimedia Commons", auteur="Bernard Gagnon", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:Gazi_Husrev-beg%27s_Mosque_01.jpg", description="Vue extérieure de la mosquée depuis la vieille ville de Sarajevo"),
+   dict(index=3, source="Wikimedia Commons", auteur="Bjoertvedt", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Gazi_Husrev-beg%27s_Mosque_IMG_9523_sarajevo.jpg", description="Vue de la mosquée depuis le centre-ville de Sarajevo")],
 ),
 
 dict(slug="ethem-bey", nom="Mosquée Et'hem Bey", ville="Tirana", pays="Albanie",
@@ -579,7 +583,9 @@ dict(slug="ethem-bey", nom="Mosquée Et'hem Bey", ville="Tirana", pays="Albanie"
    "Le 18 janvier 1991, 10 000 personnes y assistèrent à la prière du vendredi malgré l'interdiction gouvernementale encore en vigueur."],
   art=dict(profil="ottoman", ciel=("#1a2a4a","#3d5a8e","#e8c97a"), minarets=1, domes=1),
   photo=dict(source="Wikimedia Commons", auteur="Pudelek", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:Ethem_Bey_mosque,_Tirana_(by_Pudelek).jpg", description="Vue extérieure de la mosquée Et'hem Bey, Tirana"),
-  photos_extra=[],
+  photos_extra=[
+   dict(index=2, source="Wikimedia Commons", auteur="Brams", licence="Domaine public", url="https://commons.wikimedia.org/wiki/File:Et%27hem_Bey_Mosque_Tirana_2.JPG", description="Vue extérieure de la mosquée Et'hem Bey, Tirana"),
+   dict(index=3, source="Wikimedia Commons", auteur="Marmontel", licence="CC BY 2.0", url="https://commons.wikimedia.org/wiki/File:Mosqu%C3%A9e_Et%27hem_Bey.jpg", description="Vue de la mosquée Et'hem Bey, édifiée entre 1794 et 1821")],
 ),
 
 dict(slug="larabanga", nom="Mosquée de Larabanga", ville="Larabanga", pays="Ghana",
@@ -596,7 +602,9 @@ dict(slug="larabanga", nom="Mosquée de Larabanga", ville="Larabanga", pays="Gha
    "Elle abriterait un ancien Coran, considéré par les habitants comme un don du ciel offert en 1650 à l'imam Bramah."],
   art=dict(profil="banco", ciel=("#2a1f14","#8a5a2a","#f2d9a0"), minarets=1, domes=0),
   photo=dict(source="Wikimedia Commons", auteur="Sathyan Velumani", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Larabanga_Mosque_Ghana.jpg", description="Vue extérieure de la mosquée de Larabanga, Ghana"),
-  photos_extra=[],
+  photos_extra=[
+   dict(index=2, source="Wikimedia Commons", auteur="Dieu-Donné Gameli", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Larabanga_Mosque_Ghana_(side_view).jpg", description="Vue de côté de la mosquée de Larabanga, architecture soudano-sahélienne"),
+   dict(index=3, source="Wikimedia Commons", auteur="Danieljatuat", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:A_tower_of_the_Larabanga_mosque.jpg", description="Détail d'une tour de la mosquée de Larabanga")],
 ),
 
 dict(slug="bobo-dioulasso", nom="Grande Mosquée de Bobo-Dioulasso", ville="Bobo-Dioulasso", pays="Burkina Faso",
@@ -613,7 +621,9 @@ dict(slug="bobo-dioulasso", nom="Grande Mosquée de Bobo-Dioulasso", ville="Bobo
    "Ses tours et piliers de bois saillants, utilisés comme échafaudage permanent pour le crépissage annuel, lui donnent une silhouette caractéristique, typique du style sahélien partagé avec Djenné."],
   art=dict(profil="banco", ciel=("#2a1f14","#8a5a2a","#f2d9a0"), minarets=2, domes=0),
   photo=dict(source="Wikimedia Commons", auteur="Semiliki", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:BoboDioulasso-GrandMosqueE.JPG", description="Vue de la façade est de la Grande Mosquée de Bobo-Dioulasso"),
-  photos_extra=[],
+  photos_extra=[
+   dict(index=2, source="Wikimedia Commons", auteur="Semiliki", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:BoboDioulasso-GrandMosqueN.JPG", description="Façade nord de la Grande Mosquée de Bobo-Dioulasso"),
+   dict(index=3, source="Wikimedia Commons", auteur="Lemouss", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Grande_mosqu%C3%A9e_de_Dioulassoba_01,_27_novembre_2016.JPG", description="Vue de la Grande Mosquée de Bobo-Dioulasso en 2016")],
 ),
 
 dict(slug="omar-ali-saifuddien", nom="Mosquée Omar Ali Saifuddien", ville="Bandar Seri Begawan", pays="Brunei",
@@ -630,7 +640,9 @@ dict(slug="omar-ali-saifuddien", nom="Mosquée Omar Ali Saifuddien", ville="Band
    "Elle a accueilli la grande prière d'action de grâce du 31 décembre 1983 marquant l'indépendance du Brunei, et reste le lieu des mariages royaux."],
   art=dict(profil="moghol", ciel=("#1a2a4a","#3d5a8e","#e8c97a"), minarets=1, domes=1),
   photo=dict(source="Wikimedia Commons", auteur="Uhooep", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:Omar_Ali_Saifuddien_Mosque,_Bandar_Seri_Begawan,_Brunei.jpg", description="Vue extérieure de la mosquée Omar Ali Saifuddien et de son lagon, Bandar Seri Begawan"),
-  photos_extra=[],
+  photos_extra=[
+   dict(index=2, source="Wikimedia Commons", auteur="Hullie", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Brunei_-_Masjid_Sultan_Omar_Ali_Saifuddin.jpg", description="Vue de la mosquée Omar Ali Saifuddien"),
+   dict(index=3, source="Wikimedia Commons", auteur="Tys", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Brunei_City_Mosque_-_panoramio.jpg", description="Vue de la mosquée dans la ville de Bandar Seri Begawan")],
 ),
 
 dict(slug="masjid-jamek", nom="Masjid Jamek", ville="Kuala Lumpur", pays="Malaisie",
@@ -647,7 +659,9 @@ dict(slug="masjid-jamek", nom="Masjid Jamek", ville="Kuala Lumpur", pays="Malais
    "Endommagée lors d'un raid aérien japonais le 26 septembre 1941 ; l'un de ses dômes s'est effondré sous de fortes pluies en 1993, depuis réparé."],
   art=dict(profil="moghol", ciel=("#1a2a4a","#3d5a8e","#e8c97a"), minarets=2, domes=3),
   photo=dict(source="Wikimedia Commons", auteur="Stefan Fussan", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Masjid_Jamek.jpg", description="Vue extérieure de la Masjid Jamek, Kuala Lumpur"),
-  photos_extra=[],
+  photos_extra=[
+   dict(index=2, source="Wikimedia Commons", auteur="Cmglee", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Cmglee_KL_Masjid_Jamek.jpg", description="Vue de la Masjid Jamek depuis la rivière Klang"),
+   dict(index=3, source="Wikimedia Commons", auteur="Cmglee", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:Cmglee_KL_Masjid_Jamek_confluence.jpg", description="Vue de la Masjid Jamek à la confluence des rivières Gombak et Klang")],
 ),
 
 dict(slug="dar-al-islam", nom="Mosquée de Dar al-Islam", ville="Abiquiu", pays="États-Unis",
@@ -664,6 +678,8 @@ dict(slug="dar-al-islam", nom="Mosquée de Dar al-Islam", ville="Abiquiu", pays=
    "Le projet initial prévoyait une école, un dortoir, un hammam et un hôtel, avant que la mission n'évolue vers un centre éducatif dès 1990."],
   art=dict(profil="banco", ciel=("#2a2014","#8a6a3a","#f2d9a0"), minarets=1, domes=1),
   photo=dict(source="Wikimedia Commons", auteur="Omar Bárcena", licence="CC BY 2.0", url="https://commons.wikimedia.org/wiki/File:Hassan_Fathy_Dar-Ul-Islam_Mosque,_New_Mexico_(12371058).jpg", description="Vue extérieure de la mosquée de Dar al-Islam, Abiquiu, Nouveau-Mexique"),
-  photos_extra=[],
+  photos_extra=[
+   dict(index=2, source="Wikimedia Commons", auteur="Margo Maier-Moul", licence="CC BY 2.0", url="https://commons.wikimedia.org/wiki/File:Dar_al-Islam_Mosque_(261652895).jpg", description="Vue de la mosquée de Dar al-Islam, Abiquiu"),
+   dict(index=3, source="Wikimedia Commons", auteur="Jared Tarbell", licence="CC BY 2.0", url="https://commons.wikimedia.org/wiki/File:Dar_al_Islam_Mosque_(352480000).jpg", description="Autre vue de la mosquée de Dar al-Islam, Abiquiu")],
 ),
 ]

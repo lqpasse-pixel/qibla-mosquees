@@ -79,14 +79,24 @@
       z = 1; px = py = 0; applique(); vis.classList.add("on"); document.body.style.overflow = "hidden";
     }
     function ferme() { vis.classList.remove("on"); document.body.style.overflow = ""; }
+    function zoomVers(nouveauZ) {
+      // Le décalage de pan (px,py) est appliqué en pixels écran constants, hors de l'échelle :
+      // sans ce recalage proportionnel, dézoomer après un déplacement laisse l'image à un
+      // décalage absolu inchangé, qui paraît alors énorme par rapport à l'image rapetissée
+      // et la fait sortir du cadre (bug : l'image "disparaît" en dézoomant).
+      var ratio = nouveauZ / z;
+      px *= ratio; py *= ratio;
+      z = nouveauZ;
+      applique();
+    }
     $$(".galerie button").forEach(function (b) {
       b.addEventListener("click", function () { var im = $("img", b); ouvre(im.dataset.grand || im.src, im.alt); });
     });
     $("#vis-fermer").addEventListener("click", ferme);
-    $("#vis-plus").addEventListener("click", function () { z = Math.min(z * 1.35, 8); applique(); });
-    $("#vis-moins").addEventListener("click", function () { z = Math.max(z / 1.35, 0.4); applique(); });
+    $("#vis-plus").addEventListener("click", function () { zoomVers(Math.min(z * 1.35, 8)); });
+    $("#vis-moins").addEventListener("click", function () { zoomVers(Math.max(z / 1.35, 0.4)); });
     $("#vis-raz").addEventListener("click", function () { z = 1; px = py = 0; applique(); });
-    scene.addEventListener("wheel", function (e) { e.preventDefault(); z = Math.min(8, Math.max(0.4, z * (e.deltaY < 0 ? 1.12 : 0.9))); applique(); }, { passive: false });
+    scene.addEventListener("wheel", function (e) { e.preventDefault(); zoomVers(Math.min(8, Math.max(0.4, z * (e.deltaY < 0 ? 1.12 : 0.9)))); }, { passive: false });
     scene.addEventListener("pointerdown", function (e) { drag = { x: e.clientX - px, y: e.clientY - py }; scene.setPointerCapture(e.pointerId); });
     scene.addEventListener("pointermove", function (e) { if (drag) { px = e.clientX - drag.x; py = e.clientY - drag.y; applique(); } });
     scene.addEventListener("pointerup", function () { drag = null; });
