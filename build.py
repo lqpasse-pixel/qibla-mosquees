@@ -284,11 +284,29 @@ def galerie_article(a, rac):
         for p in photos)
     return f'<div class="quiz-choix" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:1.6rem 0">{imgs}</div>'
 
+def articles_similaires(a, n=3):
+    """Articles les plus proches par nombre de mosquées citees en commun (maillage interne blog<->blog)."""
+    mes_mosquees = set(a.get("mosquees_liees", []))
+    scores = []
+    for autre in ARTICLES:
+        if autre["slug"] == a["slug"]:
+            continue
+        overlap = len(mes_mosquees & set(autre.get("mosquees_liees", [])))
+        if overlap > 0:
+            scores.append((overlap, autre))
+    scores.sort(key=lambda t: t[0], reverse=True)
+    return [autre for _, autre in scores[:n]]
+
 def page_article(a):
     rac = "../../"
     def rlien(html): return html.replace("{RAC}", rac)
     corps_html = "".join(f"<h2>{titre}</h2><p>{rlien(texte)}</p>" for titre, texte in a["corps"])
     liees = [m for m in MOSQUEES if m["slug"] in a["mosquees_liees"]]
+    autres_articles = articles_similaires(a)
+    bloc_articles_lies = (
+        sep("Pour aller plus loin", "Articles similaires")
+        + f'<div class="grille">{"".join(carte_article(art, rac) for art in autres_articles)}</div>'
+    ) if autres_articles else ""
     corps = f"""
 <main class="wrap">
   <div style="padding-top:2.4rem;max-width:760px">
@@ -304,6 +322,7 @@ def page_article(a):
   {slot_pub()}
   {sep("À découvrir", "Mosquées citées dans cet article")}
   <div class="grille">{''.join(carte(m, rac) for m in liees)}</div>
+  {bloc_articles_lies}
   <div style="max-width:760px;margin:2rem auto 0">{disclaimer_religieux(rac)}</div>
 </main>"""
     jsonld = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": a["titre"],
