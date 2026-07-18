@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Questions du quiz Qibla (français) — 3 thèmes, 100 questions chacun.
+"""Questions du quiz Qibla (français), 3 thèmes, 100 questions chacun.
 Contenu cadré sur la tradition sunnite (majoritaire) : les points de doctrine propres au chiisme
 (imamat, statut particulier de certains compagnons, etc.) ne sont pas abordés. Contenu factuel,
-respectueux, à visée culturelle et pédagogique — aucune information n'est présentée comme un jugement
+respectueux, à visée culturelle et pédagogique, aucune information n'est présentée comme un jugement
 de valeur entre traditions musulmanes."""
 
 # ============================================================== THÈME 1 : ISLAM ET SON PROPHÈTE

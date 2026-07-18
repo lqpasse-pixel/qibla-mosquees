@@ -62,7 +62,7 @@ dict(slug="al-aqsa", nom="Mosquée Al-Aqsa", ville="Jérusalem", pays="Palestine
   court="Troisième lieu saint de l'islam, au cœur de l'esplanade des Mosquées de la vieille ville de Jérusalem.",
   histoire=[
    "Élevée au début du VIIIe siècle par le calife omeyyade al-Walid Ier sur l'esplanade du Haram al-Sharif, la mosquée Al-Aqsa est associée dans le Coran au voyage nocturne du Prophète. Détruite plusieurs fois par des séismes, elle fut reconstruite par les Abbassides puis les Fatimides, qui lui donnèrent l'essentiel de sa silhouette actuelle à sept nefs et dôme argenté.",
-   "Elle forme, avec le Dôme du Rocher à la coupole dorée — souvent confondu avec elle —, un ensemble monumental unique où se superposent quatorze siècles d'histoire religieuse et politique. Ses mosaïques, ses colonnes de marbre et son plafond peint offert au XXe siècle en font un condensé d'art islamique."],
+   "Elle forme, avec le Dôme du Rocher à la coupole dorée (souvent confondu avec elle), un ensemble monumental unique où se superposent quatorze siècles d'histoire religieuse et politique. Ses mosaïques, ses colonnes de marbre et son plafond peint offert au XXe siècle en font un condensé d'art islamique."],
   anecdotes=[
    "« Al-Aqsa » signifie « la plus éloignée » : la mosquée la plus lointaine mentionnée dans le récit du voyage nocturne.",
    "Le Dôme du Rocher voisin, à la coupole d'or, n'est pas une mosquée mais un sanctuaire commémoratif.",
@@ -145,7 +145,7 @@ dict(slug="suleymaniye", nom="Mosquée Süleymaniye", ville="Istanbul", pays="Tu
   anecdotes=[
    "Une pièce spéciale collectait la suie des lampes à huile : elle servait à fabriquer l'encre des calligraphes.",
    "Des œufs d'autruche étaient suspendus aux lustres, censés éloigner les araignées et donc les toiles.",
-   "Sinan, alors septuagénaire, considérait la Süleymaniye comme son œuvre de « compagnon » — la Selimiye d'Edirne étant son chef-d'œuvre."],
+   "Sinan, alors septuagénaire, considérait la Süleymaniye comme son œuvre de « compagnon », la Selimiye d'Edirne étant son chef-d'œuvre."],
   art=dict(profil="ottoman", ciel=("#2b2340","#6a5a8a","#eec98f"), minarets=4, domes=4, dome_couleur="#6d7f95"),
   photo=dict(source="Wikimedia Commons", auteur="İhsan Deniz Kılıçoğlu (NeoRetro)", licence="CC BY-SA 3.0", url="https://commons.wikimedia.org/wiki/File:S%C3%BCleymaniye_Mosque_exterior_view.JPG", description="Vue extérieure de la mosquée Süleymaniye à Istanbul, façade et dôme principal"),
   visite=dict(url="https://artsandculture.google.com/asset/s%C3%BCleymaniye-mosque-in-%C4%B0stanbul/ewGAx8yfefvesA", note="Page Google Arts & Culture consacrée à la mosquée Süleymaniye", mode="lien"),
@@ -275,7 +275,7 @@ dict(slug="djenne", nom="Grande Mosquée de Djenné", ville="Djenné", pays="Mal
   lat=13.9053, lon=-4.5556,
   court="Le plus grand édifice en terre crue du monde, recrépi chaque année par toute la ville en fête.",
   histoire=[
-   "Héritière d'une mosquée du XIIIe siècle élevée par le roi Koi Konboro, la Grande Mosquée actuelle fut reconstruite en 1907 par la corporation des maçons de Djenné. Entièrement bâtie en banco — terre crue mêlée de paille —, elle est le plus grand édifice en terre du monde et l'icône du style soudano-sahélien.",
+   "Héritière d'une mosquée du XIIIe siècle élevée par le roi Koi Konboro, la Grande Mosquée actuelle fut reconstruite en 1907 par la corporation des maçons de Djenné. Entièrement bâtie en banco, terre crue mêlée de paille, elle est le plus grand édifice en terre du monde et l'icône du style soudano-sahélien.",
    "Ses murs hérissés de torons, faisceaux de palmier servant d'échafaudage permanent, ses trois tours du mur de qibla et ses pinacles couronnés d'œufs d'autruche composent une silhouette unique, inscrite avec la vieille ville au patrimoine mondial de l'UNESCO."],
   anecdotes=[
    "Chaque année, la « crépissage » : toute la ville, dans une ambiance de fête et de compétition, ré-enduit la mosquée de banco frais avant la saison des pluies.",
@@ -380,12 +380,12 @@ dict(slug="kairouan", nom="Grande Mosquée de Kairouan", ville="Kairouan", pays=
   lat=35.6817, lon=10.1039,
   court="Le plus ancien grand sanctuaire de l'Occident musulman, forteresse de foi aux 400 colonnes antiques.",
   histoire=[
-   "Fondée en 670 par le conquérant Uqba ibn Nafi et reconstruite au IXe siècle par les Aghlabides, la Grande Mosquée de Kairouan est le sanctuaire fondateur de l'Occident musulman. Son allure de forteresse — murs épais, contreforts massifs, minaret carré à trois étages — protège une salle de prière hypostyle de plus de 400 colonnes antiques.",
+   "Fondée en 670 par le conquérant Uqba ibn Nafi et reconstruite au IXe siècle par les Aghlabides, la Grande Mosquée de Kairouan est le sanctuaire fondateur de l'Occident musulman. Son allure de forteresse (murs épais, contreforts massifs, minaret carré à trois étages) protège une salle de prière hypostyle de plus de 400 colonnes antiques.",
    "Modèle de presque toutes les mosquées du Maghreb, elle conserve un mihrab tapissé de carreaux à reflets métalliques venus de Bagdad et un minbar de teck du IXe siècle, considéré comme le plus ancien chaire de prêche encore en place au monde."],
   anecdotes=[
    "Son minaret, commencé vers 730, est considéré comme le plus ancien minaret encore debout.",
    "Les colonnes de marbre et de porphyre proviennent de sites romains et byzantins comme Carthage.",
-   "Un dicton local affirmait que sept pèlerinages à Kairouan équivalaient au pèlerinage à La Mecque — une tradition populaire, non canonique."],
+   "Un dicton local affirmait que sept pèlerinages à Kairouan équivalaient au pèlerinage à La Mecque, une tradition populaire, non canonique."],
   art=dict(profil="forteresse", ciel=("#3f2b1b","#8a6a3f","#f0dca8"), minarets=1, domes=2, dome_couleur="#e8e0cf"),
   photo=dict(source="Wikimedia Commons", auteur="MAREK SZAREJKO from Clonmel, Ireland - Poland", licence="CC BY-SA 2.0", url="https://commons.wikimedia.org/wiki/File:Great_Mosque_of_Kairouan_Panorama_-_Grande_Mosqu%C3%A9e_de_Kairouan_Panorama.jpg", description="Vue panoramique de la cour et du minaret de la Grande Mosquée de Kairouan"),
   photos_extra=[
@@ -406,7 +406,7 @@ dict(slug="koutoubia", nom="Mosquée Koutoubia", ville="Marrakech", pays="Maroc"
   lat=31.6238, lon=-7.9938,
   court="Le minaret-phare de Marrakech, modèle de la Giralda de Séville et de la tour Hassan de Rabat.",
   histoire=[
-   "Élevée par les Almohades au XIIe siècle, la Koutoubia — « mosquée des libraires », du nom du souk de manuscrits voisin — domine Marrakech de son minaret de 77 mètres, achevé sous Yacoub el-Mansour vers 1195. Sa tour de grès rose, ornée d'arcs entrelacés et d'une bande de faïence turquoise, servit de modèle à la Giralda de Séville et à la tour Hassan de Rabat.",
+   "Élevée par les Almohades au XIIe siècle, la Koutoubia, « mosquée des libraires » du nom du souk de manuscrits voisin, domine Marrakech de son minaret de 77 mètres, achevé sous Yacoub el-Mansour vers 1195. Sa tour de grès rose, ornée d'arcs entrelacés et d'une bande de faïence turquoise, servit de modèle à la Giralda de Séville et à la tour Hassan de Rabat.",
    "Une première mosquée, mal orientée vers La Mecque, fut détruite et reconstruite juste à côté : on distingue encore les traces de la première salle de prière. Aucun édifice de la médina n'a le droit de dépasser son minaret."],
   anecdotes=[
    "Les trois boules dorées de son sommet seraient, selon la légende, en or fondu des bijoux d'une épouse de sultan, en pénitence.",
@@ -432,7 +432,7 @@ dict(slug="nasir-al-mulk", nom="Mosquée Nasir al-Mulk", ville="Chiraz", pays="I
   lat=29.6083, lon=52.5486,
   court="La « mosquée rose » de Chiraz, dont les vitraux transforment chaque matin la prière en kaléidoscope.",
   histoire=[
-   "Construite entre 1876 et 1888 sous la dynastie qajare pour le notable Mirza Hasan Ali Nasir al-Mulk, cette mosquée de Chiraz est surnommée la « mosquée rose » pour ses carreaux où dominent roses, rouges et jaunes — palette rare dans l'art iranien, traditionnellement bleu.",
+   "Construite entre 1876 et 1888 sous la dynastie qajare pour le notable Mirza Hasan Ali Nasir al-Mulk, cette mosquée de Chiraz est surnommée la « mosquée rose » pour ses carreaux où dominent roses, rouges et jaunes, palette rare dans l'art iranien, traditionnellement bleu.",
    "Sa merveille tient à sa salle d'hiver : chaque matin, le soleil traverse ses hautes fenêtres de vitraux et projette sur les tapis et les colonnes torsadées un kaléidoscope mouvant de couleurs, faisant de la lumière elle-même le principal matériau de l'architecture."],
   anecdotes=[
    "Le spectacle des vitraux ne dure que quelques heures : il faut venir tôt le matin, idéalement en hiver.",
@@ -489,7 +489,7 @@ dict(slug="putra", nom="Mosquée Putra", ville="Putrajaya", pays="Malaisie",
   anecdotes=[
    "Les trois quarts de l'édifice reposent sur le lac : la mosquée est littéralement construite au-dessus de l'eau.",
    "Son minaret à cinq étages symbolise les cinq piliers de l'islam.",
-   "Au crépuscule, le granit rose et le reflet du lac lui donnent des allures de mirage — le moment préféré des photographes."],
+   "Au crépuscule, le granit rose et le reflet du lac lui donnent des allures de mirage, le moment préféré des photographes."],
   art=dict(profil="classique", ciel=("#402a4a","#8a527a","#f2c9a0"), minarets=1, domes=3, dome_couleur="#cf7f96", mer=True),
   photo=dict(source="Wikimedia Commons", auteur="Ariff Shah Sopian", licence="CC BY-SA 4.0", url="https://commons.wikimedia.org/wiki/File:Putra_Mosque,_Putrajaya.jpg", description="Vue de la mosquée Putra rose au bord du lac de Putrajaya"),
   visite=dict(url="https://discover.matterport.com/space/aZodyfhehZE", note="Visite virtuelle 3D Matterport officielle intitulée \"Putra Mosque, Putrajaya, Malaysia - Virtual Tour\"", mode="lien"),

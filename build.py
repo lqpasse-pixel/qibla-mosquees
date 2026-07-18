@@ -9,7 +9,7 @@ from svg_art import scene, medaillon, motif, _girih
 ICI = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(ICI, "dist")
 SITE_URL = "https://qiblamosk.com"
-NOM_SITE = f"Qibla — Les 20 plus belles mosquées du monde"
+NOM_SITE = f"Qibla, les 20 plus belles mosquées du monde"
 GA4_ID = "G-BM1KY1CX7H"
 
 ETOILE = ('<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">'
@@ -92,7 +92,7 @@ gtag('config', '{GA4_ID}', {{ anonymize_ip: true }});
     <div>
       <h4>Qibla</h4>
       <p>Un voyage éditorial et visuel à travers les vingt plus belles mosquées du monde : histoire, anecdotes, visites immersives et discussions.</p>
-      <p class="note">Toutes les illustrations sont des œuvres originales hébergées localement — aucune dépendance externe.</p>
+      <p class="note">Toutes les illustrations sont des œuvres originales hébergées localement, aucune dépendance externe.</p>
     </div>
     <div>
       <h4>Explorer</h4>
@@ -118,7 +118,7 @@ gtag('config', '{GA4_ID}', {{ anonymize_ip: true }});
       <a href="{rac}cgu.html">Conditions générales d'utilisation</a>
     </div>
   </div>
-  <div class="footer-bas">© 2026 Qibla — Textes et illustrations originaux. Reproduction sur autorisation.</div>
+  <div class="footer-bas">© 2026 Qibla, textes et illustrations originaux. Reproduction sur autorisation.</div>
 </footer>
 <div class="cookies" id="cookies" role="dialog" aria-label="Gestion des cookies">
   <span>🍪 Nous n'utilisons que des cookies de mesure d'audience anonymisée. Vous pouvez les refuser sans limiter votre visite.</span>
@@ -228,17 +228,17 @@ def page_liste():
               "name": "Les 20 plus belles mosquées du monde",
               "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": m["nom"],
                                    "url": f"{SITE_URL}/mosquees/{m['slug']}/"} for i, m in enumerate(MOSQUEES)]}
-    return page("Les 20 plus belles mosquées du monde — liste complète et filtres | Qibla",
+    return page("Les 20 plus belles mosquées du monde, liste complète et filtres | Qibla",
                 "Liste des 20 plus belles mosquées du monde avec filtres par pays, style architectural et époque : Istanbul, Casablanca, Abou Dabi, Djenné, Ispahan…",
                 corps, canonique="mosquees.html", jsonld=jsonld, actif="liste")
 
 def disclaimer_religieux(rac=""):
     return f"""<div class="disclaimer">
-  <p><strong>À propos du contenu de cette page</strong> — Ce site propose un contenu éditorial et culturel
+  <p><strong>À propos du contenu de cette page</strong> : ce site propose un contenu éditorial et culturel
   rédigé avec soin et le souci du respect des traditions religieuses concernées ; il ne constitue pas un
   avis théologique ou une source d'autorité religieuse. Malgré nos vérifications, des erreurs, imprécisions
   ou approximations peuvent subsister. Si vous en repérez une, merci de nous la signaler via la page
-  <a href="{rac}contact.html">Contact</a> ou par e-mail à <a href="mailto:qibla.mosk@gmail.com">qibla.mosk@gmail.com</a> —
+  <a href="{rac}contact.html">Contact</a> ou par e-mail à <a href="mailto:qibla.mosk@gmail.com">qibla.mosk@gmail.com</a>,
   nous la corrigerons avec gratitude.</p>
 </div>"""
 
@@ -263,10 +263,10 @@ def page_blog_liste():
   <div class="grille">{''.join(carte_article(a) for a in ARTICLES)}</div>
   {slot_pub()}
 </main>"""
-    jsonld = {"@context": "https://schema.org", "@type": "Blog", "name": "Blog Qibla — Architecture islamique",
+    jsonld = {"@context": "https://schema.org", "@type": "Blog", "name": "Blog Qibla, architecture islamique",
               "blogPost": [{"@type": "BlogPosting", "headline": a["titre"], "datePublished": a["date"],
                             "url": f"{SITE_URL}/blog/{a['slug']}/"} for a in ARTICLES]}
-    return page("Blog — Histoire et architecture islamique | Qibla",
+    return page("Blog, histoire et architecture islamique | Qibla",
                 "Articles de fond sur l'histoire et l'architecture islamique : origines de la mosquée, coupoles et minarets, muqarnas et motifs géométriques.",
                 corps, canonique="blog.html", jsonld=jsonld, actif="blog")
 
@@ -348,7 +348,7 @@ def page_quiz():
   <div style="padding-top:2.4rem">
     <p class="eyebrow">Tester ses connaissances</p>
     <h1>Quiz Qibla</h1>
-    <p class="muted" style="max-width:680px">Choisissez un thème (100 questions chacun), le nombre de questions et le nombre de joueurs — seul ou à plusieurs, à tour de rôle sur le même écran.</p>
+    <p class="muted" style="max-width:680px">Choisissez un thème (100 questions chacun), le nombre de questions et le nombre de joueurs, seul ou à plusieurs, à tour de rôle sur le même écran.</p>
   </div>
   <div class="grille" id="quiz-themes">{''.join(carte_theme_quiz(c, t) for c, t in QUIZ.items())}</div>
 
@@ -405,7 +405,7 @@ def page_quiz():
 </main>"""
     jsonld = {"@context": "https://schema.org", "@type": "Quiz", "name": "Quiz Qibla",
               "about": "Islam, prophète Muhammad, prophètes de l'islam et mosquées célèbres"}
-    return page("Quiz — Islam, prophètes et mosquées célèbres | Qibla",
+    return page("Quiz, Islam, prophètes et mosquées célèbres | Qibla",
                 "Trois quiz de 100 questions en français, seul ou à plusieurs : l'islam et son prophète, les prophètes de l'islam, et les mosquées les plus célèbres du monde.",
                 corps, canonique="quiz.html", jsonld=jsonld, actif="quiz")
 
@@ -444,7 +444,7 @@ def page_qibla():
   {slot_pub()}
   <div style="max-width:760px;margin:2rem auto 0">{disclaimer_religieux()}</div>
 </main>"""
-    return page("Boussole Qibla — direction de La Mecque et mosquées à proximité | Qibla",
+    return page("Boussole Qibla, direction de La Mecque et mosquées à proximité | Qibla",
                 "Calculez la direction de La Mecque (qibla) depuis votre position, et trouvez les mosquées les plus proches de vous grâce à OpenStreetMap.",
                 corps, canonique="boussole.html", actif="boussole")
 
@@ -489,7 +489,7 @@ def page_detail(m):
         gal.insert(2, ("nuit", "svg", "Vue de nuit"))
     galerie = "".join(
         f'<button type="button"><img src="{rac}assets/images/{m["slug"]}/{f}.{ext}" loading="lazy" '
-        f'alt="{m["nom"]} — {leg}" data-grand="{rac}assets/images/{m["slug"]}/{f}.{ext}" width="1200" height="700"></button>'
+        f'alt="{m["nom"]}, {leg}" data-grand="{rac}assets/images/{m["slug"]}/{f}.{ext}" width="1200" height="700"></button>'
         for f, ext, leg in gal)
     hist = "".join(f"<p>{p}</p>" for p in m["histoire"])
     anec = "".join(f"<li>{a}</li>" for a in m["anecdotes"])
@@ -540,7 +540,7 @@ def page_detail(m):
   {sep("Visite", "Visite virtuelle 360°")}
   <div class="visite reveal" id="visite-360">
     <div class="cadre360">{visite_360(m, osm)}</div>
-    <div class="barre">🧭 Composant réutilisable <code>VisiteVirtuelle3D</code> — accepte tout lecteur 360° par iframe (Street View intérieur, Kuula, Matterport…).</div>
+    <div class="barre">🧭 Composant réutilisable <code>VisiteVirtuelle3D</code>, accepte tout lecteur 360° par iframe (Street View intérieur, Kuula, Matterport…).</div>
   </div>
 
   {sep("Localisation", "S'y rendre")}
@@ -562,7 +562,7 @@ def page_detail(m):
         <a href="{booking}" rel="noopener sponsored" target="_blank"><span class="tag">Partenaire · hébergement</span><b>Hôtels à {m['ville']} →</b></a>
         <a href="#" rel="noopener sponsored"><span class="tag">Partenaire · vols (lien affilié à configurer)</span><b>Vols vers {m['pays'].split('/')[0].strip()} →</b></a>
       </div>
-      <p class="note">Blocs compatibles affiliation (Booking.com, Expedia…) — identifiants à renseigner, voir README.</p>
+      <p class="note">Blocs compatibles affiliation (Booking.com, Expedia…), identifiants à renseigner, voir README.</p>
     </div>
   </div>
 
@@ -621,11 +621,11 @@ def page_simple(titre_meta, desc, h1, eyebrow, html, canonique, actif=""):
     return page(titre_meta, desc, corps, canonique=canonique, actif=actif)
 
 APROPOS = """
-<p><strong>Qibla</strong> est un guide indépendant consacré aux __NB_MOSQUEES__ mosquées les plus remarquables du monde. Notre parti pris : raconter chaque édifice comme un récit — son commanditaire, ses bâtisseurs, ses légendes — plutôt qu'aligner des fiches techniques.</p>
+<p><strong>Qibla</strong> est un guide indépendant consacré aux __NB_MOSQUEES__ mosquées les plus remarquables du monde. Notre parti pris : raconter chaque édifice comme un récit (son commanditaire, ses bâtisseurs, ses légendes) plutôt qu'aligner des fiches techniques.</p>
 <h2>Notre démarche</h2>
 <p>Les textes sont rédigés à partir des connaissances historiques et architecturales publiées ; les anecdotes signalées comme légendes sont présentées comme telles. Le site est conçu pour être rapide, sobre et accessible : aucune ressource visuelle n'est chargée depuis un site tiers, tout est hébergé localement.</p>
 <h2>Les illustrations</h2>
-<p>Chaque mosquée est représentée par une série d'illustrations vectorielles originales, créées spécialement pour ce site en respectant la silhouette réelle du monument (nombre de minarets, forme des coupoles, matériaux emblématiques). Elles peuvent être remplacées à tout moment par des photographies — la page <a href="credits-photos.html">Crédits images</a> et le fichier <code>credits-photos.md</code> tracent la licence de chaque visuel.</p>
+<p>Chaque mosquée est représentée par une série d'illustrations vectorielles originales, créées spécialement pour ce site en respectant la silhouette réelle du monument (nombre de minarets, forme des coupoles, matériaux emblématiques). Elles peuvent être remplacées à tout moment par des photographies. La page <a href="credits-photos.html">Crédits images</a> et le fichier <code>credits-photos.md</code> tracent la licence de chaque visuel.</p>
 <h2>Respect des lieux</h2>
 <p>Ces édifices sont avant tout des lieux de culte vivants. Nos pages « infos pratiques » rappellent les coordonnées et le contexte, mais renseignez-vous toujours sur les conditions de visite (horaires de prière, tenue, accès des non-musulmans) avant de vous déplacer.</p>"""
 
@@ -655,9 +655,9 @@ CREDITS_HTML = """
 
 MENTIONS = """
 <h2>Éditeur du site</h2>
-<p>[Nom / raison sociale] — [adresse] — [e-mail]. Directeur de la publication : [nom]. <em>(Champs à compléter avant mise en ligne.)</em></p>
+<p>[Nom / raison sociale], [adresse], [e-mail]. Directeur de la publication : [nom]. <em>(Champs à compléter avant mise en ligne.)</em></p>
 <h2>Hébergement</h2>
-<p>[Hébergeur, adresse, téléphone] — par exemple Vercel Inc. ou Netlify Inc. selon votre déploiement.</p>
+<p>[Hébergeur, adresse, téléphone], par exemple Vercel Inc. ou Netlify Inc. selon votre déploiement.</p>
 <h2>Propriété intellectuelle</h2>
 <p>Les textes et illustrations de ce site sont des créations originales. Toute reproduction, intégrale ou partielle, est soumise à autorisation préalable. Les noms des monuments appartiennent au domaine public.</p>
 <h2>Responsabilité</h2>
@@ -687,29 +687,29 @@ CGU = """
 
 # ---------------------------------------------------------------- fichiers annexes
 def credits_md():
-    lignes = ["# Crédits images — Qibla", "",
+    lignes = ["# Crédits images, Qibla", "",
               "Toutes les images sont hébergées localement dans `/assets/images/`. Aucune URL externe n'est utilisée au runtime.", "",
               "| Fichier | Description | Source | Auteur | Licence |",
               "|---|---|---|---|---|"]
     for m in MOSQUEES:
         p = m.get("photo")
         if p:
-            lignes.append(f"| assets/images/{m['slug']}/hero.webp | {m['nom']} — {p['description']} | "
+            lignes.append(f"| assets/images/{m['slug']}/hero.webp | {m['nom']}, {p['description']} | "
                           f"[{p['source']}]({p['url']}) | {p['auteur']} | {p['licence']} |")
         else:
-            lignes.append(f"| assets/images/{m['slug']}/hero.svg | {m['nom']} — Vue au crépuscule | Création originale pour ce site | Studio Qibla | Libre au sein du projet |")
+            lignes.append(f"| assets/images/{m['slug']}/hero.svg | {m['nom']}, vue au crépuscule | Création originale pour ce site | Studio Qibla | Libre au sein du projet |")
         for i, ep in enumerate(m.get("photos_extra", []), start=2):
-            lignes.append(f"| assets/images/{m['slug']}/photo-{i}.webp | {m['nom']} — {ep['description']} | "
+            lignes.append(f"| assets/images/{m['slug']}/photo-{i}.webp | {m['nom']}, {ep['description']} | "
                           f"[{ep['source']}]({ep['url']}) | {ep['auteur']} | {ep['licence']} |")
         for f, d in [("aube.svg", "Vue à l'aube"), ("nuit.svg", "Vue de nuit"),
                      ("medaillon.svg", "Médaillon géométrique"), ("motif.svg", "Motif étoilé")]:
-            lignes.append(f"| assets/images/{m['slug']}/{f} | {m['nom']} — {d} | Création originale pour ce site | Studio Qibla | Libre au sein du projet |")
+            lignes.append(f"| assets/images/{m['slug']}/{f} | {m['nom']}, {d} | Création originale pour ce site | Studio Qibla | Libre au sein du projet |")
     lignes.append("| assets/images/site/favicon.svg | Favicon étoile à 8 branches | Création originale | Studio Qibla | Libre au sein du projet |")
     for a in ARTICLES:
         for p in a.get("photos", []):
             if not p["chemin"].startswith("blog/"):
                 continue
-            lignes.append(f"| assets/images/{p['chemin']} | Article « {a['titre']} » — {p['description']} | "
+            lignes.append(f"| assets/images/{p['chemin']} | Article « {a['titre']} », {p['description']} | "
                           f"[{p['source']}]({p['url']}) | {p['auteur']} | {p['licence']} |")
     lignes += ["",
                "## Ajouter une photographie",
@@ -720,7 +720,7 @@ def credits_md():
                "5. Pour les images générées par IA : les placer dans `assets/images/generated/` et l'indiquer dans la colonne Source."]
     return "\n".join(lignes)
 
-README = """# Qibla — Les 20 plus belles mosquées du monde
+README = """# Qibla, les 20 plus belles mosquées du monde
 
 Site statique complet, en français, sans aucune dépendance externe au runtime (100 % autonome, fonctionne hors ligne).
 
@@ -743,7 +743,7 @@ a pas de déploiement continu automatique : après `python3 build.py`, uploadez 
 Tout le contenu éditorial vit dans **`data_mosquees.py`** (une entrée par mosquée : histoire, anecdotes, infos pratiques, coordonnées). Relancez `python3 build.py` : les 20 pages, le sitemap et les crédits sont régénérés.
 
 ## Remplacer les illustrations par des photos
-1. Téléchargez les fichiers dans `assets/images/<slug>/` (jamais de hotlink) — nommage SEO-friendly, format WebP privilégié.
+1. Téléchargez les fichiers dans `assets/images/<slug>/` (jamais de hotlink), nommage SEO-friendly, format WebP privilégié.
 2. Mettez à jour les `src` (ou remplacez simplement `hero.svg` par `hero.webp` et adaptez le template dans `build.py`).
 3. Documentez chaque image dans `credits-photos.md` (source, auteur, licence).
 4. Vérification finale : `grep -rE "https?://[^\\"]*(unsplash|pexels|wikimedia|pixabay)" dist/` ne doit rien retourner.
@@ -753,20 +753,20 @@ Sur chaque page détail, le bloc `#visite-360` accepte n'importe quel lecteur pa
 ```html
 <iframe src="URL_STREET_VIEW_OU_KUULA_OU_MATTERPORT" loading="lazy" allowfullscreen></iframe>
 ```
-Pour Google Street View intérieur : Google Maps → le lieu → Partager → « Intégrer une carte », copier l'iframe. À défaut, la galerie immersive plein écran (zoom/pan) sert d'alternative — déjà active.
+Pour Google Street View intérieur : Google Maps → le lieu → Partager → « Intégrer une carte », copier l'iframe. À défaut, la galerie immersive plein écran (zoom/pan) sert d'alternative, déjà active.
 
 ## Commentaires
 Giscus est actif : les commentaires s'appuient sur les Discussions du dépôt GitHub
 [lqpasse-pixel/qibla-mosquees](https://github.com/lqpasse-pixel/qibla-mosquees) (catégorie « Announcements »,
-`data-mapping="pathname"` — une discussion par page). Le script est dans le bloc `#zone-commentaires` du
+`data-mapping="pathname"`, une discussion par page). Le script est dans le bloc `#zone-commentaires` du
 template `page_detail` de `build.py`. Pour le pointer vers un autre dépôt, remplacez `data-repo`, `data-repo-id`,
 `data-category-id` (valeurs disponibles sur https://giscus.app une fois l'app GitHub installée sur le dépôt).
 
 ## Monétisation
 - **AdSense** : remplacez les blocs `.pub` par vos balises `<ins class="adsbygoogle">` (emplacements prévus : bannière, sidebar 300×250, in-content 336×280).
-- **Affiliation** : blocs « Voyager vers … » sur chaque page détail — ajoutez vos identifiants Booking.com / Expedia dans les liens.
-- **Newsletter** : le formulaire `#form-nl` envoie en AJAX vers `newsletter.php` (script PHP `mail()`, compatible o2switch) ; les inscriptions arrivent par e-mail à l'adresse définie dans `newsletter.php`. La section est actuellement masquée (`hidden` sur la `<section class="wrap nl">` dans `build.py`) tant qu'aucune newsletter n'est réellement envoyée aux abonnés — retirez l'attribut `hidden` pour la republier.
-- **Analytics** : le point d'entrée post-consentement se trouve dans `site.js`, fonction `choixCookies` — n'y chargez GA4/Plausible qu'après accord (RGPD).
+- **Affiliation** : blocs « Voyager vers … » sur chaque page détail, ajoutez vos identifiants Booking.com / Expedia dans les liens.
+- **Newsletter** : le formulaire `#form-nl` envoie en AJAX vers `newsletter.php` (script PHP `mail()`, compatible o2switch) ; les inscriptions arrivent par e-mail à l'adresse définie dans `newsletter.php`. La section est actuellement masquée (`hidden` sur la `<section class="wrap nl">` dans `build.py`) tant qu'aucune newsletter n'est réellement envoyée aux abonnés. Retirez l'attribut `hidden` pour la republier.
+- **Analytics** : le point d'entrée post-consentement se trouve dans `site.js`, fonction `choixCookies`, n'y chargez GA4/Plausible qu'après accord (RGPD).
 
 ## Cartes interactives (option)
 Le site reste autonome : la carte s'ouvre chez OpenStreetMap. Pour intégrer Leaflet, ajoutez ses fichiers **localement** dans `assets/vendeurs/leaflet/` (pas de CDN) et initialisez une carte avec les coordonnées présentes dans chaque page.
@@ -842,20 +842,20 @@ def main():
         ecrit(f"blog/{a['slug']}/index.html", page_article(a))
     ecrit("quiz.html", page_quiz())
     ecrit("boussole.html", page_qibla())
-    ecrit("a-propos.html", page_simple("À propos de Qibla — démarche éditoriale et sources",
+    ecrit("a-propos.html", page_simple("À propos de Qibla, démarche éditoriale et sources",
         "La démarche éditoriale de Qibla : un guide indépendant, sourcé et autonome, consacré aux 20 plus belles mosquées du monde.",
         "À propos", "Le projet", APROPOS.replace("__NB_MOSQUEES__", "vingt"), "a-propos.html", "apropos"))
-    ecrit("contact.html", page_simple("Contact — Qibla", "Contactez l'équipe éditoriale de Qibla : corrections, photos, partenariats.",
+    ecrit("contact.html", page_simple("Contact, Qibla", "Contactez l'équipe éditoriale de Qibla : corrections, photos, partenariats.",
         "Contact", "Écrivez-nous", CONTACT, "contact.html", "contact"))
-    ecrit("credits-photos.html", page_simple("Crédits images — sources et licences | Qibla",
+    ecrit("credits-photos.html", page_simple("Crédits images, sources et licences | Qibla",
         "Traçabilité complète des images du site : créations originales, sources et licences, et procédure pour ajouter des photographies.",
         "Crédits images", "Traçabilité", CREDITS_HTML, "credits-photos.html"))
-    ecrit("mentions-legales.html", page_simple("Mentions légales — Qibla", "Mentions légales du site Qibla.",
+    ecrit("mentions-legales.html", page_simple("Mentions légales, Qibla", "Mentions légales du site Qibla.",
         "Mentions légales", "Informations légales", MENTIONS, "mentions-legales.html"))
-    ecrit("confidentialite.html", page_simple("Politique de confidentialité — Qibla",
+    ecrit("confidentialite.html", page_simple("Politique de confidentialité, Qibla",
         "Politique de confidentialité et RGPD : données, cookies, newsletter, vos droits.",
         "Politique de confidentialité", "Vos données", CONFID, "confidentialite.html"))
-    ecrit("cgu.html", page_simple("Conditions générales d'utilisation — Qibla", "CGU du site Qibla : commentaires, contenus, affiliation.",
+    ecrit("cgu.html", page_simple("Conditions générales d'utilisation, Qibla", "CGU du site Qibla : commentaires, contenus, affiliation.",
         "Conditions générales d'utilisation", "Règles du site", CGU, "cgu.html"))
 
     # sitemap + robots + crédits + README
