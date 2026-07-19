@@ -97,9 +97,60 @@
     $("#vis-moins").addEventListener("click", function () { zoomVers(Math.max(z / 1.35, 0.4)); });
     $("#vis-raz").addEventListener("click", function () { z = 1; px = py = 0; applique(); });
     scene.addEventListener("wheel", function (e) { e.preventDefault(); zoomVers(Math.min(8, Math.max(0.4, z * (e.deltaY < 0 ? 1.12 : 0.9)))); }, { passive: false });
-    scene.addEventListener("pointerdown", function (e) { drag = { x: e.clientX - px, y: e.clientY - py }; scene.setPointerCapture(e.pointerId); });
-    scene.addEventListener("pointermove", function (e) { if (drag) { px = e.clientX - drag.x; py = e.clientY - drag.y; applique(); } });
-    scene.addEventListener("pointerup", function () { drag = null; });
+
+    // Pincement à deux doigts (mobile) : sans ce suivi multi-touch, un pincement
+    // faisait tourner un pointerdown/pointermove non gere par doigt, corrompant px/py
+    // et donnant l'impression que la photo "sautait" hors du cadre (meme famille de bug
+    // que le dezoom desktop, mais via un chemin different, propre au tactile).
+    var pointeurs = {};
+    var pinch = null; // {dist0, z0, midX0, midY0, px0, py0}
+    function distance(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+    function pointeursActifs() { return Object.keys(pointeurs).map(function (k) { return pointeurs[k]; }); }
+
+    scene.addEventListener("pointerdown", function (e) {
+      // setPointerCapture peut lever (deja capture, pointeur invalide selon le navigateur) :
+      // ne doit jamais empecher le suivi du doigt dans "pointeurs", sinon un pincement a
+      // deux doigts se degrade silencieusement en drag errone sur certains appareils/navigateurs.
+      try { scene.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+      pointeurs[e.pointerId] = { x: e.clientX, y: e.clientY };
+      var actifs = pointeursActifs();
+      if (actifs.length === 2) {
+        drag = null;
+        pinch = { dist0: distance(actifs[0], actifs[1]), z0: z, px0: px, py0: py };
+      } else if (actifs.length === 1) {
+        pinch = null;
+        drag = { x: e.clientX - px, y: e.clientY - py };
+      }
+    });
+    scene.addEventListener("pointermove", function (e) {
+      if (!(e.pointerId in pointeurs)) return;
+      pointeurs[e.pointerId] = { x: e.clientX, y: e.clientY };
+      var actifs = pointeursActifs();
+      if (pinch && actifs.length === 2) {
+        var d = distance(actifs[0], actifs[1]);
+        var nouveauZ = Math.min(8, Math.max(0.4, pinch.z0 * (d / pinch.dist0)));
+        // Meme recalage proportionnel que zoomVers, applique directement au pan de depart
+        // du pincement pour eviter tout saut au relachement.
+        var ratio = nouveauZ / pinch.z0;
+        px = pinch.px0 * ratio; py = pinch.py0 * ratio;
+        z = nouveauZ;
+        applique();
+      } else if (drag && actifs.length === 1) {
+        px = e.clientX - drag.x; py = e.clientY - drag.y; applique();
+      }
+    });
+    function relacheDoigt(e) {
+      delete pointeurs[e.pointerId];
+      var actifs = pointeursActifs();
+      if (actifs.length === 1) {
+        pinch = null;
+        drag = { x: actifs[0].x - px, y: actifs[0].y - py };
+      } else {
+        pinch = null; drag = null;
+      }
+    }
+    scene.addEventListener("pointerup", relacheDoigt);
+    scene.addEventListener("pointercancel", relacheDoigt);
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") ferme(); });
   }
 

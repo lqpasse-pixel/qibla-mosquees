@@ -125,7 +125,7 @@ nav.main a:hover,nav.main a[aria-current]{opacity:1;background:#ffffff14;color:v
 .galerie img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center 65%}
 .visionneuse{position:fixed;inset:0;background:#050912f2;z-index:100;display:none;flex-direction:column}
 .visionneuse.on{display:flex}
-.visionneuse .scene{flex:1;overflow:hidden;cursor:grab;display:grid;place-items:center}
+.visionneuse .scene{flex:1;overflow:hidden;cursor:grab;display:grid;place-items:center;touch-action:none}
 .visionneuse img{max-width:none;transition:transform .08s linear;user-select:none}
 .visionneuse .outils{display:flex;gap:10px;justify-content:center;padding:16px;font-family:var(--ui)}
 .visionneuse .outils button{background:#ffffff18;border:1px solid #ffffff33;color:var(--ivoire);
